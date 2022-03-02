@@ -1,0 +1,48 @@
+v14.0 (2022-03-03)
+- Cleaned up .env from unused variables and
+	to switch from MySQL to SQLite database driver
+- Updated .env to use APCu memory cache for cache and sessions.
+- Cleaned up the database from unused tables.
+- Updated app/Http/Controllers/AccountController.php and
+	app/Http/Controllers/UserController.php
+	to use "sudo" only where required,
+	to use "sudo" for reading /etc/mpd.conf as required,
+	to simplify obtaining service status,
+	to fix obtaining MPD settings
+- Updated resources/views/frontend/*.php
+	to simplify obtaining service status
+	to fix obtaining MPD settings
+- Switched from phpseclib SSH access to "allo" account to direct exec()
+- Remove non-required apc.php
+
+v13.3 (2021-06-26)
+- Updated app/Http/Controllers/AccountController.php,
+	app/Http/Controllers/UserController.php and
+	resources/views/frontend/system_settings.blade.php
+	to add support for the new Allo Boss2 DAC.
+	Credits go to Allo: https://github.com/allocom/allo-gui-dietpi/commit/bb7c2c1d91bf8e537e500115e3fbf6e092ed0556
+- Updated allo/app/Http/Controllers/AccountController.php and
+	allo/app/Http/Controllers/UserController.php
+	to fix Squeezelite service control due to a changed service path.
+
+v13.2 (2020-03-31)
+- Updated app/Http/Controllers/UserController.php|AccountController.php to match DietPi v6.29 API
+- Updated app/Http/Controllers/UserController.php to remove some non-required sudo calls and enhance coding
+- Updated resources/views/partials/header.blade.php to match DietPi v6.29 API
+- Updated resources/views/scripts/scripts.sh to match DietPi v6.29 API
+- Removed README.md which did not have any content
+
+v13.1 (2020-01-01)
+- Added CHANGELOG.txt
+- Updated apc.php to latest commit (3ef350e)
+- Removed index.html, which is the default Apache2 index page, since we allow to run Allo web UI on other web servers as well
+- Updated shell calls in app/Http/Controllers/UserController.php|AccountController.php to match current DietPi v6.27:
+	G_USER_INPUTS => G_INTERACTIVE
+	dietpi-set_dphys-swapfile => dietpi-set_swapfile
+	Use sudo where required and avoid it where not required
+	Set G_* variables only where DietPi scripts are invoked
+	Prefer "systemctl disable --now" over "sytemctl stop" to remove possible obsolete systemd calls on boot
+	Prefer mawk over sed/awk/grep, where applicable, for performance reasons
+	Further performance enhancements
+- Updated resources/views/scripts/scripts.sh with new methods
+- Updated RPi sound card list in resources/views/frontend/system_settings.blade.php to match DietPi v6.27
