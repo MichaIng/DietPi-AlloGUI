@@ -315,10 +315,6 @@ class UserController extends Controller {
     }
 
      public function systemSettings(Request $request) {
-	include(app_path() . "/phpseclib/Net/SSH2.php");
-	$ssh = new \phpseclib\Net\SSH2('localhost');
-	login('allo', 'allo') or die("Login failed");
-
 	$selected = $request->get('selected');
 	$selected = exec("grep -cim1 'iface eth0 inet dhcp' /etc/network/interfaces");
 	$ipaddress = exec("ip a s eth0 | grep -m1 '^[[:blank:]]*inet ' | mawk '{print $2}' | sed 's|/.*$||'");
