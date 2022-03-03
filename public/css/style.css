@@ -4,8 +4,7 @@ a:hover{ outline: none;}
 
 @font-face {
 	font-family: 'gothic';
-	src: url('../fonts/gothic.eot');
-	src: local('gothic'), url('../fonts/gothic.woff') format('woff'), url('../fonts/gothic.ttf') format('truetype');
+	src: local('gothic'), url('../fonts/gothic.woff') format('woff');
 }
 /* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_9785">Text with this font applied</p> */
 .fontsforweb_fontid_9785 {
