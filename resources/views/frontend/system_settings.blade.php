@@ -363,9 +363,7 @@
 																$str5 = 'usb-dac';
 																$str6 = 'usb-dac-1.1';
 																$str7 = 'none';
-															}
-															else
-															{
+															} else {
 																$str1 = 'rpi-bcm2835-auto';
 																$str2 = 'rpi-bcm2835-3.5mm';
 																$str3 = 'rpi-bcm2835-hdmi';
@@ -406,94 +404,36 @@
 														</div>
 														<div class="col-md-2 col-sm-4 col-xs-12">
 															<div class="naoTooltip-wrap">
-																<span>
-																	<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																	</i>
-																</span>
+																<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 																<div class="naoTooltip nt-bottom nt-small">
 																	<p>
 																		This options allows you to select and configure the soundcard for your system:
 																	</p>
 																	<hr>
-
 																	<?php if ( $HW_MODEL == 70 ) { ?>
-																		<ul>
-																			<li>
-																				snd-soc-allo-piano-dac = Allo Piano DAC 1
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				snd-soc-allo-piano-dac-plus = Allo Piano DAC 2.1
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-cheapo-analogue = Allo Cheapo, running under analogue output
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-cheapo-optical = Allo Cheapo, running under optical output
-																			</li>
-																		</ul>
+																		<ul><li>snd-soc-allo-piano-dac = Allo Piano DAC 1</li></ul>
+																		<ul><li>snd-soc-allo-piano-dac-plus = Allo Piano DAC 2.1</li></ul>
+																		<ul><li>allo-cheapo-analogue = Allo Cheapo, running under analogue output</li></ul>
+																		<ul><li>allo-cheapo-optical = Allo Cheapo, running under optical output</li></ul>
 																	<?php } else { ?>
-																		<ul>
-																			<li>
-																				rpi-bcm2835-auto = Onboard RPi soundcard (HQ). HDMI if plugged in, else 3.5mm output.
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				rpi-bcm2835-3.5mm = Onboard RPi soundcard (HQ). Forced 3.5mm output.
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				rpi-bcm2835-hdmi = Onboard RPi soundcard (HQ). Forced HDMI output.
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-boss-dac-pcm512x-audio = Allo BOSS and MINI BOSS DAC's
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-boss2-dac-audio = Allo BOSS2 DAC
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-digione = Allo DiGiOne
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-piano-dac-pcm512x-audio = Allo Piano DAC
-																			</li>
-																		</ul>
-																		<ul>
-																			<li>
-																				allo-piano-dac-plus-pcm512x-audio = Allo Piano 2.1 DAC
-																			</li>
-																		</ul>
+																		<ul><li>rpi-bcm2835-auto = Onboard RPi soundcard (HQ). HDMI if plugged in, else 3.5mm output.</li></ul>
+																		<ul><li>rpi-bcm2835-3.5mm = Onboard RPi soundcard (HQ). Forced 3.5mm output.</li></ul>
+																		<ul><li>rpi-bcm2835-hdmi = Onboard RPi soundcard (HQ). Forced HDMI output.</li></ul>
+																		<ul><li>allo-boss-dac-pcm512x-audio = Allo BOSS and MINI BOSS DAC's</li></ul>
+																		<ul><li>allo-boss2-dac-audio = Allo BOSS2 DAC</li></ul>
+																		<ul><li>allo-digione = Allo DiGiOne</li></ul>
+																		<ul><li>allo-piano-dac-pcm512x-audio = Allo Piano DAC</li></ul>
+																		<ul><li>allo-piano-dac-plus-pcm512x-audio = Allo Piano 2.1 DAC</li></ul>
 																	<?php } ?>
-
-																	<ul>
-																		<li>
-																			usb-dac = Will detect and configure for the USB DAC connected to this device. Please make sure the USB DAC is connected, before saving changes.
-																		</li>
-																	</ul>
-
+																	<ul><li>usb-dac = Will detect and configure for the USB DAC connected to this device. Please make sure the USB DAC is connected, before saving changes.</li></ul>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 												<div>
-<!-- // FOR Alsa Mixer --!>
-<div class="panel panel-default" <?php if($soundCard != 'allo-boss2-dac-audio' ) { ?> style="display: none;" <?php } ?>>
+													<!-- // FOR Alsa Mixer --!>
+													<div class="panel panel-default" <?php if($soundCard != 'allo-boss2-dac-audio' ) { ?> style="display: none;" <?php } ?>>
 														<div class="panel-heading" style="background-color: transparent;" role="tab" id="alsamixerctrl" >
 															<h4 class="panel-title" >
 																<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsealsamixerctrl" aria-expanded="true" aria-controls="collapsealsamixerctrl">
@@ -503,7 +443,6 @@
 														</div>
 														<div id="collapsealsamixerctrl" class="panel-collapse collapse" role="tabpanel" aria-labelledby="alsamixerctrl">
 															<div class="panel-body">
-
 																<!-- // Alsamixer controls --!>
 																<div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("Master", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
 																	<div class="col-md-4 col-sm-6 col-xs-12 left-label">
@@ -981,46 +920,23 @@
 															<label> - (Update available):</label>
 															<span class="btn green_btn">
 																<a href="https://dietpi.com/phpbb/viewtopic.php?p=9218#p9218" target="_blank" style="color:white"> <span class="fa fa-undo"></span>Update Now</a>
-														</span>
+															</span>
 														<?php } ?>
 													</div>
 													<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<p>
-																	Allows you to update your device with the latest version of DietPi.
-																</p>
-																<p>
-																	Updates will patch your system, which include bug fixes, performance enhancements and more.
-																</p>
+																<p>Allows you to update your device with the latest version of DietPi.</p>
+																<p>Updates will patch your system, which include bug fixes, performance enhancements and more.</p>
 																<hr>
-																<ul>
-																	<li>
-																		When updates are available:
-																	</li>
-																</ul>
-																<p>
-																	You will be offered the ability to update.
-																</p>
-																<p>
-																	Selecting this option will update your system, to the latest version of DietPi. Please note this may take time to complete, do not refresh or exit the page.
-																</p>
+																<ul><li>When updates are available:</li></ul>
+																<p>You will be offered the ability to update.</p>
+																<p>Selecting this option will update your system, to the latest version of DietPi. Please note this may take time to complete, do not refresh or exit the page.</p>
 																<hr>
-																<ul>
-																	<li>
-																		When updates are not available:
-																	</li>
-																</ul>
-																<p>
-																	Your system is currently running the latest version of DietPi.
-																</p>
-																<p>
-																	The version number will also be shown.
-																</p>
+																<ul><li>When updates are not available:</li></ul>
+																<p>Your system is currently running the latest version of DietPi.</p>
+																<p>The version number will also be shown.</p>
 															</div>
 														</div>
 													</div>

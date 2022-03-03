@@ -3,15 +3,6 @@
 @section('title', 'STATUS')
 
 @section('content')
-
-<?php if($status == 'closed') {
-	$status = "Active";
-} else {
-	$status = "Inactive";
-}
-
-?>
-
 <div class="">
 	<div class="container">
 		@if(Session::has('custom_message'))
@@ -104,11 +95,9 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-
-												<a href="http://<?php echo "$ipLocal"; ?>:19999" class='input_link' target = "_blank">
-													<?php echo "http://localhost:19999"; ?>
+												<a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>:19999" class='input_link' target="_blank">
+													http://<?php echo $_SERVER['HTTP_HOST']; ?>:19999
 												</a>
-
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
