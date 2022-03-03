@@ -53,7 +53,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<?php if(isset($alsaInfo) && !empty($alsaInfo)) { echo $alsaInfo ; } ?>
+												<?php if(!empty($alsaInfo)) { echo $alsaInfo ; } ?>
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
@@ -154,7 +154,7 @@
 											</div>
 											<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 												<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-													<input type="text" class="form-control"  readonly="true" id = "ssid" name = "wifi" value = "<?php if(isset($cpu_temp) && !empty($cpu_temp)) { echo $cpu_temp ; } ?>">
+													<input type="text" class="form-control"  readonly="true" id = "ssid" name = "wifi" value = "<?php if(!empty($cpu_temp)) { echo $cpu_temp ; } ?>">
 												</div>
 												<div class="col-md-2 col-sm-4 col-xs-12">
 													<div class="naoTooltip-wrap">
@@ -198,7 +198,7 @@
 											</div>
 											<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 												<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-													<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(isset($cpu_usage) && !empty($cpu_usage)) { echo $cpu_usage ; } ?>" readonly>
+													<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(!empty($cpu_usage)) { echo $cpu_usage ; } ?>" readonly>
 												</div>
 												<div class="col-md-2 col-sm-4 col-xs-12">
 													<div class="naoTooltip-wrap">
@@ -258,7 +258,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<input type="text" class="form-control"  readonly="true" id = "ssid" name = "wifi" value = "<?php if(isset($total_memory) && !empty($total_memory)) { echo $total_memory ; } ?>">
+												<input type="text" class="form-control"  readonly="true" id = "ssid" name = "wifi" value = "<?php if(!empty($total_memory)) { echo $total_memory ; } ?>">
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
@@ -283,7 +283,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(isset($free_memory) && !empty($free_memory)) { echo $free_memory ; } ?>" readonly>
+												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(!empty($free_memory)) { echo $free_memory ; } ?>" readonly>
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
@@ -308,7 +308,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(isset($memory_usage_perc) && !empty($memory_usage_perc)) { echo number_format($memory_usage_perc, 2, '.', ''); } ?>" readonly>
+												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(!empty($memory_usage_perc)) { echo number_format($memory_usage_perc, 2, '.', ''); } ?>" readonly>
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
@@ -362,10 +362,7 @@
 										<div id="collapselsusb1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb1">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
-													 <?php
-													 if(isset($lsusb) && !empty($lsusb)) { 
-														$lsusb_str = str_replace("\n","&#13;&#10;", $lsusb); }
-													 ?>
+													 <?php lsusb_str = (!empty($lsusb)) ? str_replace("\n","&#13;&#10;", $lsusb) : 'N/A'; ?>
 													<textarea class="form-control" rows="7" cols="20" readonly="true" wrap="hard" style="resize: none;" draggable="false" id = "lsusb" name = "wifi" ><?php echo $lsusb_str; ?></textarea> 
 												</div>
 												<div class="col-md-12 col-sm-12 col-xs-12 " style="text-align:right;">
@@ -393,10 +390,7 @@
 										<div id="collapselsusb2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb2">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
-													 <?php
-													 if(isset($lsusb_port) && !empty($lsusb_port)) { 
-														$lsusbport_str = str_replace("\n","&#13;&#10;", $lsusb_port); }
-													  ?>
+													 <?php $lsusbport_str = (!empty($lsusb_port)) ? str_replace("\n","&#13;&#10;", $lsusb_port) : 'N/A'; ?>
 													<textarea class="form-control" rows="10" cols="20" readonly="true" wrap="hard" style="resize: none;" draggable="false" id = "lsusbport" name = "wifi" ><?php echo $lsusbport_str; ?></textarea> 
 												</div>
 												<div class="col-md-12 col-sm-12 col-xs-12 " style="text-align:right;">
@@ -411,10 +405,7 @@
 												<div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
 													<label for="lsusbport"> SOUND CARD INFO :</label>
 													<div class="col-md-12 col-sm-12 col-xs-12 left-input">
-														 <?php
-														 if(isset($hw_param) && !empty($hw_param)) { 
-															$hw_param_str = str_replace("\n","&#13;&#10;", $hw_param); }
-														  ?>
+														 <?php $hw_param_str = (!empty($hw_param)) ? str_replace("\n","&#13;&#10;", $hw_param) : 'N/A'; ?>
 														<textarea class="form-control" rows="10" cols="20" readonly="true" wrap="hard" style="resize: none; " draggable="false" id = "lsusbport" name = "wifi" ><?php echo $hw_param_str; ?></textarea> 
 													</div>
 													<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:right;" >
@@ -444,10 +435,7 @@
 										<div id="collapselsusb3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb3">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
-													 <?php
-													 if(isset($aplay) && !empty($aplay)) { 
-														$aplay_str = str_replace("\n","&#13;&#10;", $aplay); }
-													 ?>
+													 <?php $aplay_str = (!empty($aplay)) ? str_replace("\n","&#13;&#10;", $aplay) : 'N/A'; ?>
 													<textarea class="form-control" rows="7" cols="20" readonly="true" wrap="hard" style="resize: none;" draggable="false" id = "lsusb" name = "wifi" ><?php echo $aplay_str; ?></textarea> 
 												</div>
 												<div class="col-md-12 col-sm-12 col-xs-12 " style="text-align:right;">
@@ -474,10 +462,7 @@
 										<div id="collapselsusb4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb4">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
-													 <?php
-													 if(isset($dmesg) && !empty($dmesg)) { 
-														$dmesg_str = str_replace("\n","&#13;&#10;", $dmesg); }
-													 ?>
+													 <?php $dmesg_str = (!empty($dmesg)) ? str_replace("\n","&#13;&#10;", $dmesg) : 'N/A'; ?>
 													<textarea class="form-control" rows="7" cols="20" readonly="true" wrap="hard" style="resize: none;" draggable="false" id = "lsusb" name = "wifi" ><?php echo $dmesg_str; ?></textarea> 
 												</div>
 												<div class="col-md-12 col-sm-12 col-xs-12 " style="text-align:right;">
@@ -529,7 +514,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<input type="text" class="form-control"  readonly="true" id = "ssid" name = "wifi" value = "<?php if(isset($total_storage) && !empty($total_storage)) { echo $total_storage ; } ?>">
+												<input type="text" class="form-control"  readonly="true" id = "ssid" name = "wifi" value = "<?php if(!empty($total_storage)) { echo $total_storage; } ?>">
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
@@ -552,7 +537,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(isset($free_storage) && !empty($free_storage)) { echo $free_storage ; } ?>" readonly>
+												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(!empty($free_storage)) { echo $free_storage; } ?>" readonly>
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
@@ -574,7 +559,7 @@
 										</div>
 										<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 											<div class="col-md-10 col-sm-12 col-xs-12 right-input">
-												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(isset($storage_usage_perc) && !empty($storage_usage_perc)) { echo number_format($storage_usage_perc, 2, '.', ''); } ?>" readonly>
+												<input type="text" class="form-control" id = "passkey" name = "passkey" value = "<?php if(!empty($storage_usage_perc)) { echo number_format($storage_usage_perc, 2, '.', ''); } ?>" readonly>
 											</div>
 											<div class="col-md-2 col-sm-4 col-xs-12">
 												<div class="naoTooltip-wrap">
