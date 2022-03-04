@@ -1,19 +1,18 @@
 v14.0 (2022-03-03)
-- Cleaned up .env from unused variables and
-	to switch from MySQL to SQLite database driver
+- Cleaned up .env from unused variables.
 - Updated .env to use APCu memory cache for cache and sessions.
-- Cleaned up the database from unused tables.
+- Removed the database which is now created from scratch on install.
 - Updated app/Http/Controllers/AccountController.php and
 	app/Http/Controllers/UserController.php
 	to use "sudo" only where required,
 	to use "sudo" for reading /etc/mpd.conf as required,
 	to simplify obtaining service status,
-	to fix obtaining MPD settings
+	to fix obtaining and setting MPD settings.
 - Updated resources/views/frontend/*.php
 	to simplify obtaining service status
-	to fix obtaining MPD settings
-- Switched from phpseclib SSH access to "allo" account to direct exec()
-- Remove non-required apc.php
+	to fix obtaining and setting MPD settings.
+- Switched from phpseclib SSH access via "allo" account to direct exec().
+- Removed non-required apc.php.
 
 v13.3 (2021-06-26)
 - Updated app/Http/Controllers/AccountController.php,
