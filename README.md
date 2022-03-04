@@ -4,8 +4,8 @@ This is the source code and pre-processed application repository for the [Allo.c
 
 This aims to replace the previous 7-Zip archive distribution from [dietpi.com](https://dietpi.com/downloads/binaries/all/) and enable easier development collaboration and transparency.
 
-Compared to the latest previosuly provided v13.7, this version contains a major rework for performance and security reasons:
-- MySQL is not used anymore, but SQLite instead. Only the login credentials and tokens are stored in the database, where SQLite is more than sufficient, and none of the managed audio software titles use MySQL either.
+Compared to the latest previously provided v13.7, this version contains a major rework for performance and security reasons:
+- The database is now generated on install, which contains only the login credentials, using the global software password.
 - Cache and sessions are now stored via APCu, i.e. in memory instead of on disk.
 - Shell commands are not executed via SSH and the dedicated `allo` user anymore, but directly via `exec()` as PHP user.
 - Various related and unrelated fixes and cleanups have been applied, as well as updates for recent DietPi side changes.
