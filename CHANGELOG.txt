@@ -7,12 +7,15 @@ v14.0 (2022-03-03)
 	to use "sudo" only where required,
 	to use "sudo" for reading /etc/mpd.conf as required,
 	to simplify obtaining service status,
-	to fix obtaining and setting MPD settings.
+	to fix obtaining and setting MPD settings
+	to fix reboot and DietPi update status.
 - Updated resources/views/frontend/*.php
 	to simplify obtaining service status
-	to fix obtaining and setting MPD settings.
+	to fix obtaining and setting MPD.
 - Switched from phpseclib SSH access via "allo" account to direct exec().
-- Removed non-required apc.php.
+- Removed unused apc.php and test.php.
+- Applied several other cleanups and fixes.
+- Updated PHP dependencies to latest minor versions.
 
 v13.3 (2021-06-26)
 - Updated app/Http/Controllers/AccountController.php,
