@@ -11,12 +11,10 @@ a:hover{ outline: none;}
 	font-family: 'gothic' !important;
 }
 
-
 /* common-classes */
 .padding-all-zero{ padding: 10px 0 }
 .green-text{ color: #45c115 }
 .red-text{ color: #c70e0c }
-
 
 /* header css */
 .header-outr{ float: left; width: 100%; background-color:#4d31ba; color: #fff; box-shadow:0 0 14px 4px rgba(0, 0, 0, 0.3); padding-top: 20px; padding-bottom: 20px;  position: relative;}
@@ -56,14 +54,11 @@ a:hover{ outline: none;}
 .header-right .right-dropmenu .dropdown-menu{ min-width: 180px; margin: 18px 0 0 }
 .header-right .right-dropmenu .dropdown-toggle span {font-size: 20px; padding-left: 5px; padding-top: 2px; }
 
-
 /* footer css */
 .footer-outr{ float: left; width: 100%; background-color:#4D31BA; color: #fff; padding-top: 20px; padding-bottom: 20px;  position: relative; text-align: center;}
 .footer-inr{ float: none; width: 100%; max-width: 1600px; margin: 0 auto }
 .footer-cont{ float: left; width: 100% }
 .footer-cont p {margin-bottom: 0;}
-
-
 
 .outr-cont{ float: left; width: 100%;background-image: -moz-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); background-image: -webkit-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); background-image: -ms-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); min-height:800px; }
 .inr-cont{ float: none; width: 100%; max-width: 1200px; margin: 0 auto }
@@ -72,9 +67,6 @@ a:hover{ outline: none;}
 .page-main-heading .heading{ padding-left: 0 }
 .page-main-heading .info{ padding-right: 0; text-align: right; padding-top: 20px;}
 .page-main-heading .heading h1 { font-family: arial;font-size: 19px; letter-spacing: 1px;}
-
-
-
 
 /* dashbaord page css*/
 .date, .time{ display: inline-block; margin-left:30px;}
@@ -110,7 +102,6 @@ a:hover{ outline: none;}
 .GScroll{position:relative; overflow:hidden; width: 100% !important; height: 150px !important; }
 .GScroll > .GScroll-scrollable{position:absolute; width:100%; top:0px; left:0px; }
 .GScroll > .GScroll-bar{position:absolute; width:5px; min-height:10px; top:0px; right:0px; display:none; background-color: rgba(0,0,0,0.6); cursor: move; z-index:2 }
-
 
 @media screen and (max-width: 1060px){
 	.header-right .right-dropmenu a {font-size: 14px;}
@@ -263,7 +254,6 @@ a.input_link:focus{
 	margin: 13px 0;
 	display: inline-block;
 }
-
 
 /*********/
 
@@ -442,7 +432,6 @@ a.input_link:focus{
     margin: 30px 0 15px;
 }
 
-
 /********* 31 Aug **********/
 
 *, *:before, *:after {
@@ -612,9 +601,7 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	}
 }
 
-
 .outr-cont{ min-height: 847px;}
-
 
 .systemsettnnssss .naoTooltip{
 	position: absolute;
@@ -625,4 +612,3 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 	    padding: 20px;
     color: #fff;
 }
-
