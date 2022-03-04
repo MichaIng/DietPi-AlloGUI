@@ -3,14 +3,16 @@
 namespace DeepCopy\Matcher\Doctrine;
 
 use DeepCopy\Matcher\Matcher;
-use Doctrine\Common\Persistence\Proxy;
+use Doctrine\Persistence\Proxy;
 
 /**
- * Match a Doctrine Proxy class.
+ * @final
  */
 class DoctrineProxyMatcher implements Matcher
 {
     /**
+     * Matches a Doctrine Proxy class.
+     *
      * {@inheritdoc}
      */
     public function matches($object, $property)
