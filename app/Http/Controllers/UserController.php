@@ -475,7 +475,6 @@ class UserController extends Controller {
 	return redirect('/user/system_settings')->with(['custom_message' => '<p>NB: If any of the following items have been changed, please reboot your system to apply the new settings:</p>
 	    <ul>
 	        <li>IP Address Change (DHCP/STATIC)</li>
-		<li>Hostname</li>
 		<li>Soundcard Selection</li>
 		<li>Update DietPi</li>
 	    </ul>'
