@@ -6,10 +6,10 @@
 <div class="">
 	<div class="container">
 		@if(Session::has('custom_message'))
-			<div class="alert alert-success" role="alert">
+		<div class="alert alert-success" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 			<span>{{ Session::get('custom_message') }}</span>
-			</div>
+		</div>
 		@endif
 		<div class="cont">
 			<div class="col-md-12 col-sm-12 col-xs-12 page-main-heading">
@@ -34,7 +34,6 @@
 											</a>
 										</h4>
 									</div>
-
 									<div id="collapseServicestatus" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Servicestatus">
 										<div class="panel-body">
 											<div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
@@ -57,35 +56,16 @@
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Displays the current operational status of the target application.
-															</p>
-															<p>
-																You can use the 'Enable/Disable' options below, to control this state.
-															</p>
+															<p>Displays the current operational status of the target application.</p>
+															<p>You can use the 'Enable/Disable' options below, to control this state.</p>
 															<hr>
-															<ul>
-																<li>
-																	Active :
-																</li>
-															</ul>
-															<p>
-																The application is currently running, and, fully functional.
-															</p>
+															<ul><li>Active :</li></ul>
+															<p>The application is currently running, and, fully functional.</p>
 															<hr>
-															<ul>
-																<li>
-																	Inactive :
-																</li>
-															</ul>
-															<p>
-																The application is not currently running. If the service is enabled and you see this state, the application may have encountered an issue and is failing to run.
-															</p>
+															<ul><li>Inactive :</li></ul>
+															<p>The application is not currently running. If the service is enabled and you see this state, the application may have encountered an issue and is failing to run.</p>
 														</div>
 													</div>
 												</div>
@@ -110,36 +90,16 @@
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Allows you to enable or disable the target application.
-															</p>
-															<p>
-																It is recommended to disable unwanted applications, as this will reduce CPU & memory usage of the device.
-															</p>
+															<p>Allows you to enable or disable the target application.</p>
+															<p>It is recommended to disable unwanted applications, as this will reduce CPU & memory usage of the device.</p>
 															<hr>
-															<ul>
-																<li>
-																	Enable :
-																</li>
-															</ul>
-															<p>
-																The application is allowed to run.
-
-															</p>
+															<ul><li>Enable :</li></ul>
+															<p>The application is allowed to run.</p>
 															<hr>
-															<ul>
-																<li>
-																	Disable :
-																</li>
-															</ul>
-															<p>
-																The application is prevented from running.
-															</p>
+															<ul><li>Disable :</li></ul>
+															<p>The application is prevented from running.</p>
 														</div>
 													</div>
 												</div>
@@ -147,7 +107,6 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="panel panel-default">
 									<div class="panel-heading" role="tab" id="WebInterface">
 										<h4 class="panel-title">
@@ -164,45 +123,26 @@
 												</div>
 												<div class="col-md-6 col-sm-4 col-xs-12 right-input">
 													<a href="../../../../ompd" class='input_link' target="_blank">
-														<?php echo "http://localhost/ompd"; ?>
+														http://<?php echo $_SERVER['HTTP_HOST']; ?>/ompd
 													</a>
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Clicking the following link will launch the O!MPD web interface.
-															</p>
-															<p>
-																O!MPD is a feature rich front-end for playing audio through MPD.
-															</p>
+															<p>Clicking the following link will launch the O!MPD web interface.</p>
+															<p>O!MPD is a feature rich front-end for playing audio through MPD.</p>
 															<hr>
-															<p>
-																Default login details:
-															</p>
-															<ul>
-																<li>
-																	Username = admin
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	Password = admin
-																</li>
-															</ul>
+															<p>Default login details:</p>
+															<ul><li>Username = admin</li></ul>
+															<ul><li>Password = admin</li></ul>
 														</div>
 													</div>
 												</div>
 											</div>
-
 										</div>
 									</div>
 								</div>
-
 								<div class="panel panel-default">
 									<div class="panel-heading" role="tab" id="Outputoption">
 										<h4 class="panel-title">
@@ -222,47 +162,25 @@
 														<label class="switch-light" onclick="">
 															<input type="hidden" name="soxrStatus" value="no" class="SOXR_STATUS">
 															<input type="checkbox" id="soxr_status" name="soxrStatus" value="yes" class="SOXR_STATUS" >
-															<span>
-																<span>Enable</span>
-																<span>Disable</span>
-															</span>
+															<span><span>Enable</span><span>Disable</span></span>
 															<a class="btn btn-primary"></a>
 														</label>
 													</div>
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Allows you to control the usage of SOXR resampling.
+															<p>Allows you to control the usage of SOXR resampling.
 
-																SOXR offers high quality audio resampling.
-															</p>
-															<p>
-																Recommended if you are planning to upscale to a higher output frequency/bit, than the source format.
-															</p>
+																SOXR offers high quality audio resampling.</p>
+															<p>Recommended if you are planning to upscale to a higher output frequency/bit, than the source format.</p>
 															<hr>
-															<ul>
-																<li>
-																	Enable:
-																</li>
-															</ul>
-															<p>
-																Enables SOXR resampling.
-															</p>
+															<ul><li>Enable:</li></ul>
+															<p>Enables SOXR resampling.</p>
 															<hr>
-															<ul>
-																<li>
-																	Disable:
-																</li>
-															</ul>
-															<p>
-																Disables resampling
-															</p>
+															<ul><li>Disable:</li></ul>
+															<p>Disables resampling</p>
 														</div>
 													</div>
 												</div>
@@ -292,42 +210,18 @@
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Allows you to control the quality of SOXR resampling.
-															</p>
+															<p>Allows you to control the quality of SOXR resampling.</p>
 															<hr>
-
-															<ul>
-																<li>
-																	Very High
-																</li>
-															</ul>
-															<p>
-																The highest quality setting for SOXR. Increases CPU usage significantly.
-															</p>
+															<ul><li>Very High</li></ul>
+															<p>The highest quality setting for SOXR. Increases CPU usage significantly.</p>
 															<hr>
-															<ul>
-																<li>
-																	High
-																</li>
-															</ul>
-															<p>
-																Acceptable quality. Medium CPU usage.
-															</p>
+															<ul><li>High</li></ul>
+															<p>Acceptable quality. Medium CPU usage.</p>
 															<hr>
-															<ul>
-																<li>
-																	Low
-																</li>
-															</ul>
-															<p>
-																The lowest quality setting for SOXR. Reduces CPU usage and audio quality significantly.
-															</p>
+															<ul><li>Low</li></ul>
+															<p>The lowest quality setting for SOXR. Reduces CPU usage and audio quality significantly.</p>
 														</div>
 													</div>
 												</div>
@@ -346,7 +240,6 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="panel panel-default">
 									<div class="panel-heading" role="tab" id="OutputFrequency">
 										<h4 class="panel-title">
@@ -360,7 +253,6 @@
 											<div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
 												<div class="col-md-4 col-sm-6 col-xs-12 left-label">
 													<label>Frequency :</label>
-
 												</div>
 												<div class="col-md-6 col-sm-4 col-xs-12 right-input appearance">
 													<select class="form-control" name="frequency" id="frequency">
@@ -378,44 +270,20 @@
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Allows you to control the output frequency of audio playback with MPD.
-															</p>
-															<p>
-																If the source audio format does not match the current setting, SOXR is recommended in this case to ensure highest audio conversion.
-															</p>
+															<p>Allows you to control the output frequency of audio playback with MPD.</p>
+															<p>If the source audio format does not match the current setting, SOXR is recommended in this case to ensure highest audio conversion.</p>
 															<hr>
-
-															<ul>
-																<li>
-																	384KHz = Highest quality output frequency
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	44.1KHz = Music standard (eg: CD/MP3 audio)
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	Native  = Output matches the source format (bit perfect)
-																</li>
-															</ul>
+															<ul><li>384KHz = Highest quality output frequency</li></ul>
+															<ul><li>44.1KHz = Music standard (eg: CD/MP3 audio)</li></ul>
+															<ul><li>Native  = Output matches the source format (bit perfect)</li></ul>
 															<hr>
-
-															<p>
-																For bit-perfect playback, it is recommended to ensure the output frequency and bit depth, matches the source audio.
-																To verify realtime output statistics for the ALSA stream, please check the 'ALSA stream output' section in the 'Status' page.
-															</p>
+															<p>For bit-perfect playback, it is recommended to ensure the output frequency and bit depth, matches the source audio.
+																To verify realtime output statistics for the ALSA stream, please check the 'ALSA stream output' section in the 'Status' page.</p>
 														</div>
 													</div>
 												</div>
-
 											</div>
 											<div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
 												<div class="col-md-4 col-sm-6 col-xs-12 left-label">
@@ -432,47 +300,21 @@
 												</div>
 												<div class="col-md-2 col-sm-2 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																Allows you to control the output bit depth of audio playback with MPD.
-															</p>
-															<p>
-																If the source audio format does not match the current setting, SOXR is recommended in this case to ensure highest audio conversion.
-															</p>
+															<p>Allows you to control the output bit depth of audio playback with MPD.</p>
+															<p>If the source audio format does not match the current setting, SOXR is recommended in this case to ensure highest audio conversion.</p>
 															<hr>
-
-															<ul>
-																<li>
-																	32 = Highest quality output bit depth
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	16 = Music standard (eg: CD/MP3 audio)
-																</li>
-															</ul>
-															<ul>
-																<li>
-																	Native  = Output matches the source format (bit perfect)
-																</li>
-															</ul>
-
+															<ul><li>32 = Highest quality output bit depth</li></ul>
+															<ul><li>16 = Music standard (eg: CD/MP3 audio)</li></ul>
+															<ul><li>Native  = Output matches the source format (bit perfect)</li></ul>
 															<hr>
-
-															<p>
-																For bit-perfect playback, it is recommended to ensure the output frequency and bit depth, matches the source audio.
-																To verify realtime output statistics for the ALSA stream, please check the 'ALSA stream output' section in the 'Status' page.
-															</p>
+															<p>For bit-perfect playback, it is recommended to ensure the output frequency and bit depth, matches the source audio.
+																To verify realtime output statistics for the ALSA stream, please check the 'ALSA stream output' section in the 'Status' page.</p>
 														</div>
 													</div>
 												</div>
-
 											</div>
-
 										</div>
 									</div>
 								</div>
@@ -480,7 +322,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="col-md-12 col-sm-12 col-xs-12 bottom_btn">
 					<button class="btn white_btn" id="sve-chngs">Save changes</button>
 				</div>
@@ -488,7 +329,6 @@
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#chk').click(function(){return false;});
@@ -561,6 +401,5 @@
 	});
 
 	$('.naoTooltip-wrap').naoTooltip();
-
 </script>
 @endsection
