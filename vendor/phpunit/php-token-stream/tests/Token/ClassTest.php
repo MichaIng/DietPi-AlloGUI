@@ -137,4 +137,33 @@ class PHP_Token_ClassTest extends TestCase
         $this->assertArrayHasKey('anonymousFunction:18#81', $classes['class_with_multiple_anonymous_classes_and_functions']['methods']);
         $this->assertArrayHasKey('anonymousFunction:22#108', $classes['class_with_multiple_anonymous_classes_and_functions']['methods']);
     }
+
+    /**
+     * @ticket https://github.com/sebastianbergmann/php-token-stream/issues/68
+     */
+    public function testClassWithMethodNamedEmptyIsHandledCorrectly()
+    {
+        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'class_with_method_named_empty.php');
+
+        $classes = $ts->getClasses();
+
+        $this->assertArrayHasKey('class_with_method_named_empty', $classes);
+        $this->assertArrayHasKey('empty', $classes['class_with_method_named_empty']['methods']);
+    }
+
+    /**
+     * @ticket https://github.com/sebastianbergmann/php-code-coverage/issues/424
+     */
+    public function testSomething()
+    {
+        $ts = new PHP_Token_Stream(TEST_FILES_PATH . 'php-code-coverage-issue-424.php');
+
+        $classes = $ts->getClasses();
+
+        $this->assertSame(5, $classes['Example']['methods']['even']['startLine']);
+        $this->assertSame(12, $classes['Example']['methods']['even']['endLine']);
+
+        $this->assertSame(7, $classes['Example']['methods']['anonymousFunction:7#28']['startLine']);
+        $this->assertSame(9, $classes['Example']['methods']['anonymousFunction:7#28']['endLine']);
+    }
 }

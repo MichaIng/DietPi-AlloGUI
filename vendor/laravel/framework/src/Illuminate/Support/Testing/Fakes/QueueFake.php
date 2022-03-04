@@ -2,6 +2,7 @@
 
 namespace Illuminate\Support\Testing\Fakes;
 
+use BadMethodCallException;
 use Illuminate\Queue\QueueManager;
 use Illuminate\Contracts\Queue\Queue;
 use PHPUnit\Framework\Assert as PHPUnit;
@@ -19,14 +20,33 @@ class QueueFake extends QueueManager implements Queue
      * Assert if a job was pushed based on a truth-test callback.
      *
      * @param  string  $job
-     * @param  callable|null  $callback
+     * @param  callable|int|null  $callback
      * @return void
      */
     public function assertPushed($job, $callback = null)
     {
+        if (is_numeric($callback)) {
+            return $this->assertPushedTimes($job, $callback);
+        }
+
         PHPUnit::assertTrue(
             $this->pushed($job, $callback)->count() > 0,
             "The expected [{$job}] job was not pushed."
+        );
+    }
+
+    /**
+     * Assert if a job was pushed a number of times.
+     *
+     * @param  string  $job
+     * @param  int  $times
+     * @return void
+     */
+    protected function assertPushedTimes($job, $times = 1)
+    {
+        PHPUnit::assertTrue(
+            ($count = $this->pushed($job)->count()) === $times,
+            "The expected [{$job}] job was pushed {$count} times instead of {$times} times."
         );
     }
 
@@ -50,6 +70,89 @@ class QueueFake extends QueueManager implements Queue
     }
 
     /**
+     * Assert if a job was pushed with chained jobs based on a truth-test callback.
+     *
+     * @param  string $job
+     * @param  array $expectedChain
+     * @param  callable|null $callback
+     * @return void
+     */
+    public function assertPushedWithChain($job, $expectedChain = [], $callback = null)
+    {
+        PHPUnit::assertTrue(
+            $this->pushed($job, $callback)->isNotEmpty(),
+            "The expected [{$job}] job was not pushed."
+        );
+
+        PHPUnit::assertTrue(
+            collect($expectedChain)->isNotEmpty(),
+            'The expected chain can not be empty.'
+        );
+
+        $this->isChainOfObjects($expectedChain)
+                ? $this->assertPushedWithChainOfObjects($job, $expectedChain, $callback)
+                : $this->assertPushedWithChainOfClasses($job, $expectedChain, $callback);
+    }
+
+    /**
+     * Assert if a job was pushed with chained jobs based on a truth-test callback.
+     *
+     * @param  string $job
+     * @param  array $expectedChain
+     * @param  callable|null $callback
+     * @return void
+     */
+    protected function assertPushedWithChainOfObjects($job, $expectedChain, $callback)
+    {
+        $chain = collect($expectedChain)->map(function ($job) {
+            return serialize($job);
+        })->all();
+
+        PHPUnit::assertTrue(
+            $this->pushed($job, $callback)->filter(function ($job) use ($chain) {
+                return $job->chained == $chain;
+            })->isNotEmpty(),
+            'The expected chain was not pushed.'
+        );
+    }
+
+    /**
+     * Assert if a job was pushed with chained jobs based on a truth-test callback.
+     *
+     * @param  string $job
+     * @param  array $expectedChain
+     * @param  callable|null $callback
+     * @return void
+     */
+    protected function assertPushedWithChainOfClasses($job, $expectedChain, $callback)
+    {
+        $matching = $this->pushed($job, $callback)->map->chained->map(function ($chain) {
+            return collect($chain)->map(function ($job) {
+                return get_class(unserialize($job));
+            });
+        })->filter(function ($chain) use ($expectedChain) {
+            return $chain->all() === $expectedChain;
+        });
+
+        PHPUnit::assertTrue(
+            $matching->isNotEmpty(), 'The expected chain was not pushed.'
+        );
+    }
+
+    /**
+     * Determine if the given chain is entirely composed of objects.
+     *
+     * @param  array  $chain
+     * @return bool
+     */
+    protected function isChainOfObjects($chain)
+    {
+        return ! collect($chain)->contains(function ($job) {
+            return ! is_object($job);
+        });
+    }
+
+    /**
      * Determine if a job was pushed based on a truth-test callback.
      *
      * @param  string  $job
@@ -62,6 +165,16 @@ class QueueFake extends QueueManager implements Queue
             $this->pushed($job, $callback)->count() === 0,
             "The unexpected [{$job}] job was pushed."
         );
+    }
+
+    /**
+     * Assert that no jobs were pushed.
+     *
+     * @return void
+     */
+    public function assertNothingPushed()
+    {
+        PHPUnit::assertEmpty($this->jobs, 'Jobs were pushed unexpectedly.');
     }
 
     /**
@@ -111,12 +224,14 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Get the size of the queue.
      *
-     * @param  string  $queue
+     * @param  string|null  $queue
      * @return int
      */
     public function size($queue = null)
     {
-        return 0;
+        return collect($this->jobs)->flatten(1)->filter(function ($job) use ($queue) {
+            return $job['queue'] === $queue;
+        })->count();
     }
 
     /**
@@ -124,7 +239,7 @@ class QueueFake extends QueueManager implements Queue
      *
      * @param  string  $job
      * @param  mixed   $data
-     * @param  string  $queue
+     * @param  string|null  $queue
      * @return mixed
      */
     public function push($job, $data = '', $queue = null)
@@ -139,7 +254,7 @@ class QueueFake extends QueueManager implements Queue
      * Push a raw payload onto the queue.
      *
      * @param  string  $payload
-     * @param  string  $queue
+     * @param  string|null  $queue
      * @param  array   $options
      * @return mixed
      */
@@ -151,10 +266,10 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Push a new job onto the queue after a delay.
      *
-     * @param  \DateTime|int  $delay
+     * @param  \DateTimeInterface|\DateInterval|int  $delay
      * @param  string  $job
      * @param  mixed   $data
-     * @param  string  $queue
+     * @param  string|null  $queue
      * @return mixed
      */
     public function later($delay, $job, $data = '', $queue = null)
@@ -179,7 +294,7 @@ class QueueFake extends QueueManager implements Queue
      * Push a new job onto the queue after a delay.
      *
      * @param  string  $queue
-     * @param  \DateTime|int  $delay
+     * @param  \DateTimeInterface|\DateInterval|int  $delay
      * @param  string  $job
      * @param  mixed   $data
      * @return mixed
@@ -192,7 +307,7 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Pop the next job off of the queue.
      *
-     * @param  string  $queue
+     * @param  string|null  $queue
      * @return \Illuminate\Contracts\Queue\Job|null
      */
     public function pop($queue = null)
@@ -205,14 +320,24 @@ class QueueFake extends QueueManager implements Queue
      *
      * @param  array $jobs
      * @param  mixed $data
-     * @param  string $queue
+     * @param  string|null $queue
      * @return mixed
      */
     public function bulk($jobs, $data = '', $queue = null)
     {
-        foreach ($this->jobs as $job) {
-            $this->push($job);
+        foreach ($jobs as $job) {
+            $this->push($job, $data, $queue);
         }
+    }
+
+    /**
+     * Get the jobs that have been pushed.
+     *
+     * @return array
+     */
+    public function pushedJobs()
+    {
+        return $this->jobs;
     }
 
     /**
@@ -234,5 +359,19 @@ class QueueFake extends QueueManager implements Queue
     public function setConnectionName($name)
     {
         return $this;
+    }
+
+    /**
+     * Override the QueueManager to prevent circular dependency.
+     *
+     * @param  string  $method
+     * @param  array   $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        throw new BadMethodCallException(sprintf(
+            'Call to undefined method %s::%s()', static::class, $method
+        ));
     }
 }
