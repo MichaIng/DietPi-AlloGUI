@@ -385,7 +385,7 @@ class UserController extends Controller {
 	$soundCard = preg_replace('/\s+/', '', $soundCard);
 	$cpuGovernor = exec("sed -n '/^CONFIG_CPU_GOVERNOR=/{s/^[^=]*=//p;q}' /boot/dietpi.txt");
 	$cpuGovernor = preg_replace('/\s+/', '', $cpuGovernor);
-	$updateDietPiStatus = exec("if [ -f '/run/dietpi/.update_available' ]; then cat /boot/dietpi/.update_available; fi");
+	$updateDietPiStatus = exec("[ -f '/run/dietpi/.update_available' ] && cat /run/dietpi/.update_available");
 	$currentversionDietPi = exec(". /boot/dietpi/.version; echo \"\$G_DIETPI_VERSION_CORE.\$G_DIETPI_VERSION_SUB.\$G_DIETPI_VERSION_RC\"");
 	$HW_MODEL = exec(". /boot/dietpi/.hw_model; echo \$G_HW_MODEL");
 	$rangeVal = exec("sed -n '/^AUTO_SETUP_SWAPFILE_SIZE=/{s/^[^=]*=//p;q}' /boot/dietpi.txt");
@@ -474,18 +474,10 @@ class UserController extends Controller {
 
 	return redirect('/user/system_settings')->with(['custom_message' => '<p>NB: If any of the following items have been changed, please reboot your system to apply the new settings:</p>
 	    <ul>
-		<li>
-		    IP Address Change (DHCP/STATIC)
-		</li>
-		<li>
-		    Hostname
-		</li>
-		<li>
-		    Soundcard Selection
-		</li>
-		<li>
-		    Update DietPi
-		</li>
+	        <li>IP Address Change (DHCP/STATIC)</li>
+		<li>Hostname</li>
+		<li>Soundcard Selection</li>
+		<li>Update DietPi</li>
 	    </ul>'
 	]);
     }
@@ -497,11 +489,10 @@ class UserController extends Controller {
 	return 1;
     }
 
-    public function reeboot(Request $request) {
-	setTimeout(1);
-	$update = exec("TERM=linux; sleep 3; sudo reboot");
+    public function reboot(Request $request) {
+        $update = exec("TERM=linux sudo reboot");
 
-	return 1;
+        return 1;
     }
 
     public function power(Request $request) {
