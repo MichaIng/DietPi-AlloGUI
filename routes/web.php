@@ -39,7 +39,7 @@
     Route::any('/user/changeWifiSettings', 'UserController@changeWifiSettings');
     Route::any('/user/download', 'UserController@download');
     Route::any('/user/status', 'UserController@status');
-    Route::any('/user/reeboot', 'UserController@reeboot');
+    Route::any('/user/reboot', 'UserController@reboot');
     Route::any('/user/swapFileSize', 'UserController@swapFileSize');
     Route::any('/user/power', 'UserController@power');
     Route::any('/user/updateSoundCard', 'UserController@updateSoundCard');

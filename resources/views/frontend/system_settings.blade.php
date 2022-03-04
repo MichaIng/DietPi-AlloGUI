@@ -54,11 +54,11 @@
 <div class="outr-cont">
 	<div class="container">
 		@if(Session::has('custom_message'))
-			<div class="alert alert-success" role="alert">
+		<div class="alert alert-success" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 			<span>{!! Session::get('custom_message') !!}</span>
-			</div>
-        @endif
+		</div>
+		@endif
         <div class="alert alert-success" id = "alertSuccess" style = "display:none">
         	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 		  	<strong>Success!</strong> DietPi version successfully updated. A system reboot is required to finish the update, please reboot the system.
@@ -71,7 +71,7 @@
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 		  	<strong>Success!</strong> Swapfile size successfully updated .
 		</div>
-		<div class="alert alert-success" id = "alertReeboot" style = "display:none">
+		<div class="alert alert-success" id = "alertReboot" style = "display:none">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 		  	<strong>Success!</strong> System is now rebooting.
 		</div>
@@ -92,7 +92,6 @@
 						<span class="fa fa-long-arrow-left" aria-hidden="true"></span>Back
 					</a>
 					<div class=" ">
-
 						<div class="panel-group" id="accordionMenu" role="tablist" aria-multiselectable="true">
 							<div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 
@@ -135,7 +134,6 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="panel panel-default">
 									<div class="panel-heading" role="tab" id="network">
 										<h4 class="panel-title">
@@ -196,28 +194,13 @@
 													</div>
 													<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<ul>
-																	<li>
-																		DHCP:
-																	</li>
-																</ul>
-																<p>
-																	In DHCP mode, this will display the current IP address of the system.
-																</p>
+																<ul><li>DHCP:</li></ul>
+																<p>In DHCP mode, this will display the current IP address of the system.</p>
 																<hr>
-																<ul>
-																	<li>
-																		STATIC:
-																	</li>
-																</ul>
-																<p>
-																	In STATIC mode, you can assign a unique persistent IP address for this system.
-																</p>
+																<ul><li>STATIC:</li></ul>
+																<p>In STATIC mode, you can assign a unique persistent IP address for this system.</p>
 															</div>
 														</div>
 													</div>
@@ -233,28 +216,13 @@
 													</div>
 													<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<ul>
-																	<li>
-																		DHCP:
-																	</li>
-																</ul>
-																<p>
-																	In DHCP mode, this will display the current IP gateway of the system.
-																</p>
+																<ul><li>DHCP:</li></ul>
+																<p>In DHCP mode, this will display the current IP gateway of the system.</p>
 																<hr>
-																<ul>
-																	<li>
-																		STATIC:
-																	</li>
-																</ul>
-																<p>
-																	In STATIC mode, you can assign a different gateway address for this system. The gateway is usually the IP address of the main router on your network.
-																</p>
+																<ul><li>STATIC:</li></ul>
+																<p>In STATIC mode, you can assign a different gateway address for this system. The gateway is usually the IP address of the main router on your network.</p>
 															</div>
 														</div>
 													</div>
@@ -270,28 +238,13 @@
 													</div>
 													<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<ul>
-																	<li>
-																		DHCP:
-																	</li>
-																</ul>
-																<p>
-																	In DHCP mode, this will display the current IP mask of the system.
-																</p>
+																<ul><li>DHCP:</li></ul>
+																<p>In DHCP mode, this will display the current IP mask of the system.</p>
 																<hr>
-																<ul>
-																	<li>
-																		STATIC:
-																	</li>
-																</ul>
-																<p>
-																	In STATIC mode, you can assign a different mask address for this system. The mask is usually 255.255.255.0 in most cases, however, advanced users can adjust as required.
-																</p>
+																<ul><li>STATIC:</li></ul>
+																<p>In STATIC mode, you can assign a different mask address for this system. The mask is usually 255.255.255.0 in most cases, however, advanced users can adjust as required.</p>
 															</div>
 														</div>
 													</div>
@@ -307,28 +260,13 @@
 													</div>
 													<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<ul>
-																	<li>
-																		DHCP:
-																	</li>
-																</ul>
-																<p>
-																	In DHCP mode, this will display the current IP DNS of the system.
-																</p>
+																<ul><li>DHCP:</li></ul>
+																<p>In DHCP mode, this will display the current IP DNS of the system.</p>
 																<hr>
-																<ul>
-																	<li>
-																		STATIC:
-																	</li>
-																</ul>
-																<p>
-																	In STATIC mode, you can assign a different DNS address for this system. In most use cases, the router will handle DNS server requests and that IP should be used. Alternatives such as google DNS (8.8.8.8) are also valid options.
-																</p>
+																<ul><li>STATIC:</li></ul>
+																<p>In STATIC mode, you can assign a different DNS address for this system. In most use cases, the router will handle DNS server requests and that IP should be used. Alternatives such as google DNS (8.8.8.8) are also valid options.</p>
 															</div>
 														</div>
 													</div>
@@ -850,47 +788,20 @@
 													</div>
 													<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<p>
-																	Swapfile is a reserve memory store, on disk, when free memory (RAM) is running low.
-																</p>
-																<p>
-																	The goal of the swapfile is to prevent "out of memory" errors, which can occur when resource hungry applications are utilizing memory.
-																</p>
-																<p>
-																	Use the slider to set a swapfile size:
-																</p>
+																<p>Swapfile is a reserve memory store, on disk, when free memory (RAM) is running low.</p>
+																<p>The goal of the swapfile is to prevent "out of memory" errors, which can occur when resource hungry applications are utilizing memory.</p>
+																<p>Use the slider to set a swapfile size:</p>
 																<hr>
-																<ul>
-																	<li>
-																		Setting a value of "0" will disable the swapfile.
-																	</li>
-																</ul>
-																<p>
-																	This is recommended for advanced users who can manage their systems memory (RAM) allocations.
-																</p>
+																<ul><li>Setting a value of "0" will disable the swapfile.</li></ul>
+																<p>This is recommended for advanced users who can manage their systems memory (RAM) allocations.</p>
 																<hr>
-																<ul>
-																	<li>
-																		Any other value will set the swapfile size accordingly.
-																	</li>
-																</ul>
-																<p>
-																	Creating a memory reserve, for when free memory (RAM) is running low.
-																</p>
+																<ul><li>Any other value will set the swapfile size accordingly.</li></ul>
+																<p>Creating a memory reserve, for when free memory (RAM) is running low.</p>
 																<hr>
-																<p>
-																	We suggest the following, for calculating recommended size:
-																</p>
-																<ul>
-																	<li>
-																		2048(MB) minus "Total RAM (MB)" | eg: 1024 RAM = 1024 SWAP
-																	</li>
-																</ul>
+																<p>We suggest the following, for calculating recommended size:</p>
+																<ul><li>2048(MB) minus "Total RAM (MB)" | eg: 1024 RAM = 1024 SWAP</li></ul>
 															</div>
 														</div>
 													</div>
@@ -967,14 +878,9 @@
 												</div>
 												<div class="col-md-2 col-sm-4 col-xs-12">
 														<div class="naoTooltip-wrap">
-															<span>
-																<i class="fa fa-question-circle" style="font-size:24px;color:white">
-																</i>
-															</span>
+															<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 															<div class="naoTooltip nt-bottom nt-small">
-																<p>
-																	This option allows you to correctly shutdown the system.
-																</p>
+																<p>This option allows you to correctly shutdown the system.</p>
 															</div>
 														</div>
 													</div>
@@ -986,20 +892,15 @@
 											</div>
 											<div class="col-md-8 col-sm-6 col-xs-12 right-input">
 												<div class="col-md-10 col-sm-4 col-xs-12">
-													<span class="btn green_btn" id = "reeboot">
+													<span class="btn green_btn" id="reboot">
 														<span class="fa fa-spinner" aria-hidden="true"></span>Reboot
 													</span>
 												</div>
 												<div class="col-md-2 col-sm-4 col-xs-12">
 													<div class="naoTooltip-wrap">
-														<span>
-															<i class="fa fa-question-circle" style="font-size:24px;color:white">
-															</i>
-														</span>
+														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>
-																This option allows you to reboot the system.
-															</p>
+															<p>This option allows you to reboot the system.</p>
 														</div>
 													</div>
 												</div>
@@ -1396,12 +1297,12 @@
             });
 	   	});
 
-    	$("#reeboot").click(function(event){
+    	$("#reboot").click(function(event){
         	//event.preventDefault();
         	$('#overlay').show();
             $.ajax({
                 type: 'POST',
-                url: "{{url ('/user/reeboot')}}",
+                url: "{{url ('/user/reboot')}}",
                 data:{
                 	"_token": "{{ csrf_token() }}"
                 },
@@ -1411,7 +1312,7 @@
 
 					//location.reload(true);
 					window.scrollTo(0, 0);
-					$('#alertReeboot').css('display','block');
+					$('#alertReboot').css('display','block');
                 }
             });
 	   	});
