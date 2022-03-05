@@ -78,7 +78,7 @@
         <div class="footer-outr">
                 <div class="footer-inr">
                     <div class="footer-cont">
-                        <p>Copyright Allo.com 2018. All rights reserved.</p>
+                        <p>Copyright Allo.com 2022. All rights reserved.</p>
                     </div>
                 </div>
         </div>
