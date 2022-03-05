@@ -1,15 +1,6 @@
-body{ margin: 0; padding:0; font-family: 'gothic', sans-serif; !important}
+body{ margin: 0; padding:0; font-family: Arial, sans-serif;}
 img{ border: 0; outline: none;}
 a:hover{ outline: none;}
-
-@font-face {
-	font-family: 'gothic';
-	src: local('gothic'), url('../fonts/gothic.woff') format('woff');
-}
-/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_9785">Text with this font applied</p> */
-.fontsforweb_fontid_9785 {
-	font-family: 'gothic' !important;
-}
 
 /* common-classes */
 .padding-all-zero{ padding: 10px 0 }
