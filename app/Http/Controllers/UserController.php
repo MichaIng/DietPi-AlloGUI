@@ -91,9 +91,9 @@ class UserController extends Controller {
     public function changeRoonSettings(Request $request) {
 	$roon = $request->roon;
 	// if status to be enabled ,status = no ; if status to be disabled ,status = yes
-	if ($roon == 'yes') {
+	if ($roon === 'yes') {
 		exec("TERM=linux sudo systemctl stop roonbridge; TERM=linux sudo mv /etc/systemd/system/roonbridge.service /etc/systemd/system/roonbridge.service.disable; TERM=linux sudo systemctl daemon-reload");
-	} elseif ($roon = 'no') {
+	} elseif ($roon === 'no') {
 		exec("TERM=linux sudo mv /etc/systemd/system/roonbridge.service.disable /etc/systemd/system/roonbridge.service; TERM=linux sudo systemctl daemon-reload; TERM=linux sudo systemctl restart roonbridge");
 	}
 
@@ -110,9 +110,9 @@ class UserController extends Controller {
     public function changeGmrenderSettings(Request $request) {
 	$gmrenderStatus = $request->gmrenderStatus;
 	// if status to be enabled ,status = no ; if status to be disabled ,status = yes
-	if ($gmrenderStatus == 'yes') {
+	if ($gmrenderStatus === 'yes') {
 		exec("TERM=linux sudo systemctl disable --now gmrender; TERM=linux sudo mv /etc/systemd/system/gmrender.service /etc/systemd/system/gmrender.service.disable; TERM=linux sudo systemctl daemon-reload");
-	} elseif ($gmrenderStatus = 'no') {
+	} elseif ($gmrenderStatus === 'no') {
 		exec("TERM=linux sudo mv /etc/systemd/system/gmrender.service.disable /etc/systemd/system/gmrender.service; TERM=linux sudo systemctl daemon-reload; TERM=linux sudo systemctl restart gmrender");
 	}
 
@@ -130,9 +130,9 @@ class UserController extends Controller {
     public function changeNetdataSettings(Request $request) {
 	$netdataStatus = $request->netdataStatus;
 	// if status to be enabled ,status = no ; if status to be disabled ,status = yes
-	if ($netdataStatus == 'yes') {
+	if ($netdataStatus === 'yes') {
 		exec("TERM=linux sudo systemctl disable --now netdata; TERM=linux sudo mv /etc/systemd/system/netdata.service /etc/systemd/system/netdata.service.disable; TERM=linux sudo systemctl daemon-reload");
-	} elseif ($netdataStatus = 'no') {
+	} elseif ($netdataStatus === 'no') {
 		exec("TERM=linux sudo mv /etc/systemd/system/netdata.service.disable /etc/systemd/system/netdata.service; TERM=linux sudo systemctl daemon-reload; TERM=linux sudo systemctl restart netdata");
 	}
 
@@ -160,9 +160,9 @@ class UserController extends Controller {
     public function changeSqueezeliteSettings(Request $request) {
 	$squeezeliteStatus = $request->squeezeliteStatus;
 	// if status to be enabled ,status = no ; if status to be disabled ,status = yes
-	if ($squeezeliteStatus == 'yes') {
+	if ($squeezeliteStatus === 'yes') {
 		exec("TERM=linux sudo systemctl disable --now squeezelite; TERM=linux sudo mv /lib/systemd/system/squeezelite.service /lib/systemd/system/squeezelite.service.disable; TERM=linux sudo systemctl daemon-reload");
-	} elseif ($squeezeliteStatus = 'no') {
+	} elseif ($squeezeliteStatus === 'no') {
 		exec("TERM=linux sudo mv /lib/systemd/system/squeezelite.service.disable /lib/systemd/system/squeezelite.service");
 			$bitDepth = $request->bitDepth;
 			$DSD_NATIVE = $request->DSD_NATIVE;
@@ -192,9 +192,9 @@ class UserController extends Controller {
 	$frequency = $request->frequency;
 	$chngOutputFrequency = exec('TERM=linux sudo sed -i "/output_rate /c\output_rate = ' . $frequency . ';" /usr/local/etc/shairport-sync.conf' );
 	$chngbitDepth = exec('TERM=linux sudo sed -i "/output_format /c\output_format = \"S' . $bitDepth . '\";" /usr/local/etc/shairport-sync.conf');
-	if ($shairPort == 'yes') {
+	if ($shairPort === 'yes') {
 		exec("TERM=linux sudo systemctl disable --now shairport-sync; TERM=linux sudo systemctl mask shairport-sync");
-	} elseif ($shairPort = 'no') {
+	} elseif ($shairPort === 'no') {
 		exec("TERM=linux sudo systemctl unmask shairport-sync; TERM=linux sudo systemctl restart shairport-sync");
 	}
 
@@ -211,9 +211,9 @@ class UserController extends Controller {
     public function changeDaemonSettings(Request $request) {
 	$daemon = $request->daemon;
 	// if status to be enabled ,status = no ; if status to be disabled ,status = yes
-	if ($daemon == 'yes') {
+	if ($daemon === 'yes') {
 		exec("TERM=linux sudo systemctl disable --now networkaudiod; TERM=linux sudo systemctl mask networkaudiod");
-	} elseif ($daemon = 'no') {
+	} elseif ($daemon === 'no') {
 		exec("TERM=linux sudo systemctl unmask networkaudiod; TERM=linux sudo systemctl restart networkaudiod");
 	}
 
@@ -239,9 +239,9 @@ class UserController extends Controller {
 	// for changing passkey
 	exec("TERM=linux sudo sed -i '/wpa_passphrase=/c\wpa_passphrase=$currentPasskey' /etc/hostapd/hostapd.conf");
 	// if status to be enabled ,status = no ; if status to be disabled ,status = yes
-	if ($wifiStatus == 'yes') {
+	if ($wifiStatus === 'yes') {
 		exec("TERM=linux; sudo systemctl disable --now hostapd; sudo systemctl mask hostapd");
-	} elseif ($wifiStatus = 'no') {
+	} elseif ($wifiStatus === 'no') {
 		exec("TERM=linux; sudo systemctl unmask hostapd; sudo systemctl restart hostapd");
 	}
 

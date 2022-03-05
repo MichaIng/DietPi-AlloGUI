@@ -1,4 +1,4 @@
-body{ margin: 0; padding:0; font-family: 'gothic' !important}
+body{ margin: 0; padding:0; font-family: 'gothic', sans-serif; !important}
 img{ border: 0; outline: none;}
 a:hover{ outline: none;}
 
@@ -60,7 +60,7 @@ a:hover{ outline: none;}
 .footer-cont{ float: left; width: 100% }
 .footer-cont p {margin-bottom: 0;}
 
-.outr-cont{ float: left; width: 100%;background-image: -moz-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); background-image: -webkit-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); background-image: -ms-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); min-height:800px; }
+.outr-cont{ float: left; width: 100%; background-image: -moz-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); background-image: -webkit-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); background-image: -ms-linear-gradient( 144deg, rgb(16,118,183) 0%, rgb(77,49,186) 100%); min-height:847px; }
 .inr-cont{ float: none; width: 100%; max-width: 1200px; margin: 0 auto }
 .cont{ float: left; width: 100%;padding: 4% 0;}
 .page-main-heading{ border-bottom: 1px solid #fff; color: #fff; padding:0}
@@ -100,8 +100,8 @@ a:hover{ outline: none;}
 .two-boxes .panel-body ul li span.green-text{color: #45c115;}
 .two-boxes .panel-body ul li span.red-text{color: #c70e0c;}
 .GScroll{position:relative; overflow:hidden; width: 100% !important; height: 150px !important; }
-.GScroll > .GScroll-scrollable{position:absolute; width:100%; top:0px; left:0px; }
-.GScroll > .GScroll-bar{position:absolute; width:5px; min-height:10px; top:0px; right:0px; display:none; background-color: rgba(0,0,0,0.6); cursor: move; z-index:2 }
+.GScroll > .GScroll-scrollable{position:absolute; width:100%; top:0; left:0; }
+.GScroll > .GScroll-bar{position:absolute; width:5px; min-height:10px; top:0; right:0; display:none; background-color: rgba(0,0,0,0.6); cursor: move; z-index:2 }
 
 @media screen and (max-width: 1060px){
 	.header-right .right-dropmenu a {font-size: 14px;}
@@ -282,15 +282,11 @@ a.input_link:focus{
 	height: 38px;
 	position: relative;
 	overflow: visible;
-	padding: 0px;
-	margin-left:0px;
+	padding: 0;
+	margin-left:0;
 }
 .switch-light * {
 	box-sizing: border-box;
-}
-.switch-light a {
-	display: block;
-	transition: all 0.3s ease-out 0s;
 }
 .switch-light label,
 .switch-light > span {
@@ -339,16 +335,18 @@ a.input_link:focus{
 	color: #333;
 }
 .switch-light a {
+	display: block;
+	transition: all 0.3s ease-out 0s;
 	background-color: #45c115;
     	border-color: #45c115;
 	position: absolute;
 	right: 50%;
-	top: 0px;
+	top: 0;
 	z-index: 4;
 	display: block;
 	width: 50%;
 	height: 100%;
-	padding: 0px;
+	padding: 0;
 	border-radius: 25px;
 	cursor: pointer;
 }
@@ -438,21 +436,8 @@ a.input_link:focus{
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  /*padding: 60px 20px;*/
-}
-@media (min-width: 600px) {
-  body {
-    /*padding: 60px;*/
-  }
-}
-
 .range-slider {
   margin: 60px 0 0 0%;
-}
-
-.range-slider {
   width: 100%;
 }
 
@@ -600,8 +585,6 @@ input::-moz-focus-inner, input::-moz-focus-outer {
 		text-align: center;
 	}
 }
-
-.outr-cont{ min-height: 847px;}
 
 .systemsettnnssss .naoTooltip{
 	position: absolute;
