@@ -1,5 +1,7 @@
 # Allo GUI audiophile web interface
 
+[![CodeFactor](https://www.codefactor.io/repository/github/michaing/dietpi-allogui/badge)](https://www.codefactor.io/repository/github/michaing/dietpi-allogui)
+
 This is the source code and pre-processed application repository for the [Allo.com](https://allo.com/) audiophile web interface, available in [DietPi OS](https://github.com/MichaIng/DietPi) for system and audio software management, and shipped with the [DietPi AlloGUI images](https://dietpi.com/phpbb/viewtopic.php?t=2317) for Raspberry Pi and Allo Sparky SBC.
 
 This aims to replace the previous 7-Zip archive distribution from [dietpi.com](https://dietpi.com/downloads/binaries/all/) and enable easier development collaboration and transparency.
