@@ -92,8 +92,8 @@ a:hover{ outline: none;}
 .two-boxes .panel-body ul li span.green-text{color: #45c115;}
 .two-boxes .panel-body ul li span.red-text{color: #c70e0c;}
 .GScroll{position:relative; overflow:hidden; width: 100% !important; height: 150px !important; }
-.GScroll > .GScroll-scrollable{position:absolute; width:100%; top:0px; left:0px; }
-.GScroll > .GScroll-bar{position:absolute; width:5px; min-height:10px; top:0px; right:0px; display:none; background-color: rgba(0,0,0,0.6); cursor: move; z-index:2 }
+.GScroll > .GScroll-scrollable{position:absolute; width:100%; top:0; left:0; }
+.GScroll > .GScroll-bar{position:absolute; width:5px; min-height:10px; top:0; right:0; display:none; background-color: rgba(0,0,0,0.6); cursor: move; z-index:2 }
 
 @media screen and (max-width: 1060px){
 	.header-right .right-dropmenu a {font-size: 14px;}
@@ -274,15 +274,11 @@ a.input_link:focus{
 	height: 38px;
 	position: relative;
 	overflow: visible;
-	padding: 0px;
-	margin-left:0px;
+	padding: 0;
+	margin-left:0;
 }
 .switch-light * {
 	box-sizing: border-box;
-}
-.switch-light a {
-	display: block;
-	transition: all 0.3s ease-out 0s;
 }
 .switch-light label,
 .switch-light > span {
@@ -331,16 +327,18 @@ a.input_link:focus{
 	color: #333;
 }
 .switch-light a {
+	display: block;
+	transition: all 0.3s ease-out 0s;
 	background-color: #45c115;
-    	border-color: #45c115;
+	border-color: #45c115;
 	position: absolute;
 	right: 50%;
-	top: 0px;
+	top: 0;
 	z-index: 4;
 	display: block;
 	width: 50%;
 	height: 100%;
-	padding: 0px;
+	padding: 0;
 	border-radius: 25px;
 	cursor: pointer;
 }
