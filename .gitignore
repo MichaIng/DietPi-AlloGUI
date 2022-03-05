@@ -1,3 +1,4 @@
 node_modules/
 package-lock.json
 public/mix-manifest.json
+yarn-error.log
