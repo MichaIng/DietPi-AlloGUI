@@ -327,7 +327,6 @@ a.input_link:focus{
 	color: #333;
 }
 .switch-light a {
-	display: block;
 	transition: all 0.3s ease-out 0s;
 	background-color: #45c115;
 	border-color: #45c115;
