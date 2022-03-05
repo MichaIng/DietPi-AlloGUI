@@ -17,6 +17,15 @@ class RouteCacheCommand extends Command
     protected $name = 'route:cache';
 
     /**
+     * The name of the console command.
+     *
+     * This name is used to identify the command during lazy loading.
+     *
+     * @var string|null
+     */
+    protected static $defaultName = 'route:cache';
+
+    /**
      * The console command description.
      *
      * @var string
@@ -104,6 +113,6 @@ class RouteCacheCommand extends Command
     {
         $stub = $this->files->get(__DIR__.'/stubs/routes.stub');
 
-        return str_replace('{{routes}}', base64_encode(serialize($routes)), $stub);
+        return str_replace('{{routes}}', var_export($routes->compile(), true), $stub);
     }
 }

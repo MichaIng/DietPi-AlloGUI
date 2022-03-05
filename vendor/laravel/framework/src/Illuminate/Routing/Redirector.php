@@ -84,7 +84,7 @@ class Redirector
     {
         $request = $this->generator->getRequest();
 
-        $intended = $request->method() === 'GET' && $request->route() && ! $request->expectsJson()
+        $intended = $request->isMethod('GET') && $request->route() && ! $request->expectsJson()
                         ? $this->generator->full()
                         : $this->generator->previous();
 
@@ -115,11 +115,13 @@ class Redirector
      * Set the intended url.
      *
      * @param  string  $url
-     * @return void
+     * @return $this
      */
     public function setIntendedUrl($url)
     {
         $this->session->put('url.intended', $url);
+
+        return $this;
     }
 
     /**
@@ -174,6 +176,36 @@ class Redirector
     public function route($route, $parameters = [], $status = 302, $headers = [])
     {
         return $this->to($this->generator->route($route, $parameters), $status, $headers);
+    }
+
+    /**
+     * Create a new redirect response to a signed named route.
+     *
+     * @param  string  $route
+     * @param  mixed  $parameters
+     * @param  \DateTimeInterface|\DateInterval|int|null  $expiration
+     * @param  int  $status
+     * @param  array  $headers
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function signedRoute($route, $parameters = [], $expiration = null, $status = 302, $headers = [])
+    {
+        return $this->to($this->generator->signedRoute($route, $parameters, $expiration), $status, $headers);
+    }
+
+    /**
+     * Create a new redirect response to a signed named route.
+     *
+     * @param  string  $route
+     * @param  \DateTimeInterface|\DateInterval|int|null  $expiration
+     * @param  mixed  $parameters
+     * @param  int  $status
+     * @param  array  $headers
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function temporarySignedRoute($route, $expiration, $parameters = [], $status = 302, $headers = [])
+    {
+        return $this->to($this->generator->temporarySignedRoute($route, $expiration, $parameters), $status, $headers);
     }
 
     /**

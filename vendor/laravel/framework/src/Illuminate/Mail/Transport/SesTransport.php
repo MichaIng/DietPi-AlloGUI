@@ -2,10 +2,13 @@
 
 namespace Illuminate\Mail\Transport;
 
+use Aws\Exception\AwsException;
 use Aws\Ses\SesClient;
-use Swift_Mime_SimpleMessage;
+use Exception;
+use Symfony\Component\Mailer\SentMessage;
+use Symfony\Component\Mailer\Transport\AbstractTransport;
 
-class SesTransport extends Transport
+class SesTransport extends AbstractTransport
 {
     /**
      * The Amazon SES instance.
@@ -32,31 +35,39 @@ class SesTransport extends Transport
     {
         $this->ses = $ses;
         $this->options = $options;
+
+        parent::__construct();
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
+    protected function doSend(SentMessage $message): void
     {
-        $this->beforeSendPerformed($message);
+        try {
+            $this->ses->sendRawEmail(
+                array_merge(
+                    $this->options, [
+                        'Source' => $message->getEnvelope()->getSender()->toString(),
+                        'RawMessage' => [
+                            'Data' => $message->toString(),
+                        ],
+                    ]
+                )
+            );
+        } catch (AwsException $e) {
+            throw new Exception('Request to AWS SES API failed.', $e->getCode(), $e);
+        }
+    }
 
-        $result = $this->ses->sendRawEmail(
-            array_merge(
-                $this->options, [
-                    'Source' => key($message->getSender() ?: $message->getFrom()),
-                    'RawMessage' => [
-                        'Data' => $message->toString(),
-                    ],
-                ]
-            )
-        );
-
-        $message->getHeaders()->addTextHeader('X-SES-Message-ID', $result->get('MessageId'));
-
-        $this->sendPerformed($message);
-
-        return $this->numberOfRecipients($message);
+    /**
+     * Get the string representation of the transport.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return 'ses';
     }
 
     /**

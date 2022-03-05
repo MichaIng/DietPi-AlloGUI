@@ -16,10 +16,17 @@ trait HasTimestamps
     /**
      * Update the model's update timestamp.
      *
+     * @param  string|null  $attribute
      * @return bool
      */
-    public function touch()
+    public function touch($attribute = null)
     {
+        if ($attribute) {
+            $this->$attribute = $this->freshTimestamp();
+
+            return $this->save();
+        }
+
         if (! $this->usesTimestamps()) {
             return false;
         }
@@ -34,7 +41,7 @@ trait HasTimestamps
      *
      * @return void
      */
-    protected function updateTimestamps()
+    public function updateTimestamps()
     {
         $time = $this->freshTimestamp();
 
@@ -130,7 +137,7 @@ trait HasTimestamps
     /**
      * Get the fully qualified "created at" column.
      *
-     * @return string
+     * @return string|null
      */
     public function getQualifiedCreatedAtColumn()
     {
@@ -140,7 +147,7 @@ trait HasTimestamps
     /**
      * Get the fully qualified "updated at" column.
      *
-     * @return string
+     * @return string|null
      */
     public function getQualifiedUpdatedAtColumn()
     {

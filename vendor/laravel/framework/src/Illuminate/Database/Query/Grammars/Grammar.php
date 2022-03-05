@@ -19,9 +19,16 @@ class Grammar extends BaseGrammar
     protected $operators = [];
 
     /**
-     * The components that make up a select clause.
+     * The grammar specific bitwise operators.
      *
      * @var array
+     */
+    protected $bitwiseOperators = [];
+
+    /**
+     * The components that make up a select clause.
+     *
+     * @var string[]
      */
     protected $selectComponents = [
         'aggregate',
@@ -45,7 +52,7 @@ class Grammar extends BaseGrammar
      */
     public function compileSelect(Builder $query)
     {
-        if ($query->unions && $query->aggregate) {
+        if (($query->unions || $query->havings) && $query->aggregate) {
             return $this->compileUnionAggregate($query);
         }
 
@@ -85,10 +92,7 @@ class Grammar extends BaseGrammar
         $sql = [];
 
         foreach ($this->selectComponents as $component) {
-            // To compile the query, we'll spin through each component of the query and
-            // see if that component exists. If it does we'll just call the compiler
-            // function for the component which is responsible for making the SQL.
-            if (isset($query->$component) && ! is_null($query->$component)) {
+            if (isset($query->$component)) {
                 $method = 'compile'.ucfirst($component);
 
                 $sql[$component] = $this->$method($query, $query->$component);
@@ -184,7 +188,7 @@ class Grammar extends BaseGrammar
      * @param  \Illuminate\Database\Query\Builder  $query
      * @return string
      */
-    protected function compileWheres(Builder $query)
+    public function compileWheres(Builder $query)
     {
         // Each type of where clauses has its own compiler function which is responsible
         // for actually creating the where clauses SQL. This helps keep the code nice
@@ -253,7 +257,21 @@ class Grammar extends BaseGrammar
     {
         $value = $this->parameter($where['value']);
 
-        return $this->wrap($where['column']).' '.$where['operator'].' '.$value;
+        $operator = str_replace('?', '??', $where['operator']);
+
+        return $this->wrap($where['column']).' '.$operator.' '.$value;
+    }
+
+    /**
+     * Compile a bitwise operator where clause.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $where
+     * @return string
+     */
+    protected function whereBitwise(Builder $query, $where)
+    {
+        return $this->whereBasic($query, $where);
     }
 
     /**
@@ -359,9 +377,27 @@ class Grammar extends BaseGrammar
     {
         $between = $where['not'] ? 'not between' : 'between';
 
-        $min = $this->parameter(reset($where['values']));
+        $min = $this->parameter(is_array($where['values']) ? reset($where['values']) : $where['values'][0]);
 
-        $max = $this->parameter(end($where['values']));
+        $max = $this->parameter(is_array($where['values']) ? end($where['values']) : $where['values'][1]);
+
+        return $this->wrap($where['column']).' '.$between.' '.$min.' and '.$max;
+    }
+
+    /**
+     * Compile a "between" where clause.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $where
+     * @return string
+     */
+    protected function whereBetweenColumns(Builder $query, $where)
+    {
+        $between = $where['not'] ? 'not between' : 'between';
+
+        $min = $this->wrap(is_array($where['values']) ? reset($where['values']) : $where['values'][0]);
+
+        $max = $this->wrap(is_array($where['values']) ? end($where['values']) : $where['values'][1]);
 
         return $this->wrap($where['column']).' '.$between.' '.$min.' and '.$max;
     }
@@ -442,7 +478,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
-     * Compile a where clause comparing two columns..
+     * Compile a where clause comparing two columns.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
      * @param  array  $where
@@ -554,7 +590,8 @@ class Grammar extends BaseGrammar
         $not = $where['not'] ? 'not ' : '';
 
         return $not.$this->compileJsonContains(
-            $where['column'], $this->parameter($where['value'])
+            $where['column'],
+            $this->parameter($where['value'])
         );
     }
 
@@ -593,7 +630,9 @@ class Grammar extends BaseGrammar
     protected function whereJsonLength(Builder $query, $where)
     {
         return $this->compileJsonLength(
-            $where['column'], $where['operator'], $this->parameter($where['value'])
+            $where['column'],
+            $where['operator'],
+            $this->parameter($where['value'])
         );
     }
 
@@ -613,6 +652,18 @@ class Grammar extends BaseGrammar
     }
 
     /**
+     * Compile a "where fulltext" clause.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $where
+     * @return string
+     */
+    public function whereFullText(Builder $query, $where)
+    {
+        throw new RuntimeException('This database engine does not support fulltext search operations.');
+    }
+
+    /**
      * Compile the "group by" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -628,14 +679,13 @@ class Grammar extends BaseGrammar
      * Compile the "having" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
-     * @param  array  $havings
      * @return string
      */
-    protected function compileHavings(Builder $query, $havings)
+    protected function compileHavings(Builder $query)
     {
-        $sql = implode(' ', array_map([$this, 'compileHaving'], $havings));
-
-        return 'having '.$this->removeLeadingBoolean($sql);
+        return 'having '.$this->removeLeadingBoolean(collect($query->havings)->map(function ($having) {
+            return $having['boolean'].' '.$this->compileHaving($having);
+        })->implode(' '));
     }
 
     /**
@@ -650,9 +700,17 @@ class Grammar extends BaseGrammar
         // without doing any more processing on it. Otherwise, we will compile the
         // clause into SQL based on the components that make it up from builder.
         if ($having['type'] === 'Raw') {
-            return $having['boolean'].' '.$having['sql'];
+            return $having['sql'];
         } elseif ($having['type'] === 'between') {
             return $this->compileHavingBetween($having);
+        } elseif ($having['type'] === 'Null') {
+            return $this->compileHavingNull($having);
+        } elseif ($having['type'] === 'NotNull') {
+            return $this->compileHavingNotNull($having);
+        } elseif ($having['type'] === 'bit') {
+            return $this->compileHavingBit($having);
+        } elseif ($having['type'] === 'Nested') {
+            return $this->compileNestedHavings($having);
         }
 
         return $this->compileBasicHaving($having);
@@ -670,7 +728,7 @@ class Grammar extends BaseGrammar
 
         $parameter = $this->parameter($having['value']);
 
-        return $having['boolean'].' '.$column.' '.$having['operator'].' '.$parameter;
+        return $column.' '.$having['operator'].' '.$parameter;
     }
 
     /**
@@ -689,7 +747,59 @@ class Grammar extends BaseGrammar
 
         $max = $this->parameter(last($having['values']));
 
-        return $having['boolean'].' '.$column.' '.$between.' '.$min.' and '.$max;
+        return $column.' '.$between.' '.$min.' and '.$max;
+    }
+
+    /**
+     * Compile a having null clause.
+     *
+     * @param  array  $having
+     * @return string
+     */
+    protected function compileHavingNull($having)
+    {
+        $column = $this->wrap($having['column']);
+
+        return $column.' is null';
+    }
+
+    /**
+     * Compile a having not null clause.
+     *
+     * @param  array  $having
+     * @return string
+     */
+    protected function compileHavingNotNull($having)
+    {
+        $column = $this->wrap($having['column']);
+
+        return $column.' is not null';
+    }
+
+    /**
+     * Compile a having clause involving a bit operator.
+     *
+     * @param  array  $having
+     * @return string
+     */
+    protected function compileHavingBit($having)
+    {
+        $column = $this->wrap($having['column']);
+
+        $parameter = $this->parameter($having['value']);
+
+        return '('.$column.' '.$having['operator'].' '.$parameter.') != 0';
+    }
+
+    /**
+     * Compile a nested having clause.
+     *
+     * @param  array  $having
+     * @return string
+     */
+    protected function compileNestedHavings($having)
+    {
+        return '('.substr($this->compileHavings($having['query']), 7).')';
     }
 
     /**
@@ -979,6 +1089,22 @@ class Grammar extends BaseGrammar
     }
 
     /**
+     * Compile an "upsert" statement into SQL.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @param  array  $values
+     * @param  array  $uniqueBy
+     * @param  array  $update
+     * @return string
+     *
+     * @throws \RuntimeException
+     */
+    public function compileUpsert(Builder $query, array $values, array $uniqueBy, array $update)
+    {
+        throw new RuntimeException('This database engine does not support upserts.');
+    }
+
+    /**
      * Prepare the bindings for an update statement.
      *
      * @param  array  $bindings
@@ -1112,49 +1238,6 @@ class Grammar extends BaseGrammar
     }
 
     /**
-     * Wrap a value in keyword identifiers.
-     *
-     * @param  \Illuminate\Database\Query\Expression|string  $value
-     * @param  bool  $prefixAlias
-     * @return string
-     */
-    public function wrap($value, $prefixAlias = false)
-    {
-        if ($this->isExpression($value)) {
-            return $this->getValue($value);
-        }
-
-        // If the value being wrapped has a column alias we will need to separate out
-        // the pieces so we can wrap each of the segments of the expression on its
-        // own, and then join these both back together using the "as" connector.
-        if (stripos($value, ' as ') !== false) {
-            return $this->wrapAliasedValue($value, $prefixAlias);
-        }
-
-        // If the given value is a JSON selector we will wrap it differently than a
-        // traditional value. We will need to split this path and wrap each part
-        // wrapped, etc. Otherwise, we will simply wrap the value as a string.
-        if ($this->isJsonSelector($value)) {
-            return $this->wrapJsonSelector($value);
-        }
-
-        return $this->wrapSegments(explode('.', $value));
-    }
-
-    /**
-     * Wrap the given JSON selector.
-     *
-     * @param  string  $value
-     * @return string
-     *
-     * @throws \RuntimeException
-     */
-    protected function wrapJsonSelector($value)
-    {
-        throw new RuntimeException('This database engine does not support JSON operations.');
-    }
-
-    /**
      * Wrap the given JSON selector for boolean values.
      *
      * @param  string  $value
@@ -1204,18 +1287,34 @@ class Grammar extends BaseGrammar
     {
         $value = preg_replace("/([\\\\]+)?\\'/", "''", $value);
 
-        return '\'$."'.str_replace($delimiter, '"."', $value).'"\'';
+        $jsonPath = collect(explode($delimiter, $value))
+            ->map(function ($segment) {
+                return $this->wrapJsonPathSegment($segment);
+            })
+            ->join('.');
+
+        return "'$".(str_starts_with($jsonPath, '[') ? '' : '.').$jsonPath."'";
     }
 
     /**
-     * Determine if the given string is a JSON selector.
+     * Wrap the given JSON path segment.
      *
-     * @param  string  $value
-     * @return bool
+     * @param  string  $segment
+     * @return string
      */
-    protected function isJsonSelector($value)
+    protected function wrapJsonPathSegment($segment)
     {
-        return Str::contains($value, '->');
+        if (preg_match('/(\[[^\]]+\])+$/', $segment, $parts)) {
+            $key = Str::beforeLast($segment, $parts[0]);
+
+            if (! empty($key)) {
+                return '"'.$key.'"'.$parts[0];
+            }
+
+            return $parts[0];
+        }
+
+        return '"'.$segment.'"';
     }
 
     /**
@@ -1250,5 +1349,15 @@ class Grammar extends BaseGrammar
     public function getOperators()
     {
         return $this->operators;
+    }
+
+    /**
+     * Get the grammar specific bitwise operators.
+     *
+     * @return array
+     */
+    public function getBitwiseOperators()
+    {
+        return $this->bitwiseOperators;
     }
 }

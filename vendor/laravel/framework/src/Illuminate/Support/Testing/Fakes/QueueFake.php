@@ -3,12 +3,16 @@
 namespace Illuminate\Support\Testing\Fakes;
 
 use BadMethodCallException;
+use Closure;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Queue\QueueManager;
+use Illuminate\Support\Traits\ReflectsClosures;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 class QueueFake extends QueueManager implements Queue
 {
+    use ReflectsClosures;
+
     /**
      * All of the jobs that have been pushed.
      *
@@ -19,12 +23,16 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Assert if a job was pushed based on a truth-test callback.
      *
-     * @param  string  $job
+     * @param  string|\Closure  $job
      * @param  callable|int|null  $callback
      * @return void
      */
     public function assertPushed($job, $callback = null)
     {
+        if ($job instanceof Closure) {
+            [$job, $callback] = [$this->firstClosureParameterType($job), $job];
+        }
+
         if (is_numeric($callback)) {
             return $this->assertPushedTimes($job, $callback);
         }
@@ -44,8 +52,10 @@ class QueueFake extends QueueManager implements Queue
      */
     protected function assertPushedTimes($job, $times = 1)
     {
-        PHPUnit::assertTrue(
-            ($count = $this->pushed($job)->count()) === $times,
+        $count = $this->pushed($job)->count();
+
+        PHPUnit::assertSame(
+            $times, $count,
             "The expected [{$job}] job was pushed {$count} times instead of {$times} times."
         );
     }
@@ -54,13 +64,17 @@ class QueueFake extends QueueManager implements Queue
      * Assert if a job was pushed based on a truth-test callback.
      *
      * @param  string  $queue
-     * @param  string  $job
+     * @param  string|\Closure  $job
      * @param  callable|null  $callback
      * @return void
      */
     public function assertPushedOn($queue, $job, $callback = null)
     {
-        return $this->assertPushed($job, function ($job, $pushedQueue) use ($callback, $queue) {
+        if ($job instanceof Closure) {
+            [$job, $callback] = [$this->firstClosureParameterType($job), $job];
+        }
+
+        $this->assertPushed($job, function ($job, $pushedQueue) use ($callback, $queue) {
             if ($pushedQueue !== $queue) {
                 return false;
             }
@@ -172,14 +186,18 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Determine if a job was pushed based on a truth-test callback.
      *
-     * @param  string  $job
+     * @param  string|\Closure  $job
      * @param  callable|null  $callback
      * @return void
      */
     public function assertNotPushed($job, $callback = null)
     {
-        PHPUnit::assertTrue(
-            $this->pushed($job, $callback)->count() === 0,
+        if ($job instanceof Closure) {
+            [$job, $callback] = [$this->firstClosureParameterType($job), $job];
+        }
+
+        PHPUnit::assertCount(
+            0, $this->pushed($job, $callback),
             "The unexpected [{$job}] job was pushed."
         );
     }
@@ -254,7 +272,7 @@ class QueueFake extends QueueManager implements Queue
     /**
      * Push a new job onto the queue.
      *
-     * @param  string  $job
+     * @param  string|object  $job
      * @param  mixed  $data
      * @param  string|null  $queue
      * @return mixed
@@ -281,10 +299,10 @@ class QueueFake extends QueueManager implements Queue
     }
 
     /**
-     * Push a new job onto the queue after a delay.
+     * Push a new job onto the queue after (n) seconds.
      *
      * @param  \DateTimeInterface|\DateInterval|int  $delay
-     * @param  string  $job
+     * @param  string|object  $job
      * @param  mixed  $data
      * @param  string|null  $queue
      * @return mixed
@@ -298,7 +316,7 @@ class QueueFake extends QueueManager implements Queue
      * Push a new job onto the queue.
      *
      * @param  string  $queue
-     * @param  string  $job
+     * @param  string|object  $job
      * @param  mixed  $data
      * @return mixed
      */
@@ -308,11 +326,11 @@ class QueueFake extends QueueManager implements Queue
     }
 
     /**
-     * Push a new job onto the queue after a delay.
+     * Push a new job onto a specific queue after (n) seconds.
      *
      * @param  string  $queue
      * @param  \DateTimeInterface|\DateInterval|int  $delay
-     * @param  string  $job
+     * @param  string|object  $job
      * @param  mixed  $data
      * @return mixed
      */

@@ -4,9 +4,9 @@ namespace Illuminate\Foundation\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Env;
-use Illuminate\Support\ProcessUtils;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Process\PhpExecutableFinder;
+use Symfony\Component\Process\Process;
 
 class ServeCommand extends Command
 {
@@ -16,6 +16,15 @@ class ServeCommand extends Command
      * @var string
      */
     protected $name = 'serve';
+
+    /**
+     * The name of the console command.
+     *
+     * This name is used to identify the command during lazy loading.
+     *
+     * @var string|null
+     */
+    protected static $defaultName = 'serve';
 
     /**
      * The console command description.
@@ -40,11 +49,41 @@ class ServeCommand extends Command
      */
     public function handle()
     {
-        chdir(public_path());
+        $this->line("<info>Starting Laravel development server:</info> http://{$this->host()}:{$this->port()}");
 
-        $this->line("<info>Laravel development server started:</info> http://{$this->host()}:{$this->port()}");
+        $environmentFile = $this->option('env')
+                            ? base_path('.env').'.'.$this->option('env')
+                            : base_path('.env');
 
-        passthru($this->serverCommand(), $status);
+        $hasEnvironment = file_exists($environmentFile);
+
+        $environmentLastModified = $hasEnvironment
+                            ? filemtime($environmentFile)
+                            : now()->addDays(30)->getTimestamp();
+
+        $process = $this->startProcess($hasEnvironment);
+
+        while ($process->isRunning()) {
+            if ($hasEnvironment) {
+                clearstatcache(false, $environmentFile);
+            }
+
+            if (! $this->option('no-reload') &&
+                $hasEnvironment &&
+                filemtime($environmentFile) > $environmentLastModified) {
+                $environmentLastModified = filemtime($environmentFile);
+
+                $this->comment('Environment modified. Restarting server...');
+
+                $process->stop(5);
+
+                $process = $this->startProcess($hasEnvironment);
+            }
+
+            usleep(500 * 1000);
+        }
+
+        $status = $process->getExitCode();
 
         if ($status && $this->canTryAnotherPort()) {
             $this->portOffset += 1;
@@ -56,18 +95,54 @@ class ServeCommand extends Command
     }
 
     /**
+     * Start a new server process.
+     *
+     * @param  bool  $hasEnvironment
+     * @return \Symfony\Component\Process\Process
+     */
+    protected function startProcess($hasEnvironment)
+    {
+        $process = new Process($this->serverCommand(), public_path(), collect($_ENV)->mapWithKeys(function ($value, $key) use ($hasEnvironment) {
+            if ($this->option('no-reload') || ! $hasEnvironment) {
+                return [$key => $value];
+            }
+
+            return in_array($key, [
+                'APP_ENV',
+                'LARAVEL_SAIL',
+                'PHP_CLI_SERVER_WORKERS',
+                'PHP_IDE_CONFIG',
+                'SYSTEMROOT',
+                'XDEBUG_CONFIG',
+                'XDEBUG_MODE',
+                'XDEBUG_SESSION',
+            ]) ? [$key => $value] : [$key => false];
+        })->all());
+
+        $process->start(function ($type, $buffer) {
+            $this->output->write($buffer);
+        });
+
+        return $process;
+    }
+
+    /**
      * Get the full server command.
      *
-     * @return string
+     * @return array
      */
     protected function serverCommand()
     {
-        return sprintf('%s -S %s:%s %s',
-            ProcessUtils::escapeArgument((new PhpExecutableFinder)->find(false)),
-            $this->host(),
-            $this->port(),
-            ProcessUtils::escapeArgument(base_path('server.php'))
-        );
+        $server = file_exists(base_path('server.php'))
+            ? base_path('server.php')
+            : __DIR__.'/../resources/server.php';
+
+        return [
+            (new PhpExecutableFinder)->find(false),
+            '-S',
+            $this->host().':'.$this->port(),
+            $server,
+        ];
     }
 
     /**
@@ -77,7 +152,9 @@ class ServeCommand extends Command
      */
     protected function host()
     {
-        return $this->input->getOption('host');
+        [$host, ] = $this->getHostAndPort();
+
+        return $host;
     }
 
     /**
@@ -87,13 +164,34 @@ class ServeCommand extends Command
      */
     protected function port()
     {
-        $port = $this->input->getOption('port') ?: 8000;
+        $port = $this->input->getOption('port');
+
+        if (is_null($port)) {
+            [, $port] = $this->getHostAndPort();
+        }
+
+        $port = $port ?: 8000;
 
         return $port + $this->portOffset;
     }
 
     /**
-     * Check if command has reached its max amount of port tries.
+     * Get the host and port from the host option string.
+     *
+     * @return array
+     */
+    protected function getHostAndPort()
+    {
+        $hostParts = explode(':', $this->input->getOption('host'));
+
+        return [
+            $hostParts[0],
+            $hostParts[1] ?? null,
+        ];
+    }
+
+    /**
+     * Check if the command has reached its max amount of port tries.
      *
      * @return bool
      */
@@ -112,10 +210,9 @@ class ServeCommand extends Command
     {
         return [
             ['host', null, InputOption::VALUE_OPTIONAL, 'The host address to serve the application on', '127.0.0.1'],
-
             ['port', null, InputOption::VALUE_OPTIONAL, 'The port to serve the application on', Env::get('SERVER_PORT')],
-
             ['tries', null, InputOption::VALUE_OPTIONAL, 'The max number of ports to attempt to serve from', 10],
+            ['no-reload', null, InputOption::VALUE_NONE, 'Do not reload the development server on .env file changes'],
         ];
     }
 }
