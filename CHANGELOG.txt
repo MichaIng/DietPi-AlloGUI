@@ -15,7 +15,7 @@ v14.0 (2022-03-03)
 - Switched from phpseclib SSH access via "allo" account to direct exec().
 - Removed unused apc.php and test.php.
 - Applied several other cleanups and fixes.
-- Updated PHP dependencies to latest minor versions.
+- Updated PHP and Node dependencies to latest versions.
 
 v13.3 (2021-06-26)
 - Updated app/Http/Controllers/AccountController.php,
