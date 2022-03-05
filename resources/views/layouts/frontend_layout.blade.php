@@ -9,7 +9,6 @@
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery-asRange.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery.validate.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/bootstrap.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/GScroll.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/naoTooltips.js') }}"></script>
 	<!--<script>
       $(document).ready(function(){
@@ -17,18 +16,6 @@
         $(".outr-cont").css("min-height",height);
       });
 	</script>-->
-	<script type="text/javascript">
-        $(document).ready(function(){
-            $('#content').GScroll();
-            $('#content2').GScroll();
-            $('#content3').GScroll();
-            $('#content4').GScroll();
-            $('#content5').GScroll();
-            $('#content6').GScroll();
-            $('#content7').GScroll();
-            $('<a href=""></a>')
-        });
- 	</script>
  	<style type="text/css">
 	  	#overlay{
 	  		position: fixed;
@@ -41,9 +28,6 @@
 	  		display: none;
 	  		background: rgba(0,0,0,0.8);
 	  		transition: 1s 0.4s;
-	  		-webkit-transition: 1s 0.4s;
-	  		-moz-transition: 1s 0.4s;
-	  		-ms-transition: 1s 0.4s;
 	  	}
 	  	.load_img{
 	  		position: absolute;

@@ -99,9 +99,6 @@ a:hover{ outline: none;}
 .two-boxes .panel-body ul li span{color: #fff; float: right; font-weight: bold;}
 .two-boxes .panel-body ul li span.green-text{color: #45c115;}
 .two-boxes .panel-body ul li span.red-text{color: #c70e0c;}
-.GScroll{position:relative; overflow:hidden; width: 100% !important; height: 150px !important; }
-.GScroll > .GScroll-scrollable{position:absolute; width:100%; top:0; left:0; }
-.GScroll > .GScroll-bar{position:absolute; width:5px; min-height:10px; top:0; right:0; display:none; background-color: rgba(0,0,0,0.6); cursor: move; z-index:2 }
 
 @media screen and (max-width: 1060px){
 	.header-right .right-dropmenu a {font-size: 14px;}
