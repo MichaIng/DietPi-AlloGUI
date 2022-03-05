@@ -21,16 +21,22 @@ class Mix
     {
         static $manifests = [];
 
-        if (! Str::startsWith($path, '/')) {
+        if (! str_starts_with($path, '/')) {
             $path = "/{$path}";
         }
 
-        if ($manifestDirectory && ! Str::startsWith($manifestDirectory, '/')) {
+        if ($manifestDirectory && ! str_starts_with($manifestDirectory, '/')) {
             $manifestDirectory = "/{$manifestDirectory}";
         }
 
-        if (file_exists(public_path($manifestDirectory.'/hot'))) {
+        if (is_file(public_path($manifestDirectory.'/hot'))) {
             $url = rtrim(file_get_contents(public_path($manifestDirectory.'/hot')));
+
+            $customUrl = app('config')->get('app.mix_hot_proxy_url');
+
+            if (! empty($customUrl)) {
+                return new HtmlString("{$customUrl}{$path}");
+            }
 
             if (Str::startsWith($url, ['http://', 'https://'])) {
                 return new HtmlString(Str::after($url, ':').$path);
@@ -42,7 +48,7 @@ class Mix
         $manifestPath = public_path($manifestDirectory.'/mix-manifest.json');
 
         if (! isset($manifests[$manifestPath])) {
-            if (! file_exists($manifestPath)) {
+            if (! is_file($manifestPath)) {
                 throw new Exception('The Mix manifest does not exist.');
             }
 

@@ -33,11 +33,27 @@ trait DelegatesToResource
      * Retrieve the model for a bound value.
      *
      * @param  mixed  $value
+     * @param  string|null  $field
      * @return void
      *
      * @throws \Exception
      */
-    public function resolveRouteBinding($value)
+    public function resolveRouteBinding($value, $field = null)
+    {
+        throw new Exception('Resources may not be implicitly resolved from route bindings.');
+    }
+
+    /**
+     * Retrieve the model for a bound value.
+     *
+     * @param  string  $childType
+     * @param  mixed  $value
+     * @param  string|null  $field
+     * @return void
+     *
+     * @throws \Exception
+     */
+    public function resolveChildRouteBinding($childType, $value, $field = null)
     {
         throw new Exception('Resources may not be implicitly resolved from route bindings.');
     }
@@ -48,7 +64,7 @@ trait DelegatesToResource
      * @param  mixed  $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->resource[$offset]);
     }
@@ -59,7 +75,7 @@ trait DelegatesToResource
      * @param  mixed  $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->resource[$offset];
     }
@@ -71,7 +87,7 @@ trait DelegatesToResource
      * @param  mixed  $value
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->resource[$offset] = $value;
     }
@@ -82,7 +98,7 @@ trait DelegatesToResource
      * @param  mixed  $offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->resource[$offset]);
     }
