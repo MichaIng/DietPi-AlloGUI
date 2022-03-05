@@ -4,19 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Allo') }}</title>
-
     <!-- Styles -->
     <link href="{{ asset(env("LOC_PUBLIC",'').'/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset(env("LOC_PUBLIC",'').'/css/style.css') }}" rel="stylesheet">
-    <script src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery.min.js') }}"></script>
+    <script src="{{ asset(env("LOC_PUBLIC",'').'/js/app.js') }}"></script>
     <script>
       $(document).ready(function(){
-
        var height = $(window).height();
        var hheight = $(".navbar:visible").height();
        var fheight = $(".footer-outr:visible").height();
@@ -30,7 +26,6 @@
         <nav class="navbar navbar-default navbar-static-top header-outr text-center">
             <div class="header-inr">
                 <div class="navbar-header header-cont">
-
                     <!-- Collapsed Hamburger -->
                     <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
@@ -38,13 +33,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button> -->
-
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                        <img src="{{ asset(env("LOC_PUBLIC",'').'/img/white-logo.png') }}" class="img-responsive">
                     </a>
                 </div>
-
                 <!--<div class="collapse navbar-collapse" id="app-navbar-collapse">
 
                     <ul class="nav navbar-nav">
@@ -82,7 +75,6 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
         <div class="footer-outr">
                 <div class="footer-inr">
@@ -92,8 +84,5 @@
                 </div>
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

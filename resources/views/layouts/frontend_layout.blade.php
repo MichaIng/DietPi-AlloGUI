@@ -5,13 +5,9 @@
 	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/font-awesome.min.css') }}">
-	<!-- <link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/main.css') }}">
-	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/prism.css') }}"> -->
-
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery-asRange.js') }}"></script>
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-	<!--<script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>-->
+	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery.validate.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/GScroll.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/naoTooltips.js') }}"></script>
@@ -33,7 +29,6 @@
             $('<a href=""></a>')
         });
  	</script>
-
  	<style type="text/css">
 	  	#overlay{
 	  		position: fixed;
@@ -58,11 +53,9 @@
 	  		width: 6%;
 	  		z-index: 999;
 	  	}
-  </style>
-
+	</style>
 </head>
 <body>
-
 @include('partials.header')
 <div id="overlay">
 	<img class="load_img" src="{{asset('img/loading.gif')}}" >
@@ -72,11 +65,10 @@
         @yield('content')
 	</div>
 </div>
-
 <div class="footer-outr">
 	<div class="footer-inr">
 		<div class="footer-cont">
-			<p>Copyright Allo.com 2018. All rights reserved.</p>
+			<p>Copyright Allo.com 2022. All rights reserved.</p>
 		</div>
 	</div>
 </div>
