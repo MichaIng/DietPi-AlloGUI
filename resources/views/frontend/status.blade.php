@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-md-12 col-sm-12 col-xs-12 dashbaord">
 				<a href="{{url('/')}}" class="back_link"><span class="fa fa-long-arrow-left" aria-hidden="true"></span>Back</a>
-				<div class=" ">
+				<div class="">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 						<div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 							<div class="panel panel-default">
@@ -57,7 +57,7 @@
 							</div>
 						</div>
 					</div>
-				<div class=" ">
+				<div class="">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 						<div class="panel panel-default">
@@ -169,7 +169,7 @@
 					</div>
 				</div>
 			</div>
-			<div class=" ">
+			<div class="">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 						<div class="panel panel-default">
@@ -249,7 +249,7 @@
 				</div>
 			</div>
 <!-- USB STATUS -->
-			<div class=" ">
+			<div class="">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 						<div class="panel panel-default">
@@ -262,7 +262,7 @@
 							</div>
 							<div id="collapseUsbStatus" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="UsbStatus">
 								<div class="panel-body">
-<!-- // FOR LSBUSB STATUS -->
+<!-- FOR LSBUSB STATUS -->
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb1">
 											<h4 class="panel-title" >
@@ -271,7 +271,7 @@
 												</a>
 											</h4>
 										</div>
-<!-- // FOR LSBUSB STATUS -->
+<!-- FOR LSBUSB STATUS -->
 										<div id="collapselsusb1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb1">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
@@ -289,8 +289,8 @@
 											</div>
 										</div>
 									</div>
-<!-- // LSBUSB STATUS -->
-<!-- // FOR LSBUSB PORT STATUS -->
+<!-- LSBUSB STATUS -->
+<!-- FOR LSBUSB PORT STATUS -->
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb2">
 											<h4 class="panel-title">
@@ -299,7 +299,7 @@
 												</a>
 											</h4>
 										</div>
-<!-- // FOR LSBUSB STATUS -->
+<!-- FOR LSBUSB STATUS -->
 										<div id="collapselsusb2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb2">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
@@ -331,11 +331,9 @@
 													</div>
 												</div>
 											</div>
-<!-- // LSUSB PORT STATUE -->
 										</div>
 									</div>
-<!-- LSUSB PORT STATUS -->
-<!--- // aplay -->
+<!-- aplay -->
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb3">
 											<h4 class="panel-title">
@@ -344,7 +342,7 @@
 												</a>
 											</h4>
 										</div>
-<!-- // FOR LSBUSB STATUS -->
+<!-- FOR LSBUSB STATUS -->
 										<div id="collapselsusb3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lsusb3">
 											<div class="panel-body">
 												<div class="col-md-12 col-sm-12 col-xs-12 left-input">
@@ -362,8 +360,7 @@
 											</div>
 										</div>
 									</div>
-<!-- // Aplay status -->
-<!--- // Dmesg -->
+<!-- Dmesg -->
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb4">
 											<h4 class="panel-title">
@@ -389,15 +386,13 @@
 											</div>
 										</div>
 									</div>
-<!-- DMESG -->
-<!-- // DMESG -->
-<!-- // Download options -->
+<!-- Download options -->
 									<div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
 										<div class="edit-option" aria-labelledby="UsbStatus" style="text-align:right;">
 											<a href="{{url('/user/download')}}">Download Data</a>
 										</div>
 									</div>
-<!-- // Download options -->
+<!-- Download options -->
 								</div>
 							</div>
 						</div>
@@ -405,7 +400,7 @@
 				</div>
 			</div>
 <!-- USB STATUS-->
-			<div class=" ">
+			<div class="">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 						<div class="panel panel-default">
