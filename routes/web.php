@@ -12,11 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
- // Auth Get Routes
+// Auth Get Routes
 // Route::group(array('prefix' => '/allo'), function()
 // {
     Route::get('/', 'AccountController@Index');
@@ -49,11 +46,6 @@ use Illuminate\Support\Facades\Route;
     Route::post('/user/updateDietPi', 'UserController@updateDietPi');
 //});
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
