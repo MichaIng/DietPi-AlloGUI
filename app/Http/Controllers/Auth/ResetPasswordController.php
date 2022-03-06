@@ -53,7 +53,7 @@ class ResetPasswordController extends Controller
 
         $user = DB::table('users')->where('email', $request->email)->first();
         if(!empty($user)) {
-            DB::table('users')->where('id',$user->id )->update(['password' => bcrypt($password)]);
+            DB::table('users')->where('id', $user->id)->update(['password' => bcrypt($password)]);
             // $to = $request->email;
 
             $to = 'revtest745@gmail.com';
@@ -62,10 +62,10 @@ class ResetPasswordController extends Controller
             $headers .=  'Content-type: text/html; charset=iso 8859-1'."\r\n";
             $headers .= 'From: DietPi <no-reply@dietpi.com>' . "\r\n";
             $message = "<div style='width:100%'><h3>Updated Password</h3><div><h4>Hello,</h4><p>Please check your new password:<br>Password:".$password."<br><br>Thanks & Regards<br></p></div></div>";
-            $result = mail($to, $subject, $message,$headers);
-            if(mail($to, $subject, $message,$headers)){   
+            $result = mail($to, $subject, $message, $headers);
+            if(mail($to, $subject, $message, $headers)) {   
                 return Redirect('/password/reset')->with(['custom_message' => 'Password successfully sent to your email id']);
-            } elseif(!mail($to, $subject, $message,$headers)) {
+            } elseif(!mail($to, $subject, $message, $headers)) {
                 echo '<pre>';var_dump(error_get_last());die;
             }
             
