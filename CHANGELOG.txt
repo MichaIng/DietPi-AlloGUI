@@ -1,3 +1,7 @@
+v14.1 (2022-03-07)
+- [Fix] Restored PHP7.3 compatibility
+- [Enh] Updated Laravel project files to align with Laravel framework
+
 v14.0 (2022-03-03)
 - Cleaned up .env from unused variables.
 - Updated .env to use APCu memory cache for cache and sessions.
