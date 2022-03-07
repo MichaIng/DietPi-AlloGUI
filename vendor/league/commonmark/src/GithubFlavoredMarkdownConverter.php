@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,33 +11,29 @@ declare(strict_types=1);
 
 namespace League\CommonMark;
 
-use League\CommonMark\Environment\Environment;
-use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
-use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
-
 /**
- * Converts GitHub Flavored Markdown to HTML.
+ * Converts Github Flavored Markdown to HTML.
  */
-final class GithubFlavoredMarkdownConverter extends MarkdownConverter
+class GithubFlavoredMarkdownConverter extends CommonMarkConverter
 {
     /**
-     * Create a new Markdown converter pre-configured for GFM
+     * Create a new commonmark converter instance.
      *
-     * @param array<string, mixed> $config
+     * @param array<string, mixed>      $config
+     * @param EnvironmentInterface|null $environment
      */
-    public function __construct(array $config = [])
+    public function __construct(array $config = [], EnvironmentInterface $environment = null)
     {
-        $environment = new Environment($config);
-        $environment->addExtension(new CommonMarkCoreExtension());
-        $environment->addExtension(new GithubFlavoredMarkdownExtension());
+        if ($environment === null) {
+            $environment = Environment::createGFMEnvironment();
+        } else {
+            @\trigger_error(\sprintf('Passing an $environment into the "%s" constructor is deprecated in 1.6 and will not be supported in 2.0; use MarkdownConverter instead. See https://commonmark.thephpleague.com/2.0/upgrading/consumers/#commonmarkconverter-and-githubflavoredmarkdownconverter-constructors for more details.', self::class), \E_USER_DEPRECATED);
+        }
 
-        parent::__construct($environment);
-    }
+        if ($environment instanceof ConfigurableEnvironmentInterface) {
+            $environment->mergeConfig($config);
+        }
 
-    public function getEnvironment(): Environment
-    {
-        \assert($this->environment instanceof Environment);
-
-        return $this->environment;
+        MarkdownConverter::__construct($environment);
     }
 }

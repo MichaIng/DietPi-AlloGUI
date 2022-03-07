@@ -5,10 +5,8 @@ namespace Illuminate\Mail;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
-use League\CommonMark\Environment\Environment;
-use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Extension\Table\TableExtension;
-use League\CommonMark\MarkdownConverter;
 use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class Markdown
@@ -67,7 +65,7 @@ class Markdown
         if ($this->view->exists($customTheme = Str::start($this->theme, 'mail.'))) {
             $theme = $customTheme;
         } else {
-            $theme = str_contains($this->theme, '::')
+            $theme = Str::contains($this->theme, '::')
                 ? $this->theme
                 : 'mail::themes.'.$this->theme;
         }
@@ -105,16 +103,13 @@ class Markdown
      */
     public static function parse($text)
     {
-        $environment = new Environment([
+        $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
         ]);
 
-        $environment->addExtension(new CommonMarkCoreExtension);
-        $environment->addExtension(new TableExtension);
+        $converter->getEnvironment()->addExtension(new TableExtension());
 
-        $converter = new MarkdownConverter($environment);
-
-        return new HtmlString($converter->convert($text)->getContent());
+        return new HtmlString((string) $converter->convertToHtml($text));
     }
 
     /**

@@ -14,28 +14,27 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\Footnote\Node;
 
-use League\CommonMark\Node\Inline\AbstractInline;
+use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Reference\ReferenceInterface;
-use League\CommonMark\Reference\ReferenceableInterface;
 
-final class FootnoteRef extends AbstractInline implements ReferenceableInterface
+final class FootnoteRef extends AbstractInline
 {
-    private ReferenceInterface $reference;
+    /** @var ReferenceInterface */
+    private $reference;
 
-    /** @psalm-readonly */
-    private ?string $content = null;
+    /** @var string|null */
+    private $content;
 
     /**
-     * @param array<mixed> $data
+     * @param ReferenceInterface $reference
+     * @param string|null        $content
+     * @param array<mixed>       $data
      */
     public function __construct(ReferenceInterface $reference, ?string $content = null, array $data = [])
     {
-        parent::__construct();
-
         $this->reference = $reference;
-        $this->content   = $content;
-
-        $this->data->import($data);
+        $this->content = $content;
+        $this->data = $data;
     }
 
     public function getReference(): ReferenceInterface
@@ -43,9 +42,11 @@ final class FootnoteRef extends AbstractInline implements ReferenceableInterface
         return $this->reference;
     }
 
-    public function setReference(ReferenceInterface $reference): void
+    public function setReference(ReferenceInterface $reference): FootnoteRef
     {
         $this->reference = $reference;
+
+        return $this;
     }
 
     public function getContent(): ?string

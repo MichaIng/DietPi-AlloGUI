@@ -76,14 +76,10 @@ trait InteractsWithRedis
      */
     public function tearDownRedis()
     {
-        if (isset($this->redis['phpredis'])) {
-            $this->redis['phpredis']->connection()->flushdb();
-        }
+        $this->redis['phpredis']->connection()->flushdb();
 
         foreach ($this->redisDriverProvider() as $driver) {
-            if (isset($this->redis[$driver[0]])) {
-                $this->redis[$driver[0]]->connection()->disconnect();
-            }
+            $this->redis[$driver[0]]->connection()->disconnect();
         }
     }
 

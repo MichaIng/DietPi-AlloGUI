@@ -2,14 +2,12 @@
 
 namespace Illuminate\Mail\Events;
 
-use Symfony\Component\Mime\Email;
-
 class MessageSending
 {
     /**
-     * The Symfony Email instance.
+     * The Swift message instance.
      *
-     * @var \Symfony\Component\Mime\Email
+     * @var \Swift_Message
      */
     public $message;
 
@@ -23,11 +21,11 @@ class MessageSending
     /**
      * Create a new event instance.
      *
-     * @param  \Symfony\Component\Mime\Email  $message
+     * @param  \Swift_Message  $message
      * @param  array  $data
      * @return void
      */
-    public function __construct(Email $message, array $data = [])
+    public function __construct($message, $data = [])
     {
         $this->data = $data;
         $this->message = $message;

@@ -13,6 +13,7 @@ use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldBeUniqueUntilProcessing;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\Str;
 use ReflectionClass;
 use RuntimeException;
 
@@ -92,7 +93,7 @@ class CallQueuedHandler
      */
     protected function getCommand(array $data)
     {
-        if (str_starts_with($data['command'], 'O:')) {
+        if (Str::startsWith($data['command'], 'O:')) {
             return unserialize($data['command']);
         }
 
@@ -179,13 +180,12 @@ class CallQueuedHandler
         $uses = class_uses_recursive($command);
 
         if (! in_array(Batchable::class, $uses) ||
-            ! in_array(InteractsWithQueue::class, $uses)) {
+            ! in_array(InteractsWithQueue::class, $uses) ||
+            is_null($command->batch())) {
             return;
         }
 
-        if ($batch = $command->batch()) {
-            $batch->recordSuccessfulJob($command->job->uuid());
-        }
+        $command->batch()->recordSuccessfulJob($command->job->uuid());
     }
 
     /**
@@ -274,13 +274,12 @@ class CallQueuedHandler
      */
     protected function ensureFailedBatchJobIsRecorded(string $uuid, $command, $e)
     {
-        if (! in_array(Batchable::class, class_uses_recursive($command))) {
+        if (! in_array(Batchable::class, class_uses_recursive($command)) ||
+            is_null($command->batch())) {
             return;
         }
 
-        if ($batch = $command->batch()) {
-            $batch->recordFailedJob($uuid, $e);
-        }
+        $command->batch()->recordFailedJob($uuid, $e);
     }
 
     /**

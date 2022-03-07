@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -16,17 +14,16 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Util;
 
-use League\CommonMark\Parser\Cursor;
+use League\CommonMark\Cursor;
 
-/**
- * @psalm-immutable
- */
 final class LinkParserHelper
 {
     /**
      * Attempt to parse link destination
      *
-     * @return string|null The string, or null if no match
+     * @param Cursor $cursor
+     *
+     * @return null|string The string, or null if no match
      */
     public static function parseLinkDestination(Cursor $cursor): ?string
     {
@@ -37,7 +34,7 @@ final class LinkParserHelper
             );
         }
 
-        if ($cursor->getCurrentCharacter() === '<') {
+        if ($cursor->getCharacter() === '<') {
             return null;
         }
 
@@ -67,15 +64,12 @@ final class LinkParserHelper
         return $length;
     }
 
-    public static function parsePartialLinkLabel(Cursor $cursor): ?string
-    {
-        return $cursor->match('/^(?:[^\\\\\[\]]+|\\\\.?)*/');
-    }
-
     /**
      * Attempt to parse link title (sans quotes)
      *
-     * @return string|null The string, or null if no match
+     * @param Cursor $cursor
+     *
+     * @return null|string The string, or null if no match
      */
     public static function parseLinkTitle(Cursor $cursor): ?string
     {
@@ -87,25 +81,14 @@ final class LinkParserHelper
         return null;
     }
 
-    public static function parsePartialLinkTitle(Cursor $cursor, string $endDelimiter): ?string
-    {
-        $endDelimiter = \preg_quote($endDelimiter, '/');
-        $regex        = \sprintf('/(%s|[^%s\x00])*(?:%s)?/', RegexHelper::PARTIAL_ESCAPED_CHAR, $endDelimiter, $endDelimiter);
-        if (($partialTitle = $cursor->match($regex)) === null) {
-            return null;
-        }
-
-        return RegexHelper::unescape($partialTitle);
-    }
-
     private static function manuallyParseLinkDestination(Cursor $cursor): ?string
     {
         $oldPosition = $cursor->getPosition();
-        $oldState    = $cursor->saveState();
+        $oldState = $cursor->saveState();
 
         $openParens = 0;
-        while (($c = $cursor->getCurrentCharacter()) !== null) {
-            if ($c === '\\' && ($peek = $cursor->peek()) !== null && RegexHelper::isEscapable($peek)) {
+        while (($c = $cursor->getCharacter()) !== null) {
+            if ($c === '\\' && $cursor->peek() !== null && RegexHelper::isEscapable($cursor->peek())) {
                 $cursor->advanceBy(2);
             } elseif ($c === '(') {
                 $cursor->advanceBy(1);
@@ -128,7 +111,7 @@ final class LinkParserHelper
             return null;
         }
 
-        if ($cursor->getPosition() === $oldPosition && (! isset($c) || $c !== ')')) {
+        if ($cursor->getPosition() === $oldPosition && $c !== ')') {
             return null;
         }
 

@@ -14,14 +14,15 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\Attributes\Event;
 
+use League\CommonMark\Block\Element\AbstractBlock;
+use League\CommonMark\Block\Element\FencedCode;
+use League\CommonMark\Block\Element\ListBlock;
+use League\CommonMark\Block\Element\ListItem;
 use League\CommonMark\Event\DocumentParsedEvent;
 use League\CommonMark\Extension\Attributes\Node\Attributes;
 use League\CommonMark\Extension\Attributes\Node\AttributesInline;
 use League\CommonMark\Extension\Attributes\Util\AttributesHelper;
-use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
-use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
-use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
-use League\CommonMark\Node\Inline\AbstractInline;
+use League\CommonMark\Inline\Element\AbstractInline;
 use League\CommonMark\Node\Node;
 
 final class AttributesListener
@@ -31,14 +32,16 @@ final class AttributesListener
 
     public function processDocument(DocumentParsedEvent $event): void
     {
-        foreach ($event->getDocument()->iterator() as $node) {
-            if (! ($node instanceof Attributes || $node instanceof AttributesInline)) {
+        $walker = $event->getDocument()->walker();
+        while ($event = $walker->next()) {
+            $node = $event->getNode();
+            if (!$node instanceof AttributesInline && ($event->isEntering() || !$node instanceof Attributes)) {
                 continue;
             }
 
             [$target, $direction] = self::findTargetAndDirection($node);
 
-            if ($target instanceof Node) {
+            if ($target instanceof AbstractBlock || $target instanceof AbstractInline) {
                 $parent = $target->parent();
                 if ($parent instanceof ListItem && $parent->parent() instanceof ListBlock && $parent->parent()->isTight()) {
                     $target = $parent;
@@ -50,7 +53,14 @@ final class AttributesListener
                     $attributes = AttributesHelper::mergeAttributes($node->getAttributes(), $target);
                 }
 
-                $target->data->set('attributes', $attributes);
+                $target->data['attributes'] = $attributes;
+            }
+
+            if ($node instanceof AbstractBlock && $node->endsWithBlankLine() && $node->next() && $node->previous()) {
+                $previous = $node->previous();
+                if ($previous instanceof AbstractBlock) {
+                    $previous->setLastLineBlank(true);
+                }
             }
 
             $node->detach();
@@ -58,22 +68,22 @@ final class AttributesListener
     }
 
     /**
-     * @param Attributes|AttributesInline $node
+     * @param Node $node
      *
      * @return array<Node|string|null>
      */
-    private static function findTargetAndDirection($node): array
+    private static function findTargetAndDirection(Node $node): array
     {
-        $target    = null;
+        $target = null;
         $direction = null;
-        $previous  = $next = $node;
+        $previous = $next = $node;
         while (true) {
             $previous = self::getPrevious($previous);
-            $next     = self::getNext($next);
+            $next = self::getNext($next);
 
             if ($previous === null && $next === null) {
-                if (! $node->parent() instanceof FencedCode) {
-                    $target    = $node->parent();
+                if (!$node->parent() instanceof FencedCode) {
+                    $target = $node->parent();
                     $direction = self::DIRECTION_SUFFIX;
                 }
 
@@ -84,15 +94,15 @@ final class AttributesListener
                 continue;
             }
 
-            if ($previous !== null && ! self::isAttributesNode($previous)) {
-                $target    = $previous;
+            if ($previous !== null && !self::isAttributesNode($previous)) {
+                $target = $previous;
                 $direction = self::DIRECTION_SUFFIX;
 
                 break;
             }
 
-            if ($next !== null && ! self::isAttributesNode($next)) {
-                $target    = $next;
+            if ($next !== null && !self::isAttributesNode($next)) {
+                $target = $next;
                 $direction = self::DIRECTION_PREFIX;
 
                 break;
@@ -102,34 +112,26 @@ final class AttributesListener
         return [$target, $direction];
     }
 
-    /**
-     * Get any previous block (sibling or parent) this might apply to
-     */
     private static function getPrevious(?Node $node = null): ?Node
     {
-        if ($node instanceof Attributes) {
-            if ($node->getTarget() === Attributes::TARGET_NEXT) {
-                return null;
-            }
+        $previous = $node instanceof Node ? $node->previous() : null;
 
-            if ($node->getTarget() === Attributes::TARGET_PARENT) {
-                return $node->parent();
-            }
+        if ($previous instanceof AbstractBlock && $previous->endsWithBlankLine()) {
+            $previous = null;
         }
 
-        return $node instanceof Node ? $node->previous() : null;
+        return $previous;
     }
 
-    /**
-     * Get any previous block (sibling or parent) this might apply to
-     */
     private static function getNext(?Node $node = null): ?Node
     {
-        if ($node instanceof Attributes && $node->getTarget() !== Attributes::TARGET_NEXT) {
-            return null;
+        $next = $node instanceof Node ? $node->next() : null;
+
+        if ($node instanceof AbstractBlock && $node->endsWithBlankLine()) {
+            $next = null;
         }
 
-        return $node instanceof Node ? $node->next() : null;
+        return $next;
     }
 
     private static function isAttributesNode(Node $node): bool

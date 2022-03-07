@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -18,24 +16,24 @@ namespace League\CommonMark\Extension\SmartPunct;
 
 use League\CommonMark\Delimiter\DelimiterInterface;
 use League\CommonMark\Delimiter\Processor\DelimiterProcessorInterface;
-use League\CommonMark\Node\Inline\AbstractStringContainer;
+use League\CommonMark\Inline\Element\AbstractStringContainer;
 
 final class QuoteProcessor implements DelimiterProcessorInterface
 {
-    /** @psalm-readonly */
-    private string $normalizedCharacter;
+    /** @var string */
+    private $normalizedCharacter;
 
-    /** @psalm-readonly */
-    private string $openerCharacter;
+    /** @var string */
+    private $openerCharacter;
 
-    /** @psalm-readonly */
-    private string $closerCharacter;
+    /** @var string */
+    private $closerCharacter;
 
     private function __construct(string $char, string $opener, string $closer)
     {
         $this->normalizedCharacter = $char;
-        $this->openerCharacter     = $opener;
-        $this->closerCharacter     = $closer;
+        $this->openerCharacter = $opener;
+        $this->closerCharacter = $closer;
     }
 
     public function getOpeningCharacter(): string
@@ -58,7 +56,7 @@ final class QuoteProcessor implements DelimiterProcessorInterface
         return 1;
     }
 
-    public function process(AbstractStringContainer $opener, AbstractStringContainer $closer, int $delimiterUse): void
+    public function process(AbstractStringContainer $opener, AbstractStringContainer $closer, int $delimiterUse)
     {
         $opener->insertAfter(new Quote($this->openerCharacter));
         $closer->insertBefore(new Quote($this->closerCharacter));
@@ -66,6 +64,11 @@ final class QuoteProcessor implements DelimiterProcessorInterface
 
     /**
      * Create a double-quote processor
+     *
+     * @param string $opener
+     * @param string $closer
+     *
+     * @return QuoteProcessor
      */
     public static function createDoubleQuoteProcessor(string $opener = Quote::DOUBLE_QUOTE_OPENER, string $closer = Quote::DOUBLE_QUOTE_CLOSER): self
     {
@@ -74,6 +77,11 @@ final class QuoteProcessor implements DelimiterProcessorInterface
 
     /**
      * Create a single-quote processor
+     *
+     * @param string $opener
+     * @param string $closer
+     *
+     * @return QuoteProcessor
      */
     public static function createSingleQuoteProcessor(string $opener = Quote::SINGLE_QUOTE_OPENER, string $closer = Quote::SINGLE_QUOTE_CLOSER): self
     {

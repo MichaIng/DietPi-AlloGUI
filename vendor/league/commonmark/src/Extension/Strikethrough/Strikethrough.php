@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,27 +11,12 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\Strikethrough;
 
-use League\CommonMark\Node\Inline\AbstractInline;
-use League\CommonMark\Node\Inline\DelimitedInterface;
+use League\CommonMark\Inline\Element\AbstractInline;
 
-final class Strikethrough extends AbstractInline implements DelimitedInterface
+final class Strikethrough extends AbstractInline
 {
-    private string $delimiter;
-
-    public function __construct(string $delimiter = '~~')
+    public function isContainer(): bool
     {
-        parent::__construct();
-
-        $this->delimiter = $delimiter;
-    }
-
-    public function getOpeningDelimiter(): string
-    {
-        return $this->delimiter;
-    }
-
-    public function getClosingDelimiter(): string
-    {
-        return $this->delimiter;
+        return true;
     }
 }

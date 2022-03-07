@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -16,7 +14,7 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Delimiter;
 
-use League\CommonMark\Node\Inline\AbstractStringContainer;
+use League\CommonMark\Inline\Element\AbstractStringContainer;
 
 interface DelimiterInterface
 {
@@ -26,19 +24,37 @@ interface DelimiterInterface
 
     public function isActive(): bool;
 
-    public function setActive(bool $active): void;
+    /**
+     * @param bool $active
+     *
+     * @return void
+     */
+    public function setActive(bool $active);
 
+    /**
+     * @return string
+     */
     public function getChar(): string;
 
     public function getIndex(): ?int;
 
     public function getNext(): ?DelimiterInterface;
 
-    public function setNext(?DelimiterInterface $next): void;
+    /**
+     * @param DelimiterInterface|null $next
+     *
+     * @return void
+     */
+    public function setNext(?DelimiterInterface $next);
 
     public function getLength(): int;
 
-    public function setLength(int $length): void;
+    /**
+     * @param int $length
+     *
+     * @return void
+     */
+    public function setLength(int $length);
 
     public function getOriginalLength(): int;
 
@@ -46,5 +62,10 @@ interface DelimiterInterface
 
     public function getPrevious(): ?DelimiterInterface;
 
-    public function setPrevious(?DelimiterInterface $previous): void;
+    /**
+     * @param DelimiterInterface|null $previous
+     *
+     * @return mixed|void
+     */
+    public function setPrevious(?DelimiterInterface $previous);
 }

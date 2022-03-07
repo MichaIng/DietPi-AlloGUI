@@ -22,19 +22,26 @@ final class NumberFootnotesListener
 {
     public function onDocumentParsed(DocumentParsedEvent $event): void
     {
-        $document     = $event->getDocument();
-        $nextCounter  = 1;
-        $usedLabels   = [];
+        $document = $event->getDocument();
+        $walker = $document->walker();
+        $nextCounter = 1;
+        $usedLabels = [];
         $usedCounters = [];
 
-        foreach ($document->iterator() as $node) {
-            if (! $node instanceof FootnoteRef) {
+        while ($event = $walker->next()) {
+            if (!$event->isEntering()) {
                 continue;
             }
 
-            $existingReference   = $node->getReference();
-            $label               = $existingReference->getLabel();
-            $counter             = $nextCounter;
+            $node = $event->getNode();
+
+            if (!$node instanceof FootnoteRef) {
+                continue;
+            }
+
+            $existingReference = $node->getReference();
+            $label = $existingReference->getLabel();
+            $counter = $nextCounter;
             $canIncrementCounter = true;
 
             if (\array_key_exists($label, $usedLabels)) {
@@ -42,8 +49,8 @@ final class NumberFootnotesListener
                  * Reference is used again, we need to point
                  * to the same footnote. But with a different ID
                  */
-                $counter             = $usedCounters[$label];
-                $label              .= '__' . ++$usedLabels[$label];
+                $counter = $usedCounters[$label];
+                $label = $label . '__' . ++$usedLabels[$label];
                 $canIncrementCounter = false;
             }
 
@@ -56,15 +63,19 @@ final class NumberFootnotesListener
 
             // Override reference with numeric link
             $node->setReference($newReference);
-            $document->getReferenceMap()->add($newReference);
+            $document->getReferenceMap()->addReference($newReference);
 
             /*
              * Store created references in document for
              * creating FootnoteBackrefs
              */
-            $document->data->append($existingReference->getDestination(), $newReference);
+            if (false === $document->getData($existingReference->getDestination(), false)) {
+                $document->data[$existingReference->getDestination()] = [];
+            }
 
-            $usedLabels[$label]   = 1;
+            $document->data[$existingReference->getDestination()][] = $newReference;
+
+            $usedLabels[$label] = 1;
             $usedCounters[$label] = $nextCounter;
 
             if ($canIncrementCounter) {
