@@ -163,7 +163,7 @@
                                                     <select class="form-control" name = "frequency" id = "frequency">
                                                         <option value="">Select</option>
                                                         <option value="352800" <?php if($outputFrequencies == 352800) { echo "selected"; } ?>>352800</option>
-                                                        <option value="176400" <?php if($outputFrequencies == 176400) { echo "selected"; }?>>176400</option>
+                                                        <option value="176400" <?php if($outputFrequencies == 176400) { echo "selected"; } ?>>176400</option>
                                                         <option value="88200" <?php if($outputFrequencies == 88200) { echo "selected"; } ?>>88200</option>
                                                         <option value="44100" <?php if($outputFrequencies == 44100) { echo "selected"; } ?>>44100</option>
                                                     </select>

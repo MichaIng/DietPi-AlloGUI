@@ -33,12 +33,12 @@ jobs:
     # - name: Run test suite
     #   run: composer run-script test
 
-    - name: Download and run PHP_CodeSniffer
-      run: |
-        curl -sSfLO 'https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar'
-        php phpcs.phar --ignore='*/vendor/*,*/cache/*' .
+    # - name: Download and run PHP_CodeSniffer
+    #   run: |
+    #     curl -sSfLO 'https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar'
+    #     php phpcs.phar --ignore='*/vendor/*,*/cache/*' .
 
-    - name: Download and run PHP Code Beautifier and Fixer
-      run: |
-        curl -sSfLO 'https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar'
-        php phpcbf.phar --ignore='*/vendor/*,*/cache/*' .
+    # - name: Download and run PHP Code Beautifier and Fixer
+    #   run: |
+    #     curl -sSfLO 'https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar'
+    #     php phpcbf.phar --ignore='*/vendor/*,*/cache/*' .

@@ -180,7 +180,7 @@
                                                     <label>Passkey :</label>
                                                 </div>
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input">
-                                                    <input type="text" class="form-control" id="passkey" name="wifiPasskey" value="<?php if(isset($currentPasskey) && !empty($currentPasskey)) { echo $currentPasskey; } ?>" >
+                                                    <input type="text" class="form-control" id="passkey" name="wifiPasskey" value="<?php if(isset($currentPasskey) && !empty($currentPasskey)) { echo $currentPasskey; } ?>">
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
                                                     <div class="naoTooltip-wrap">
