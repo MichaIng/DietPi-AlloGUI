@@ -6,12 +6,11 @@
 <div class="cont">
     <div class="col-md-12 col-sm-12 col-xs-12 page-main-heading" style="padding-top: 20px">
         <div class="col-md-6 col-sm-6 col-xs-12 heading">
-            <h1>Software Options :
-            </h1>
+            <h1>Software Options :</h1>
         </div>
     </div>
     <div class="col-md-12 col-sm-12 col-xs-12 dashbaord">
-        <div class=" ">
+        <div class="">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="col-md-12 col-sm-6 col-xs-12 padding-all-zero two-boxes">
                     <div class="col-md-3 col-sm-3 col-xs-3">
@@ -33,9 +32,7 @@
                             <li><label>Bit :</label><span><?php echo $bitDepth; ?></span></li>
                               </ul>
                             </div>
-                            <div class="edit-option">
-                                <a href="{{url('/user/mpd_settings')}}">View</a>
-                            </div>
+                            <div class="edit-option"><a href="{{url('/user/mpd_settings')}}">View</a></div>
                           </div>
                         </div>
                     </div>
@@ -58,9 +55,7 @@
                                 <li><label>.</label></li>
                                   </ul>
                                 </div>
-                                <div class="edit-option">
-                                    <a href="{{url('/user/roon_settings')}}">View</a>
-                                </div>
+                                <div class="edit-option"><a href="{{url('/user/roon_settings')}}">View</a></div>
                               </div>
                         </div>
                     </div>
@@ -83,16 +78,14 @@
                                 <li><label>.</label></li>
                                   </ul>
                             </div>
-                            <div class="edit-option">
-                                <a href="{{url('/user/daemon_settings')}}">View</a>
-                            </div>
+                            <div class="edit-option"><a href="{{url('/user/daemon_settings')}}">View</a></div>
                           </div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-3">
                         <div class="panel panel-default">
                             <?php
-                                $WiFiHotSpot_Installed =  file_exists("/etc/hostapd/hostapd.conf");
+                                $WiFiHotSpot_Installed = file_exists("/etc/hostapd/hostapd.conf");
                             if (! $WiFiHotSpot_Installed) {
                                 $wifiStatus = 'Not Installed';
                                 $currentSSID = 'N/A';
@@ -116,8 +109,7 @@
                                       <li><label>KEY :</label><span><?php echo $currentPasskey ; ?></span></li>
                                   </ul>
                                 </div>
-                                <div class="edit-option" <?php if (! $WiFiHotSpot_Installed) { echo 'style="display:none;"'; 
-                                                         } ?> >
+                                <div class="edit-option" <?php if (! $WiFiHotSpot_Installed) { echo 'style="display:none;"'; } ?>>
                                     <a href="{{url('/user/wifi_settings')}}">View</a>
                                 </div>
                               </div>
@@ -144,9 +136,7 @@
                                 <li><label>Bit :</label><span><?php echo $bitDepth_shair; ?></span></li>
                                   </ul>
                             </div>
-                            <div class="edit-option">
-                                <a href="{{url('/user/shair_port_settings')}}">View</a>
-                            </div>
+                            <div class="edit-option"><a href="{{url('/user/shair_port_settings')}}">View</a></div>
                           </div>
                         </div>
                     </div>
@@ -169,9 +159,7 @@
                                 <li><label>.</label></li>
                                   </ul>
                             </div>
-                            <div class="edit-option">
-                                <a href="{{url('/user/gmrender_settings')}}">View</a>
-                            </div>
+                            <div class="edit-option"><a href="{{url('/user/gmrender_settings')}}">View</a></div>
                           </div>
                         </div>
                     </div>
@@ -194,9 +182,7 @@
                                 <li><label>.</label></li>
                                   </ul>
                             </div>
-                            <div class="edit-option">
-                                <a href="{{url('/user/netdata_settings')}}">View</a>
-                            </div>
+                            <div class="edit-option"><a href="{{url('/user/netdata_settings')}}">View</a></div>
                           </div>
                         </div>
                     </div>
@@ -219,9 +205,7 @@
                                 <li><label>Bit :</label><span><?php echo $bitDepth_squeezelite; ?></span></li>
                                   </ul>
                             </div>
-                            <div class="edit-option">
-                                <a href="{{url('/user/squeezelite_settings')}}">View</a>
-                            </div>
+                            <div class="edit-option"><a href="{{url('/user/squeezelite_settings')}}">View</a></div>
                           </div>
                         </div>
                     </div>
@@ -279,9 +263,7 @@
                             <li><label>CPU Temperature :</label><span><a href="{{url('/user/status')}}"><?php echo $cpu_temp; ?>'c</a></span></li>
                               </ul>
                         </div>
-                        <div class="edit-option">
-                            <a href="{{url('/user/status')}}">View</a>
-                        </div>
+                        <div class="edit-option"><a href="{{url('/user/status')}}">View</a></div>
                       </div>
                     </div>
                 </div>
@@ -289,5 +271,4 @@
         </div>
     </div>
 </div>
-
 @endsection

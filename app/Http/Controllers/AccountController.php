@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Redirect;
-use App\User;
+use App\Models\User;
 use Auth;
 use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
