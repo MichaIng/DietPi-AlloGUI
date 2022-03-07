@@ -36,7 +36,7 @@ abstract class TrustHosts
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  callable  $next
      * @return \Illuminate\Http\Response
      */
     public function handle(Request $request, $next)
@@ -55,7 +55,7 @@ abstract class TrustHosts
      */
     protected function shouldSpecifyTrustedHosts()
     {
-        return ! $this->app->environment('local') &&
+        return config('app.env') !== 'local' &&
                ! $this->app->runningUnitTests();
     }
 

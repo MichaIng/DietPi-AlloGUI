@@ -15,50 +15,52 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\Table;
 
-use League\CommonMark\Node\Block\AbstractBlock;
+use League\CommonMark\Block\Element\AbstractBlock;
+use League\CommonMark\Block\Element\AbstractStringContainerBlock;
+use League\CommonMark\Block\Element\InlineContainerInterface;
+use League\CommonMark\ContextInterface;
+use League\CommonMark\Cursor;
 
-final class TableSection extends AbstractBlock
+final class TableSection extends AbstractStringContainerBlock implements InlineContainerInterface
 {
-    public const TYPE_HEAD = 'head';
-    public const TYPE_BODY = 'body';
+    const TYPE_HEAD = 'thead';
+    const TYPE_BODY = 'tbody';
 
-    /**
-     * @psalm-var self::TYPE_*
-     * @phpstan-var self::TYPE_*
-     *
-     * @psalm-readonly
-     */
-    private string $type;
+    /** @var string */
+    public $type = self::TYPE_BODY;
 
-    /**
-     * @psalm-param self::TYPE_* $type
-     *
-     * @phpstan-param self::TYPE_* $type
-     */
     public function __construct(string $type = self::TYPE_BODY)
     {
         parent::__construct();
-
         $this->type = $type;
-    }
-
-    /**
-     * @psalm-return self::TYPE_*
-     *
-     * @phpstan-return self::TYPE_*
-     */
-    public function getType(): string
-    {
-        return $this->type;
     }
 
     public function isHead(): bool
     {
-        return $this->type === self::TYPE_HEAD;
+        return self::TYPE_HEAD === $this->type;
     }
 
     public function isBody(): bool
     {
-        return $this->type === self::TYPE_BODY;
+        return self::TYPE_BODY === $this->type;
+    }
+
+    public function canContain(AbstractBlock $block): bool
+    {
+        return $block instanceof TableRow;
+    }
+
+    public function isCode(): bool
+    {
+        return false;
+    }
+
+    public function matchesNextLine(Cursor $cursor): bool
+    {
+        return false;
+    }
+
+    public function handleRemainingContents(ContextInterface $context, Cursor $cursor): void
+    {
     }
 }

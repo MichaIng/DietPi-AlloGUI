@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,8 +11,23 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\TableOfContents\Node;
 
-use League\CommonMark\Node\Block\AbstractBlock;
+use League\CommonMark\Block\Element\AbstractBlock;
+use League\CommonMark\Cursor;
 
 final class TableOfContentsPlaceholder extends AbstractBlock
 {
+    public function canContain(AbstractBlock $block): bool
+    {
+        return false;
+    }
+
+    public function isCode(): bool
+    {
+        return false;
+    }
+
+    public function matchesNextLine(Cursor $cursor): bool
+    {
+        return false;
+    }
 }

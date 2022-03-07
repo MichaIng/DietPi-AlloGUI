@@ -299,7 +299,7 @@ class QueueFake extends QueueManager implements Queue
     }
 
     /**
-     * Push a new job onto the queue after (n) seconds.
+     * Push a new job onto the queue after a delay.
      *
      * @param  \DateTimeInterface|\DateInterval|int  $delay
      * @param  string|object  $job
@@ -326,7 +326,7 @@ class QueueFake extends QueueManager implements Queue
     }
 
     /**
-     * Push a new job onto a specific queue after (n) seconds.
+     * Push a new job onto the queue after a delay.
      *
      * @param  string  $queue
      * @param  \DateTimeInterface|\DateInterval|int  $delay

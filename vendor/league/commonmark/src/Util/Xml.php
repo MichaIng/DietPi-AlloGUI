@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -18,15 +16,15 @@ namespace League\CommonMark\Util;
 
 /**
  * Utility class for handling/generating XML and HTML
- *
- * @psalm-immutable
  */
 final class Xml
 {
     /**
-     * @psalm-pure
+     * @param string $string
+     *
+     * @return string
      */
-    public static function escape(string $string): string
+    public static function escape($string)
     {
         return \str_replace(['&', '<', '>', '"'], ['&amp;', '&lt;', '&gt;', '&quot;'], $string);
     }

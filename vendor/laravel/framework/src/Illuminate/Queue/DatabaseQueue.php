@@ -112,7 +112,7 @@ class DatabaseQueue extends Queue implements QueueContract, ClearableQueue
     }
 
     /**
-     * Push a new job onto the queue after (n) seconds.
+     * Push a new job onto the queue after a delay.
      *
      * @param  \DateTimeInterface|\DateInterval|int  $delay
      * @param  string  $job
@@ -155,7 +155,7 @@ class DatabaseQueue extends Queue implements QueueContract, ClearableQueue
     }
 
     /**
-     * Release a reserved job back onto the queue after (n) seconds.
+     * Release a reserved job back onto the queue.
      *
      * @param  string  $queue
      * @param  \Illuminate\Queue\Jobs\DatabaseJobRecord  $job
@@ -168,7 +168,7 @@ class DatabaseQueue extends Queue implements QueueContract, ClearableQueue
     }
 
     /**
-     * Push a raw payload to the database with a given delay of (n) seconds.
+     * Push a raw payload to the database with a given delay.
      *
      * @param  string|null  $queue
      * @param  string  $payload

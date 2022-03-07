@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,39 +11,18 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\DisallowedRawHtml;
 
-use League\CommonMark\Environment\EnvironmentBuilderInterface;
-use League\CommonMark\Extension\CommonMark\Node\Block\HtmlBlock;
-use League\CommonMark\Extension\CommonMark\Node\Inline\HtmlInline;
-use League\CommonMark\Extension\CommonMark\Renderer\Block\HtmlBlockRenderer;
-use League\CommonMark\Extension\CommonMark\Renderer\Inline\HtmlInlineRenderer;
-use League\CommonMark\Extension\ConfigurableExtensionInterface;
-use League\Config\ConfigurationBuilderInterface;
-use Nette\Schema\Expect;
+use League\CommonMark\Block\Element\HtmlBlock;
+use League\CommonMark\Block\Renderer\HtmlBlockRenderer;
+use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Extension\ExtensionInterface;
+use League\CommonMark\Inline\Element\HtmlInline;
+use League\CommonMark\Inline\Renderer\HtmlInlineRenderer;
 
-final class DisallowedRawHtmlExtension implements ConfigurableExtensionInterface
+final class DisallowedRawHtmlExtension implements ExtensionInterface
 {
-    private const DEFAULT_DISALLOWED_TAGS = [
-        'title',
-        'textarea',
-        'style',
-        'xmp',
-        'iframe',
-        'noembed',
-        'noframes',
-        'script',
-        'plaintext',
-    ];
-
-    public function configureSchema(ConfigurationBuilderInterface $builder): void
+    public function register(ConfigurableEnvironmentInterface $environment)
     {
-        $builder->addSchema('disallowed_raw_html', Expect::structure([
-            'disallowed_tags' => Expect::listOf('string')->default(self::DEFAULT_DISALLOWED_TAGS)->mergeDefaults(false),
-        ]));
-    }
-
-    public function register(EnvironmentBuilderInterface $environment): void
-    {
-        $environment->addRenderer(HtmlBlock::class, new DisallowedRawHtmlRenderer(new HtmlBlockRenderer()), 50);
-        $environment->addRenderer(HtmlInline::class, new DisallowedRawHtmlRenderer(new HtmlInlineRenderer()), 50);
+        $environment->addBlockRenderer(HtmlBlock::class, new DisallowedRawHtmlBlockRenderer(new HtmlBlockRenderer()), 50);
+        $environment->addInlineRenderer(HtmlInline::class, new DisallowedRawHtmlInlineRenderer(new HtmlInlineRenderer()), 50);
     }
 }

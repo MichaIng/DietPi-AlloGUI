@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -16,72 +14,78 @@ namespace League\CommonMark\Extension\Mention;
 use League\CommonMark\Extension\Mention\Generator\CallbackGenerator;
 use League\CommonMark\Extension\Mention\Generator\MentionGeneratorInterface;
 use League\CommonMark\Extension\Mention\Generator\StringTemplateLinkGenerator;
-use League\CommonMark\Parser\Inline\InlineParserInterface;
-use League\CommonMark\Parser\Inline\InlineParserMatch;
-use League\CommonMark\Parser\InlineParserContext;
+use League\CommonMark\Inline\Parser\InlineParserInterface;
+use League\CommonMark\InlineParserContext;
 
 final class MentionParser implements InlineParserInterface
 {
-    /** @psalm-readonly */
-    private string $name;
+    /** @var string */
+    private $symbol;
 
-    /** @psalm-readonly */
-    private string $prefix;
+    /** @var string */
+    private $mentionRegex;
 
-    /** @psalm-readonly */
-    private string $identifierPattern;
+    /** @var MentionGeneratorInterface */
+    private $mentionGenerator;
 
-    /** @psalm-readonly */
-    private MentionGeneratorInterface $mentionGenerator;
-
-    public function __construct(string $name, string $prefix, string $identifierPattern, MentionGeneratorInterface $mentionGenerator)
+    public function __construct(string $symbol, string $mentionRegex, MentionGeneratorInterface $mentionGenerator)
     {
-        $this->name              = $name;
-        $this->prefix            = $prefix;
-        $this->identifierPattern = $identifierPattern;
-        $this->mentionGenerator  = $mentionGenerator;
+        $this->symbol = $symbol;
+        $this->mentionRegex = $mentionRegex;
+        $this->mentionGenerator = $mentionGenerator;
     }
 
-    public function getMatchDefinition(): InlineParserMatch
+    public function getCharacters(): array
     {
-        return InlineParserMatch::join(
-            InlineParserMatch::string($this->prefix),
-            InlineParserMatch::regex($this->identifierPattern)
-        );
+        return [$this->symbol];
     }
 
     public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();
 
-        // The prefix must not have any other characters immediately prior
+        // The symbol must not have any other characters immediately prior
         $previousChar = $cursor->peek(-1);
         if ($previousChar !== null && \preg_match('/\w/', $previousChar)) {
             // peek() doesn't modify the cursor, so no need to restore state first
             return false;
         }
 
-        [$prefix, $identifier] = $inlineContext->getSubMatches();
+        // Save the cursor state in case we need to rewind and bail
+        $previousState = $cursor->saveState();
 
-        $mention = $this->mentionGenerator->generateMention(new Mention($this->name, $prefix, $identifier));
+        // Advance past the symbol to keep parsing simpler
+        $cursor->advance();
 
-        if ($mention === null) {
+        // Parse the mention match value
+        $identifier = $cursor->match($this->mentionRegex);
+        if ($identifier === null) {
+            // Regex failed to match; this isn't a valid mention
+            $cursor->restoreState($previousState);
+
             return false;
         }
 
-        $cursor->advanceBy($inlineContext->getFullMatchLength());
+        $mention = $this->mentionGenerator->generateMention(new Mention($this->symbol, $identifier));
+
+        if ($mention === null) {
+            $cursor->restoreState($previousState);
+
+            return false;
+        }
+
         $inlineContext->getContainer()->appendChild($mention);
 
         return true;
     }
 
-    public static function createWithStringTemplate(string $name, string $prefix, string $mentionRegex, string $urlTemplate): MentionParser
+    public static function createWithStringTemplate(string $symbol, string $mentionRegex, string $urlTemplate): MentionParser
     {
-        return new self($name, $prefix, $mentionRegex, new StringTemplateLinkGenerator($urlTemplate));
+        return new self($symbol, $mentionRegex, new StringTemplateLinkGenerator($urlTemplate));
     }
 
-    public static function createWithCallback(string $name, string $prefix, string $mentionRegex, callable $callback): MentionParser
+    public static function createWithCallback(string $symbol, string $mentionRegex, callable $callback): MentionParser
     {
-        return new self($name, $prefix, $mentionRegex, new CallbackGenerator($callback));
+        return new self($symbol, $mentionRegex, new CallbackGenerator($callback));
     }
 }

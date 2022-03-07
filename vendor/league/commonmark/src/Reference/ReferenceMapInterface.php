@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -18,14 +16,34 @@ namespace League\CommonMark\Reference;
 
 /**
  * A collection of references
- *
- * @phpstan-extends \IteratorAggregate<ReferenceInterface>
  */
-interface ReferenceMapInterface extends \IteratorAggregate, \Countable
+interface ReferenceMapInterface
 {
-    public function add(ReferenceInterface $reference): void;
+    /**
+     * @param ReferenceInterface $reference
+     *
+     * @return void
+     */
+    public function addReference(ReferenceInterface $reference): void;
 
+    /**
+     * @param string $label
+     *
+     * @return bool
+     */
     public function contains(string $label): bool;
 
-    public function get(string $label): ?ReferenceInterface;
+    /**
+     * @param string $label
+     *
+     * @return ReferenceInterface|null
+     */
+    public function getReference(string $label): ?ReferenceInterface;
+
+    /**
+     * Lists all registered references.
+     *
+     * @return ReferenceInterface[]
+     */
+    public function listReferences(): iterable;
 }

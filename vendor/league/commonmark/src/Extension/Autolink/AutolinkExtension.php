@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,14 +11,15 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\Autolink;
 
-use League\CommonMark\Environment\EnvironmentBuilderInterface;
+use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Event\DocumentParsedEvent;
 use League\CommonMark\Extension\ExtensionInterface;
 
 final class AutolinkExtension implements ExtensionInterface
 {
-    public function register(EnvironmentBuilderInterface $environment): void
+    public function register(ConfigurableEnvironmentInterface $environment)
     {
-        $environment->addInlineParser(new EmailAutolinkParser());
-        $environment->addInlineParser(new UrlAutolinkParser());
+        $environment->addEventListener(DocumentParsedEvent::class, new EmailAutolinkProcessor());
+        $environment->addEventListener(DocumentParsedEvent::class, new UrlAutolinkProcessor());
     }
 }
