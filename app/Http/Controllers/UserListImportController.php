@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Redirect;
-use App\User;
+use App\Models\User;
 use Auth;
 use DB;
 use App\Mail\ResetPassword;
@@ -19,7 +19,6 @@ class UserListImportController extends Controller
 
     public function getFile()
     {
-        
         //$file=$_FILES
         $row = 1;
         if (($handle = fopen($file, "r")) !== false) {
@@ -34,6 +33,4 @@ class UserListImportController extends Controller
             fclose($handle);
         }
     }
-
-
 }

@@ -4,16 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                font-family: 'Arial', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -60,29 +55,28 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-            .btnM{
-             background: #ddd;
-             border-radius: 5px;
-             color: #000;
-             font-family: arial;
-             font-weight: bold;
-             padding: 13px 45px;
-             border: none;
-             cursor: pointer;
-         }
-         .btnM:hover
-         {
-            background: #000;
-            color: white;
-         }
+
+            .btnM {
+                background: #ddd;
+                border-radius: 5px;
+                color: #000;
+                font-family: arial;
+                font-weight: bold;
+                padding: 13px 45px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .btnM:hover {
+                background: #000;
+                color: white;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <div class="title m-b-md">Laravel</div>
                 <div>
                     <form action="{{ url('/ssh-login') }}" method="Post">
                         {{ csrf_field() }}
