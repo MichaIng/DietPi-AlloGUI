@@ -7,8 +7,8 @@
     <div class="container">
         @if(Session::has('custom_message'))
             <div class="alert alert-success" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <span>{{ Session::get('custom_message') }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <span>{{ Session::get('custom_message') }}</span>
             </div>
         @endif
         <div class="cont">
@@ -35,7 +35,6 @@
                                             </a>
                                         </h4>
                                     </div>
-
                                     <div id="collapseServicestatus" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Servicestatus">
                                         <div class="panel-body">
                                             <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
@@ -47,13 +46,9 @@
                                                         <label class="switch-light" onclick="">
                                                             <input type="hidden" name="shairPortStatus" value="no">
                                                             <input type="checkbox" id="chk" name="shairPortStatus" value="yes">
-                                                                <span>
-                                                                    <span>Active</span>
-                                                                    <span>Inactive</span>
-                                                                </span>
+                                                            <span><span>Active</span><span>Inactive</span></span>
                                                             <a class="btn btn-primary"></a>
                                                         </label>
-                                                        <!-- <input type="checkbox" name="my-checkbox" checked> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -143,7 +138,6 @@
                                                             <p>
                                                                 The application is prevented from running.
                                                             </p>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,7 +145,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="OutputFrequency">
                                         <h4 class="panel-title">
@@ -169,14 +162,10 @@
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input appearance">
                                                     <select class="form-control" name = "frequency" id = "frequency">
                                                         <option value="">Select</option>
-                                                        <option value="352800" <?php if($outputFrequencies == 352800) { echo "selected"; 
-                                                                               } ?>>352800</option>
-                                                        <option value="176400" <?php if($outputFrequencies == 176400) { echo "selected"; 
-                                                                               }?>>176400</option>
-                                                        <option value="88200" <?php if($outputFrequencies == 88200) { echo "selected"; 
-                                                                              } ?>>88200</option>
-                                                        <option value="44100" <?php if($outputFrequencies == 44100) { echo "selected"; 
-                                                                              } ?>>44100</option>
+                                                        <option value="352800" <?php if($outputFrequencies == 352800) { echo "selected"; } ?>>352800</option>
+                                                        <option value="176400" <?php if($outputFrequencies == 176400) { echo "selected"; }?>>176400</option>
+                                                        <option value="88200" <?php if($outputFrequencies == 88200) { echo "selected"; } ?>>88200</option>
+                                                        <option value="44100" <?php if($outputFrequencies == 44100) { echo "selected"; } ?>>44100</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -190,7 +179,6 @@
                                                                 Allows you to control the output frequency of audio playback with ShairPort-Sync.
                                                             </p>
                                                             <hr>
-
                                                             <ul>
                                                                 <li>
                                                                     352KHz = Highest quality output frequency
@@ -202,7 +190,6 @@
                                                                 </li>
                                                             </ul>
                                                             <hr>
-
                                                             <p>
                                                                 For bit-perfect playback, it is recommended to ensure the output frequency and bit depth, matches the source audio.
                                                                 To verify realtime output statistics for the ALSA stream, please check the 'ALSA stream output' section in the 'Status' page.
@@ -210,7 +197,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
                                                 <div class="col-md-4 col-sm-6 col-xs-12 left-label">
@@ -219,16 +205,11 @@
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input appearance">
                                                     <select class="form-control" name = "bitDepth" id = "bitDepth">
                                                         <option value="">Select</option>
-                                                        <option value="32" <?php if($bitDepth == '32') { echo "selected"; 
-                                                                           } ?>>32</option>
-                                                        <option value="24" <?php if($bitDepth == '24') { echo "selected"; 
-                                                                           } ?>>24</option>
-                                                        <option value="24_3BE" <?php if($bitDepth == '24_3BE') { echo "selected"; 
-                                                                               } ?>>24_3BE</option>
-                                                        <option value="24_3LE" <?php if($bitDepth == '24_3LE') { echo "selected"; 
-                                                                               } ?>>24_3LE</option>
-                                                        <option value="16" <?php if($bitDepth == '16') { echo "selected"; 
-                                                                           } ?>>16</option>
+                                                        <option value="32" <?php if($bitDepth == '32') { echo "selected"; } ?>>32</option>
+                                                        <option value="24" <?php if($bitDepth == '24') { echo "selected"; } ?>>24</option>
+                                                        <option value="24_3BE" <?php if($bitDepth == '24_3BE') { echo "selected"; } ?>>24_3BE</option>
+                                                        <option value="24_3LE" <?php if($bitDepth == '24_3LE') { echo "selected"; } ?>>24_3LE</option>
+                                                        <option value="16" <?php if($bitDepth == '16') { echo "selected"; } ?>>16</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -242,7 +223,6 @@
                                                                 Allows you to control the output bit depth of audio playback with ShairPort-Sync.
                                                             </p>
                                                             <hr>
-
                                                             <ul>
                                                                 <li>
                                                                     32 = Highest quality output bit depth
@@ -253,9 +233,7 @@
                                                                     16 = Music standard (eg: CD/MP3 audio)
                                                                 </li>
                                                             </ul>
-
                                                             <hr>
-
                                                             <p>
                                                                 For bit-perfect playback, it is recommended to ensure the output frequency and bit depth, matches the source audio.
                                                                 To verify realtime output statistics for the ALSA stream, please check the 'ALSA stream output' section in the 'Status' page.
@@ -263,18 +241,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-12 col-sm-12 col-xs-12 bottom_btn">
                     <button class="btn white_btn" id="sve-chngs">Save changes</button>
                 </div>
@@ -282,7 +256,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#chk').click(function(){return false;});

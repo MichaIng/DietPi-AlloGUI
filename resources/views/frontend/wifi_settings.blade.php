@@ -7,8 +7,8 @@
     <div class="container">
         @if(Session::has('custom_message'))
             <div class="alert alert-success" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <span>{{ Session::get('custom_message') }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <span>{{ Session::get('custom_message') }}</span>
             </div>
         @endif
         <div class="cont">
@@ -23,7 +23,7 @@
                     <a href="{{url('/')}}" class="back_link">
                         <span class="fa fa-long-arrow-left" aria-hidden="true"></span>Back
                     </a>
-                    <div class=" ">
+                    <div class="">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
 
@@ -35,7 +35,6 @@
                                             </a>
                                         </h4>
                                     </div>
-
                                     <div id="collapseServicestatus" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="Servicestatus">
                                         <div class="panel-body">
                                             <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
@@ -53,7 +52,6 @@
                                                                 </span>
                                                             <a class="btn btn-primary"></a>
                                                         </label>
-                                                        <!-- <input type="checkbox" name="my-checkbox" checked> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -149,8 +147,7 @@
                                                     <label>Wifi SSID :</label>
                                                 </div>
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input">
-                                                    <input type="text" class="form-control" id="ssid" name="wifiSsid" value="<?php if(isset($currentSSID) && !empty($currentSSID)) { echo $currentSSID ; 
-                                                                                                                             } ?>">
+                                                    <input type="text" class="form-control" id="ssid" name="wifiSsid" value="<?php if(isset($currentSSID) && !empty($currentSSID)) { echo $currentSSID; } ?>">
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
                                                     <div class="naoTooltip-wrap">
@@ -175,7 +172,7 @@
                                                     <label>New Wifi SSID</label>
                                                 </div>
                                                 <div class="col-md-8 col-sm-6 col-xs-12 right-input">
-                                                    <input type="text" class="form-control" id="ssidChng" name="chngwifi" value = "">
+                                                    <input type="text" class="form-control" id="ssidChng" name="chngwifi" value="">
                                                 </div>
                                             </div> -->
                                             <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero">
@@ -183,8 +180,7 @@
                                                     <label>Passkey :</label>
                                                 </div>
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input">
-                                                    <input type="text" class="form-control" id="passkey" name="wifiPasskey" value="<?php if(isset($currentPasskey) && !empty($currentPasskey)) { echo $currentPasskey ; 
-                                                                                                                                   } ?>" >
+                                                    <input type="text" class="form-control" id="passkey" name="wifiPasskey" value="<?php if(isset($currentPasskey) && !empty($currentPasskey)) { echo $currentPasskey; } ?>" >
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
                                                     <div class="naoTooltip-wrap">
@@ -222,7 +218,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-12 col-sm-12 col-xs-12 bottom_btn">
                     <button class="btn white_btn" id="sve-chngs">Save changes</button>
                 </div>
@@ -230,7 +225,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#chk').click(function(){return false;});
