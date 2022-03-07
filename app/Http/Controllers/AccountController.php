@@ -115,18 +115,4 @@ class AccountController extends Controller
 
         return view('frontend.dashboard')->with(['ipAddress' => $ipaddress, 'current_date' => $current_date, 'current_time' => $current_time, 'ipaddress' => $ipaddress, 'hostName' => $hostName, 'soundCard' => $soundCard, 'Master' => $Master, 'Digital' => $Digital, 'pcm_de_emphasis_filter' => $pcm_de_emphasis_filter, 'pcm_filter_speed' => $pcm_filter_speed, 'pcm_high_pass_filter' => $pcm_high_pass_filter, 'pcm_nonoversample' => $pcm_nonoversample, 'pcm_phase_compensation' => $pcm_phase_compensation, 'hv_enable' => $hv_enable, 'mpd_status'=>$mpd_status, 'outputFrequencies'=>$outputFrequencies,'bitDepth'=>$bitDepth,'roon_status'=>$roon_status, 'daemon_status' =>$daemon_status,'wifiStatus'=>$wifiStatus,'currentSSID'=>$currentSSID, 'currentPasskey'=>$currentPasskey,'shairPortStatus'=>$shairPortStatus,'cpu_temp' =>$cpu_temp, 'outputFrequencies_shair'=>$outputFrequencies_shair,'bitDepth_shair'=>$bitDepth_shair, 'mpdNativeOutput'=>$mpdNativeOutput, 'gmrenderStatus'=>$gmrenderStatus, 'netdataStatus'=>$netdataStatus, 'squeezeliteStatus'=>$squeezeliteStatus, 'bitDepth_squeezelite'=>$bitDepth_squeezelite]);
     }
-
-    /* public function ssh_login(Request $request) {
-    if (!empty($request->all())) {
-    echo 'Hotspot Password is: ' . exec("TERM=linux sudo sed -n '/^wpa_passphrase=/{s/^[^=]*=//p;q}' /etc/hostapd/hostapd.conf");
-    $hotspotstatus = exec("TERM=linux; sudo systemctl unmask hostapd; sudo systemctl restart hostapd");
-    if ($hotspotstatus == 0) {
-                $hotspot_status = 'Inactive';
-    } elseif ($hotspotstatus == 1) {
-                $hotspot_status = 'Active';
-    }
-    } else {
-    return view('ssh_login');
-    }
-    } */
 }

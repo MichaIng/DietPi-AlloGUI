@@ -11,14 +11,14 @@
     <link href="{{ asset(env("LOC_PUBLIC",'').'/css/style.css') }}" rel="stylesheet">
     <script src="{{ asset(env("LOC_PUBLIC",'').'/js/app.js') }}"></script>
     <script>
-      $(document).ready(function(){
-       var height = $(window).height();
-       var hheight = $(".navbar:visible").height();
-       var fheight = $(".footer-outr:visible").height();
-       var conheight = height - (hheight+fheight+80);
-        $(".outr-cont").css("min-height",conheight);
-      });
- </script>
+        document.addEventListener("DOMContentLoaded", function(){
+            var height = window.innerHeight;
+            var hheight = document.querySelector(".navbar").clientHeight;
+            var fheight = document.querySelector(".footer-outr").clientHeight;
+            var conheight = height - hheight - fheight;
+            document.querySelector(".outr-cont").style.minHeight = conheight + 'px';
+        });
+    </script>
 </head>
 <body>
     <div id="app">
@@ -37,15 +37,10 @@
                        <img src="{{ asset(env("LOC_PUBLIC",'').'/img/white-logo.png') }}" class="img-responsive">
                     </a>
                 </div>
-                <!--<div class="collapse navbar-collapse" id="app-navbar-collapse">
-
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                     Right Side Of Navbar -->
+                <!-- <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <ul class="nav navbar-nav">&nbsp;</ul>
+                    Right Side Of Navbar -->
                     <!-- <ul class="nav navbar-nav navbar-right">
-
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -54,7 +49,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -62,7 +56,6 @@
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
@@ -70,17 +63,17 @@
                                 </ul>
                             </li>
                         @endif
-                    </ul> -->
-                </div>
+                    </ul>
+                </div> -->
             </div>
         </nav>
         @yield('content')
         <div class="footer-outr">
-                <div class="footer-inr">
-                    <div class="footer-cont">
-                        <p>Copyright Allo.com 2022. All rights reserved.</p>
-                    </div>
+            <div class="footer-inr">
+                <div class="footer-cont">
+                    <p>Copyright Allo.com 2022. All rights reserved.</p>
                 </div>
+            </div>
         </div>
     </div>
 </body>
