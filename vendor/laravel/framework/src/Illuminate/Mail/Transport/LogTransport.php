@@ -3,12 +3,10 @@
 namespace Illuminate\Mail\Transport;
 
 use Psr\Log\LoggerInterface;
-use Symfony\Component\Mailer\Envelope;
-use Symfony\Component\Mailer\SentMessage;
-use Symfony\Component\Mailer\Transport\TransportInterface;
-use Symfony\Component\Mime\RawMessage;
+use Swift_Mime_SimpleMessage;
+use Swift_Mime_SimpleMimeEntity;
 
-class LogTransport implements TransportInterface
+class LogTransport extends Transport
 {
     /**
      * The Logger instance.
@@ -30,12 +28,35 @@ class LogTransport implements TransportInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return int
      */
-    public function send(RawMessage $message, Envelope $envelope = null): ?SentMessage
+    public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
-        $this->logger->debug($message->toString());
+        $this->beforeSendPerformed($message);
 
-        return new SentMessage($message, $envelope ?? Envelope::create($message));
+        $this->logger->debug($this->getMimeEntityString($message));
+
+        $this->sendPerformed($message);
+
+        return $this->numberOfRecipients($message);
+    }
+
+    /**
+     * Get a loggable string out of a Swiftmailer entity.
+     *
+     * @param  \Swift_Mime_SimpleMimeEntity  $entity
+     * @return string
+     */
+    protected function getMimeEntityString(Swift_Mime_SimpleMimeEntity $entity)
+    {
+        $string = (string) $entity->getHeaders().PHP_EOL.$entity->getBody();
+
+        foreach ($entity->getChildren() as $children) {
+            $string .= PHP_EOL.PHP_EOL.$this->getMimeEntityString($children);
+        }
+
+        return $string;
     }
 
     /**
@@ -46,15 +67,5 @@ class LogTransport implements TransportInterface
     public function logger()
     {
         return $this->logger;
-    }
-
-    /**
-     * Get the string representation of the transport.
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return 'log';
     }
 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,28 +11,28 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\TaskList;
 
-use League\CommonMark\Node\Node;
-use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
-use League\CommonMark\Xml\XmlNodeRendererInterface;
+use League\CommonMark\ElementRendererInterface;
+use League\CommonMark\HtmlElement;
+use League\CommonMark\Inline\Element\AbstractInline;
+use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 
-final class TaskListItemMarkerRenderer implements NodeRendererInterface, XmlNodeRendererInterface
+final class TaskListItemMarkerRenderer implements InlineRendererInterface
 {
     /**
-     * @param TaskListItemMarker $node
+     * @param TaskListItemMarker       $inline
+     * @param ElementRendererInterface $htmlRenderer
      *
-     * {@inheritDoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
+     * @return HtmlElement|string|null
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer): \Stringable
+    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
-        TaskListItemMarker::assertInstanceOf($node);
+        if (!($inline instanceof TaskListItemMarker)) {
+            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
+        }
 
         $checkbox = new HtmlElement('input', [], '', true);
 
-        if ($node->isChecked()) {
+        if ($inline->isChecked()) {
             $checkbox->setAttribute('checked', '');
         }
 
@@ -42,28 +40,5 @@ final class TaskListItemMarkerRenderer implements NodeRendererInterface, XmlNode
         $checkbox->setAttribute('type', 'checkbox');
 
         return $checkbox;
-    }
-
-    public function getXmlTagName(Node $node): string
-    {
-        return 'task_list_item_marker';
-    }
-
-    /**
-     * @param TaskListItemMarker $node
-     *
-     * @return array<string, scalar>
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     */
-    public function getXmlAttributes(Node $node): array
-    {
-        TaskListItemMarker::assertInstanceOf($node);
-
-        if ($node->isChecked()) {
-            return ['checked' => 'checked'];
-        }
-
-        return [];
     }
 }

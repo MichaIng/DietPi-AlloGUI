@@ -4,11 +4,10 @@ namespace Illuminate\Mail\Transport;
 
 use Aws\Exception\AwsException;
 use Aws\Ses\SesClient;
-use Exception;
-use Symfony\Component\Mailer\SentMessage;
-use Symfony\Component\Mailer\Transport\AbstractTransport;
+use Swift_Mime_SimpleMessage;
+use Swift_TransportException;
 
-class SesTransport extends AbstractTransport
+class SesTransport extends Transport
 {
     /**
      * The Amazon SES instance.
@@ -35,20 +34,22 @@ class SesTransport extends AbstractTransport
     {
         $this->ses = $ses;
         $this->options = $options;
-
-        parent::__construct();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     *
+     * @return int
      */
-    protected function doSend(SentMessage $message): void
+    public function send(Swift_Mime_SimpleMessage $message, &$failedRecipients = null)
     {
+        $this->beforeSendPerformed($message);
+
         try {
-            $this->ses->sendRawEmail(
+            $result = $this->ses->sendRawEmail(
                 array_merge(
                     $this->options, [
-                        'Source' => $message->getEnvelope()->getSender()->toString(),
+                        'Source' => key($message->getSender() ?: $message->getFrom()),
                         'RawMessage' => [
                             'Data' => $message->toString(),
                         ],
@@ -56,18 +57,17 @@ class SesTransport extends AbstractTransport
                 )
             );
         } catch (AwsException $e) {
-            throw new Exception('Request to AWS SES API failed.', $e->getCode(), $e);
+            throw new Swift_TransportException('Request to AWS SES API failed.', $e->getCode(), $e);
         }
-    }
 
-    /**
-     * Get the string representation of the transport.
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return 'ses';
+        $messageId = $result->get('MessageId');
+
+        $message->getHeaders()->addTextHeader('X-Message-ID', $messageId);
+        $message->getHeaders()->addTextHeader('X-SES-Message-ID', $messageId);
+
+        $this->sendPerformed($message);
+
+        return $this->numberOfRecipients($message);
     }
 
     /**

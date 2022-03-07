@@ -15,44 +15,25 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\Table;
 
-use League\CommonMark\Node\Node;
-use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
-use League\CommonMark\Xml\XmlNodeRendererInterface;
+use League\CommonMark\Block\Element\AbstractBlock;
+use League\CommonMark\Block\Renderer\BlockRendererInterface;
+use League\CommonMark\ElementRendererInterface;
+use League\CommonMark\HtmlElement;
 
-final class TableRenderer implements NodeRendererInterface, XmlNodeRendererInterface
+final class TableRenderer implements BlockRendererInterface
 {
-    /**
-     * @param Table $node
-     *
-     * {@inheritDoc}
-     *
-     * @psalm-suppress MoreSpecificImplementedParamType
-     */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer): \Stringable
+    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, bool $inTightList = false)
     {
-        Table::assertInstanceOf($node);
+        if (!$block instanceof Table) {
+            throw new \InvalidArgumentException('Incompatible block type: ' . get_class($block));
+        }
 
-        $attrs = $node->data->get('attributes');
+        $attrs = $block->getData('attributes', []);
 
-        $separator = $childRenderer->getInnerSeparator();
+        $separator = $htmlRenderer->getOption('inner_separator', "\n");
 
-        $children = $childRenderer->renderNodes($node->children());
+        $children = $htmlRenderer->renderBlocks($block->children());
 
         return new HtmlElement('table', $attrs, $separator . \trim($children) . $separator);
-    }
-
-    public function getXmlTagName(Node $node): string
-    {
-        return 'table';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getXmlAttributes(Node $node): array
-    {
-        return [];
     }
 }

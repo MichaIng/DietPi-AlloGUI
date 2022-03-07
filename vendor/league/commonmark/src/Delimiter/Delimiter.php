@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -16,55 +14,73 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Delimiter;
 
-use League\CommonMark\Node\Inline\AbstractStringContainer;
+use League\CommonMark\Inline\Element\AbstractStringContainer;
 
 final class Delimiter implements DelimiterInterface
 {
-    /** @psalm-readonly */
-    private string $char;
+    /** @var string */
+    private $char;
 
-    /** @psalm-readonly-allow-private-mutation */
-    private int $length;
+    /** @var int */
+    private $length;
 
-    /** @psalm-readonly */
-    private int $originalLength;
+    /** @var int */
+    private $originalLength;
 
-    /** @psalm-readonly */
-    private AbstractStringContainer $inlineNode;
+    /** @var AbstractStringContainer */
+    private $inlineNode;
 
-    /** @psalm-readonly-allow-private-mutation */
-    private ?DelimiterInterface $previous = null;
+    /** @var DelimiterInterface|null */
+    private $previous;
 
-    /** @psalm-readonly-allow-private-mutation */
-    private ?DelimiterInterface $next = null;
+    /** @var DelimiterInterface|null */
+    private $next;
 
-    /** @psalm-readonly */
-    private bool $canOpen;
+    /** @var bool */
+    private $canOpen;
 
-    /** @psalm-readonly */
-    private bool $canClose;
+    /** @var bool */
+    private $canClose;
 
-    /** @psalm-readonly-allow-private-mutation */
-    private bool $active;
+    /** @var bool */
+    private $active;
 
-    /** @psalm-readonly */
-    private ?int $index = null;
+    /** @var int|null */
+    private $index;
 
+    /**
+     * @param string                  $char
+     * @param int                     $numDelims
+     * @param AbstractStringContainer $node
+     * @param bool                    $canOpen
+     * @param bool                    $canClose
+     * @param int|null                $index
+     */
     public function __construct(string $char, int $numDelims, AbstractStringContainer $node, bool $canOpen, bool $canClose, ?int $index = null)
     {
-        $this->char           = $char;
-        $this->length         = $numDelims;
+        $this->char = $char;
+        $this->length = $numDelims;
         $this->originalLength = $numDelims;
-        $this->inlineNode     = $node;
-        $this->canOpen        = $canOpen;
-        $this->canClose       = $canClose;
-        $this->active         = true;
-        $this->index          = $index;
+        $this->inlineNode = $node;
+        $this->canOpen = $canOpen;
+        $this->canClose = $canClose;
+        $this->active = true;
+        $this->index = $index;
     }
 
     public function canClose(): bool
     {
         return $this->canClose;
+    }
+
+    /**
+     * @param bool $canClose
+     *
+     * @return void
+     */
+    public function setCanClose(bool $canClose)
+    {
+        $this->canClose = $canClose;
     }
 
     public function canOpen(): bool
@@ -77,7 +93,7 @@ final class Delimiter implements DelimiterInterface
         return $this->active;
     }
 
-    public function setActive(bool $active): void
+    public function setActive(bool $active)
     {
         $this->active = $active;
     }
@@ -97,7 +113,7 @@ final class Delimiter implements DelimiterInterface
         return $this->next;
     }
 
-    public function setNext(?DelimiterInterface $next): void
+    public function setNext(?DelimiterInterface $next)
     {
         $this->next = $next;
     }
@@ -107,7 +123,7 @@ final class Delimiter implements DelimiterInterface
         return $this->length;
     }
 
-    public function setLength(int $length): void
+    public function setLength(int $length)
     {
         $this->length = $length;
     }
@@ -127,8 +143,10 @@ final class Delimiter implements DelimiterInterface
         return $this->previous;
     }
 
-    public function setPrevious(?DelimiterInterface $previous): void
+    public function setPrevious(?DelimiterInterface $previous): DelimiterInterface
     {
         $this->previous = $previous;
+
+        return $this;
     }
 }

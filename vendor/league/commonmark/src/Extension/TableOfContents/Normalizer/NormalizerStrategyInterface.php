@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,7 +11,7 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\TableOfContents\Normalizer;
 
-use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
+use League\CommonMark\Block\Element\ListItem;
 
 interface NormalizerStrategyInterface
 {

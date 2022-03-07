@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -15,37 +13,24 @@ namespace League\CommonMark\Input;
 
 use League\CommonMark\Exception\UnexpectedEncodingException;
 
-class MarkdownInput implements MarkdownInputInterface
+final class MarkdownInput implements MarkdownInputInterface
 {
-    /**
-     * @var array<int, string>|null
-     *
-     * @psalm-readonly-allow-private-mutation
-     */
-    private ?array $lines = null;
+    /** @var array<int, string>|null */
+    private $lines;
 
-    /** @psalm-readonly-allow-private-mutation */
-    private string $content;
+    /** @var string */
+    private $content;
 
-    /** @psalm-readonly-allow-private-mutation */
-    private ?int $lineCount = null;
+    /** @var int|null */
+    private $lineCount;
 
-    /** @psalm-readonly */
-    private int $lineOffset;
-
-    public function __construct(string $content, int $lineOffset = 0)
+    public function __construct(string $content)
     {
-        if (! \mb_check_encoding($content, 'UTF-8')) {
+        if (!\mb_check_encoding($content, 'UTF-8')) {
             throw new UnexpectedEncodingException('Unexpected encoding - UTF-8 or ASCII was expected');
         }
 
-        // Strip any leading UTF-8 BOM
-        if (\substr($content, 0, 3) === "\xEF\xBB\xBF") {
-            $content = \substr($content, 3);
-        }
-
-        $this->content    = $content;
-        $this->lineOffset = $lineOffset;
+        $this->content = $content;
     }
 
     public function getContent(): string
@@ -54,25 +39,20 @@ class MarkdownInput implements MarkdownInputInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @return \Traversable<int, string>
      */
-    public function getLines(): iterable
+    public function getLines(): \Traversable
     {
         $this->splitLinesIfNeeded();
 
-        \assert($this->lines !== null);
-
-        /** @psalm-suppress PossiblyNullIterator */
-        foreach ($this->lines as $i => $line) {
-            yield $this->lineOffset + $i + 1 => $line;
+        foreach ($this->lines as $lineNumber => $line) {
+            yield $lineNumber => $line;
         }
     }
 
     public function getLineCount(): int
     {
         $this->splitLinesIfNeeded();
-
-        \assert($this->lineCount !== null);
 
         return $this->lineCount;
     }

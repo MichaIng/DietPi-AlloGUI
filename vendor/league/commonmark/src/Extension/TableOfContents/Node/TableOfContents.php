@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,8 +11,11 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\TableOfContents\Node;
 
-use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
+use League\CommonMark\Block\Element\ListBlock;
+use League\CommonMark\Extension\TableOfContents\TableOfContents as DeprecatedTableOfContents;
 
 final class TableOfContents extends ListBlock
 {
 }
+
+\class_exists(DeprecatedTableOfContents::class);

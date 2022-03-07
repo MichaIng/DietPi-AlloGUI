@@ -16,30 +16,33 @@ namespace League\CommonMark\Extension\Attributes\Parser;
 
 use League\CommonMark\Extension\Attributes\Node\AttributesInline;
 use League\CommonMark\Extension\Attributes\Util\AttributesHelper;
-use League\CommonMark\Node\StringContainerInterface;
-use League\CommonMark\Parser\Inline\InlineParserInterface;
-use League\CommonMark\Parser\Inline\InlineParserMatch;
-use League\CommonMark\Parser\InlineParserContext;
+use League\CommonMark\Inline\Element\Text;
+use League\CommonMark\Inline\Parser\InlineParserInterface;
+use League\CommonMark\InlineParserContext;
 
 final class AttributesInlineParser implements InlineParserInterface
 {
-    public function getMatchDefinition(): InlineParserMatch
+    /**
+     * {@inheritdoc}
+     */
+    public function getCharacters(): array
     {
-        return InlineParserMatch::string('{');
+        return ['{'];
     }
 
     public function parse(InlineParserContext $inlineContext): bool
     {
         $cursor = $inlineContext->getCursor();
-        $char   = (string) $cursor->peek(-1);
+
+        $char = (string) $cursor->peek(-1);
 
         $attributes = AttributesHelper::parseAttributes($cursor);
         if ($attributes === []) {
             return false;
         }
 
-        if ($char === ' ' && ($prev = $inlineContext->getContainer()->lastChild()) instanceof StringContainerInterface) {
-            $prev->setLiteral(\rtrim($prev->getLiteral(), ' '));
+        if ($char === ' ' && ($previousInline = $inlineContext->getContainer()->lastChild()) instanceof Text) {
+            $previousInline->setContent(\rtrim($previousInline->getContent(), ' '));
         }
 
         if ($char === '') {

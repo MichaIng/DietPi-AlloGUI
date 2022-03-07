@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,17 +11,16 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\TaskList;
 
-use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
-use League\CommonMark\Node\Block\Paragraph;
-use League\CommonMark\Parser\Inline\InlineParserInterface;
-use League\CommonMark\Parser\Inline\InlineParserMatch;
-use League\CommonMark\Parser\InlineParserContext;
+use League\CommonMark\Block\Element\ListItem;
+use League\CommonMark\Block\Element\Paragraph;
+use League\CommonMark\Inline\Parser\InlineParserInterface;
+use League\CommonMark\InlineParserContext;
 
 final class TaskListItemMarkerParser implements InlineParserInterface
 {
-    public function getMatchDefinition(): InlineParserMatch
+    public function getCharacters(): array
     {
-        return InlineParserMatch::oneOf('[ ]', '[x]');
+        return ['['];
     }
 
     public function parse(InlineParserContext $inlineContext): bool
@@ -31,14 +28,17 @@ final class TaskListItemMarkerParser implements InlineParserInterface
         $container = $inlineContext->getContainer();
 
         // Checkbox must come at the beginning of the first paragraph of the list item
-        if ($container->hasChildren() || ! ($container instanceof Paragraph && $container->parent() && $container->parent() instanceof ListItem)) {
+        if ($container->hasChildren() || !($container instanceof Paragraph && $container->parent() && $container->parent() instanceof ListItem)) {
             return false;
         }
 
-        $cursor   = $inlineContext->getCursor();
+        $cursor = $inlineContext->getCursor();
         $oldState = $cursor->saveState();
 
-        $cursor->advanceBy(3);
+        $m = $cursor->match('/\[[ xX]\]/');
+        if ($m === null) {
+            return false;
+        }
 
         if ($cursor->getNextNonSpaceCharacter() === null) {
             $cursor->restoreState($oldState);
@@ -46,7 +46,7 @@ final class TaskListItemMarkerParser implements InlineParserInterface
             return false;
         }
 
-        $isChecked = $inlineContext->getFullMatch() !== '[ ]';
+        $isChecked = $m !== '[ ]';
 
         $container->appendChild(new TaskListItemMarker($isChecked));
 

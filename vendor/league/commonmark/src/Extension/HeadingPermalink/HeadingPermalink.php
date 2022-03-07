@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /*
  * This file is part of the league/commonmark package.
  *
@@ -13,20 +11,18 @@ declare(strict_types=1);
 
 namespace League\CommonMark\Extension\HeadingPermalink;
 
-use League\CommonMark\Node\Inline\AbstractInline;
+use League\CommonMark\Inline\Element\AbstractInline;
 
 /**
  * Represents an anchor link within a heading
  */
 final class HeadingPermalink extends AbstractInline
 {
-    /** @psalm-readonly */
-    private string $slug;
+    /** @var string */
+    private $slug;
 
     public function __construct(string $slug)
     {
-        parent::__construct();
-
         $this->slug = $slug;
     }
 

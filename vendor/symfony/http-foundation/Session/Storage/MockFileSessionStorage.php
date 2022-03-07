@@ -25,7 +25,7 @@ namespace Symfony\Component\HttpFoundation\Session\Storage;
  */
 class MockFileSessionStorage extends MockArraySessionStorage
 {
-    private string $savePath;
+    private $savePath;
 
     /**
      * @param string|null $savePath Path of directory to save session files
@@ -48,7 +48,7 @@ class MockFileSessionStorage extends MockArraySessionStorage
     /**
      * {@inheritdoc}
      */
-    public function start(): bool
+    public function start()
     {
         if ($this->started) {
             return true;
@@ -68,7 +68,7 @@ class MockFileSessionStorage extends MockArraySessionStorage
     /**
      * {@inheritdoc}
      */
-    public function regenerate(bool $destroy = false, int $lifetime = null): bool
+    public function regenerate(bool $destroy = false, int $lifetime = null)
     {
         if (!$this->started) {
             $this->start();
