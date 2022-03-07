@@ -204,7 +204,7 @@
                                                         <option value="">Select</option>
                                                         <option value="very high" <?php if($soxrQuality === 1) { echo "selected"; } ?>>Very High</option>
                                                         <option value="high" <?php if($soxrQuality === 2) { echo "selected"; } ?>>High</option>
-                                                        <option value="low" <?php if($soxrQuality === 3) { echo "selected" ; } ?> >Low</option>
+                                                        <option value="low" <?php if($soxrQuality === 3) { echo "selected" ; } ?>>Low</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
