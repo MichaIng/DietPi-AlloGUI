@@ -23,7 +23,7 @@
                     <a href="{{url('/')}}" class="back_link">
                         <span class="fa fa-long-arrow-left" aria-hidden="true"></span>Back
                     </a>
-                    <div class=" ">
+                    <div class="">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
                                 <div class="panel panel-default">
@@ -51,7 +51,6 @@
                                                                 </span>
                                                             <a class="btn btn-primary"></a>
                                                         </label>
-                                                        <!-- <input type="checkbox" name="my-checkbox" checked> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -203,12 +202,9 @@
                                                     ?>
                                                     <select class="form-control" name="soxrQuality">
                                                         <option value="">Select</option>
-                                                        <option value="very high" <?php if($soxrQuality === 1) { echo "selected"; 
-                                                                                  } ?>>Very High</option>
-                                                        <option value="high" <?php if($soxrQuality === 2) { echo "selected"; 
-                                                                             } ?>>High</option>
-                                                        <option value="low" <?php if($soxrQuality === 3) { echo "selected" ; 
-                                                                            } ?> >Low</option>
+                                                        <option value="very high" <?php if($soxrQuality === 1) { echo "selected"; } ?>>Very High</option>
+                                                        <option value="high" <?php if($soxrQuality === 2) { echo "selected"; } ?>>High</option>
+                                                        <option value="low" <?php if($soxrQuality === 3) { echo "selected" ; } ?> >Low</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -260,24 +256,15 @@
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input appearance">
                                                     <select class="form-control" name="frequency" id="frequency">
                                                         <option value="">Select</option>
-                                                        <option value="384000" <?php if($outputFrequencies == 384000) { echo "selected"; 
-                                                                               } ?>>384000</option>
-                                                        <option value="352800" <?php if($outputFrequencies == 352800) { echo "selected"; 
-                                                                               } ?>>352800</option>
-                                                        <option value="192000" <?php if($outputFrequencies == 192000) { echo "selected"; 
-                                                                               }?>>192000</option>
-                                                        <option value="96000" <?php if($outputFrequencies == 96000) { echo "selected"; 
-                                                                              } ?>>96000</option>
-                                                        <option value="88200" <?php if($outputFrequencies == 88200) { echo "selected"; 
-                                                                              } ?>>88200</option>
-                                                        <option value="64000" <?php if($outputFrequencies == 64000) { echo "selected"; 
-                                                                              } ?>>64000</option>
-                                                        <option value="48000" <?php if($outputFrequencies == 48000) { echo "selected"; 
-                                                                              } ?>>48000</option>
-                                                        <option value="44100" <?php if($outputFrequencies == 44100) { echo "selected"; 
-                                                                              } ?>>44100</option>
-                                                        <option value="Native" <?php if($outputFrequencies == 'Native') { echo "selected"; 
-                                                                               } ?>>Native</option>
+                                                        <option value="384000" <?php if($outputFrequencies == 384000) { echo "selected"; } ?>>384000</option>
+                                                        <option value="352800" <?php if($outputFrequencies == 352800) { echo "selected"; } ?>>352800</option>
+                                                        <option value="192000" <?php if($outputFrequencies == 192000) { echo "selected"; } ?>>192000</option>
+                                                        <option value="96000" <?php if($outputFrequencies == 96000) { echo "selected"; } ?>>96000</option>
+                                                        <option value="88200" <?php if($outputFrequencies == 88200) { echo "selected"; } ?>>88200</option>
+                                                        <option value="64000" <?php if($outputFrequencies == 64000) { echo "selected"; } ?>>64000</option>
+                                                        <option value="48000" <?php if($outputFrequencies == 48000) { echo "selected"; } ?>>48000</option>
+                                                        <option value="44100" <?php if($outputFrequencies == 44100) { echo "selected"; } ?>>44100</option>
+                                                        <option value="Native" <?php if($outputFrequencies == 'Native') { echo "selected"; } ?>>Native</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -304,14 +291,10 @@
                                                 <div class="col-md-6 col-sm-4 col-xs-12 right-input appearance">
                                                     <select class="form-control" name = "bitDepth" id = "bitDepth">
                                                         <option value="">Select</option>
-                                                        <option value="32" <?php if($bitDepth == 32) { echo "selected"; 
-                                                                           } ?>>32</option>
-                                                        <option value="24" <?php if($bitDepth == 24) {  echo "selected"; 
-                                                                           } ?>>24</option>
-                                                        <option value="16" <?php if($bitDepth == 16) { echo "selected"; 
-                                                                           } ?>>16</option>
-                                                        <option value="Native" <?php if($bitDepth == 'Native') { echo "selected"; 
-                                                                               } ?>>Native</option>
+                                                        <option value="32" <?php if($bitDepth == 32) { echo "selected"; } ?>>32</option>
+                                                        <option value="24" <?php if($bitDepth == 24) {  echo "selected"; } ?>>24</option>
+                                                        <option value="16" <?php if($bitDepth == 16) { echo "selected"; } ?>>16</option>
+                                                        <option value="Native" <?php if($bitDepth == 'Native') { echo "selected"; } ?>>Native</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
