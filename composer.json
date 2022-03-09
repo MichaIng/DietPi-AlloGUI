@@ -46,6 +46,9 @@
     },
     "config": {
         "optimize-autoloader": true,
+        "platform": {
+            "php": "7.3"
+        },
         "preferred-install": "dist",
         "sort-packages": true
     },
