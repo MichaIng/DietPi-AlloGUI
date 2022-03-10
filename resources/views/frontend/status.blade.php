@@ -264,8 +264,8 @@
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb1">
 											<h4 class="panel-title" >
-												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb1" aria-expanded="true" aria-controls="collapselsusb1">
-												USB DAC
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb1" aria-expanded="false" aria-controls="collapselsusb1">
+													USB DAC
 												</a>
 											</h4>
 										</div>
@@ -289,8 +289,8 @@
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb2">
 											<h4 class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb2" aria-expanded="true" aria-controls="collapselsusb2">
-												USB PORT INFO
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb2" aria-expanded="false" aria-controls="collapselsusb2">
+													USB PORT INFO
 												</a>
 											</h4>
 										</div>
@@ -329,7 +329,7 @@
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb3">
 											<h4 class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb3" aria-expanded="true" aria-controls="collapselsusb3">
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb3" aria-expanded="false" aria-controls="collapselsusb3">
 													APLAY Info
 												</a>
 											</h4>
@@ -344,7 +344,7 @@
 													<div class="naoTooltip-wrap">
 														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>Displays the aplay Details .</p>
+															<p>Displays the aplay Details.</p>
 														</div>
 													</div>
 												</div>
@@ -354,7 +354,7 @@
 									<div class="panel panel-default">
 										<div class="panel-heading" style="background-color: transparent;" role="tab" id="lsusb4">
 											<h4 class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb4" aria-expanded="true" aria-controls="collapselsusb4">
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselsusb4" aria-expanded="false" aria-controls="collapselsusb4">
 													DMESG Info
 												</a>
 											</h4>
@@ -369,7 +369,7 @@
 													<div class="naoTooltip-wrap">
 														<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 														<div class="naoTooltip nt-bottom nt-small">
-															<p>Displays the Dmesg Details .</p>
+															<p>Displays the Dmesg Details.</p>
 														</div>
 													</div>
 												</div>
@@ -412,7 +412,7 @@
 												<div class="naoTooltip-wrap">
 													<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 													<div class="naoTooltip nt-bottom nt-small">
-														<p>Displays the storage statistics (RootFS, SD/EMMC) for this device.</p>
+														<p>Displays the storage statistics (RootFS, SD/eMMC) for this device.</p>
 													</div>
 												</div>
 											</div>
@@ -430,7 +430,7 @@
 												<div class="naoTooltip-wrap">
 													<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 													<div class="naoTooltip nt-bottom nt-small">
-														<p>Displays the storage statistics (RootFS, SD/EMMC) for this device.</p>
+														<p>Displays the storage statistics (RootFS, SD/eMMC) for this device.</p>
 													</div>
 												</div>
 											</div>
@@ -448,7 +448,7 @@
 												<div class="naoTooltip-wrap">
 													<span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
 													<div class="naoTooltip nt-bottom nt-small">
-														<p>Displays the storage statistics (RootFS, SD/EMMC) for this device.</p>
+														<p>Displays the storage statistics (RootFS, SD/eMMC) for this device.</p>
 													</div>
 												</div>
 											</div>

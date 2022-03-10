@@ -13,7 +13,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function(){
             var height = window.innerHeight;
-            var hheight = document.querySelector(".navbar").clientHeight;
+            var hheight = document.querySelector(".header-outr").clientHeight;
             var fheight = document.querySelector(".footer-outr").clientHeight;
             var conheight = height - hheight - fheight;
             document.querySelector(".outr-cont").style.minHeight = conheight + 'px';

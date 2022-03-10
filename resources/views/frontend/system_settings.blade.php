@@ -3,54 +3,6 @@
 @section('title', 'SYSTEM SETTINGS')
 @section('content')
 <?php //echo "<pre>";print_r($updateDietPiStatus);die; ?>
-<!-- <div id="myDiv">
-    <img id="loading-image" src="{{ asset('img/loading.gif') }}" style = "display:none"/>
-</div> -->
-
-
-<!-- <div class="container">
-    <div class="panel-group" id="accordionMenu" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Menu 0
-                    </a>
-                  </h4>
-              </div>
-              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                      <ul class="nav">
-                        <li><a href="#">item 1</a></li>
-                        <li><a href="#">item 2</a></li>
-                        <li><a href="#">item 3</a></li>
-                      </ul>
-                </div>
-              </div>
-        </div>
-        <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Menu 1
-                    </a>
-                  </h4>
-              </div>
-              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                      <ul class="nav">
-                        <li><a href="#">item 1</a></li>
-                        <li><a href="#">item 2</a></li>
-                        <li><a href="#">item 3</a></li>
-                        <li><a href="#">item 4</a></li>
-                      </ul>
-                </div>
-              </div>
-        </div>
-      </div>
-</div>
- -->
-
 <div class="outr-cont">
     <div class="container">
         @if(Session::has('custom_message'))
@@ -61,23 +13,23 @@
         @endif
         <div class="alert alert-success" id = "alertSuccess" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <strong>Success!</strong> DietPi version successfully updated. A system reboot is required to finish the update, please reboot the system.
+            <strong>Success!</strong> DietPi version successfully updated. A system reboot is required to finish the update, please reboot the system.</strong>
         </div>
         <div class="alert alert-success" id = "alertSound" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <strong>Success!</strong> Soundcard successfully updated.
+            <strong>Success!</strong> Soundcard successfully updated.</strong>
         </div>
         <div class="alert alert-success" id = "alertFile" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <strong>Success!</strong> Swapfile size successfully updated .
+            <strong>Success!</strong> Swapfile size successfully updated.</strong>
         </div>
         <div class="alert alert-success" id = "alertReboot" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <strong>Success!</strong> System is now rebooting.
+            <strong>Success!</strong> System is now rebooting.</strong>
         </div>
         <div class="alert alert-success" id = "alertPower" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <strong>Success!</strong> System has been successfully shut down.
+            <strong>Success!</strong> System has been successfully shut down.</strong>
         </div>
         <div class="cont systemsettnnssss">
             <div class="col-md-12 col-sm-12 col-xs-12 page-main-heading">
@@ -94,7 +46,6 @@
                     <div class=" ">
                         <div class="panel-group" id="accordionMenu" role="tablist" aria-multiselectable="true">
                             <div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero edit-settings">
-
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="host">
                                         <h4 class="panel-title">
@@ -115,17 +66,10 @@
                                                     </div>
                                                     <div class="col-md-2 col-sm-4 col-xs-12">
                                                         <div class="naoTooltip-wrap">
-                                                            <span>
-                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                </i>
-                                                            </span>
+                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                <p>
-                                                                    The hostname is the unique network name for this device.
-                                                                </p>
-                                                                <p>
-                                                                    Changing the hostname will also effect the device name in Roon and Shairport sync.
-                                                                </p>
+                                                                <p>The hostname is the unique network name for this device.</p>
+                                                                <p>Changing the hostname will also effect the device name in Roon and Shairport sync.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -151,36 +95,19 @@
                                                 <div class="col-md-8 col-sm-6 col-xs-12 right-input appearance">
                                                     <div class="col-md-10 col-sm-12 col-xs-12 right-input">
                                                         <select class="form-control" name = "IP" id = "dhstc">
-                                                            <option value="dhcp" <?php if($selectoption == 1) { echo "selected";
-                                                                                 }?>>DHCP</option>
-                                                            <option value="static" <?php if($selectoption == 0) { echo "selected";
-                                                                                   }?>>STATIC</option>
+                                                            <option value="dhcp" <?php if($selectoption == 1) { echo "selected"; }?>>DHCP</option>
+                                                            <option value="static" <?php if($selectoption == 0) { echo "selected"; }?>>STATIC</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2 col-sm-4 col-xs-12">
                                                         <div class="naoTooltip-wrap">
-                                                            <span>
-                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                </i>
-                                                            </span>
+                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                <ul>
-                                                                    <li>
-                                                                        DHCP:
-                                                                    </li>
-                                                                </ul>
-                                                                <p>
-                                                                    When running under DHCP mode, the IP address of this system is automatically assigned by your network router.
-                                                                </p>
+                                                                <ul><li>DHCP:</li></ul>
+                                                                <p>When running under DHCP mode, the IP address of this system is automatically assigned by your network router.</p>
                                                                 <hr>
-                                                                <ul>
-                                                                    <li>
-                                                                        STATIC:
-                                                                    </li>
-                                                                </ul>
-                                                                <p>
-                                                                    In STATIC mode, you can specify a persistent IP address to use for this system. We recommend this option for advanced users, who wish to manage their local network infrastructure.
-                                                                </p>
+                                                                <ul><li>STATIC:</li></ul>
+                                                                <p>In STATIC mode, you can specify a persistent IP address to use for this system. We recommend this option for advanced users, who wish to manage their local network infrastructure.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -320,40 +247,24 @@
                                                             <select class="form-control" name = "soundcard" id = "sound">
                                                                 <?php if ($HW_MODEL == 70 ) { ?>
                                                                     <option value = "snd-soc-allo-piano-dac" @if($soundCard =='snd-soc-allo-piano-dac'){{"selected"}} @endif>snd-soc-allo-piano-dac</option>
-                                                                    <option value = "snd-soc-allo-piano-dac-plus" <?php if($soundCard == $str2) { echo "selected"; 
-                                                                                                                  } ?>>snd-soc-allo-piano-dac-plus</option>
-                                                                    <option value = "allo-cheapo-analogue" <?php if($soundCard == $str3) { echo "selected"; 
-                                                                                                           } ?>>allo-cheapo-analogue</option>
-                                                                    <option value = "allo-cheapo-optical" <?php if($soundCard == $str4) { echo "selected"; 
-                                                                                                          } ?>>allo-cheapo-optical</option>
-                                                                    <option value = "usb-dac" <?php if($soundCard == $str5) { echo "selected"; 
-                                                                                              } ?>>usb-dac</option>
-                                                                    <option value = "usb-dac-1.1" <?php if($soundCard == $str6) { echo "selected"; 
-                                                                                                  } ?>>usb-dac-1.1</option>
-                                                                    <option value = "none" <?php if($soundCard == $str7) { echo "selected"; 
-                                                                                           } ?>>none</option>
+                                                                    <option value = "snd-soc-allo-piano-dac-plus" <?php if($soundCard == $str2) { echo "selected"; } ?>>snd-soc-allo-piano-dac-plus</option>
+                                                                    <option value = "allo-cheapo-analogue" <?php if($soundCard == $str3) { echo "selected"; } ?>>allo-cheapo-analogue</option>
+                                                                    <option value = "allo-cheapo-optical" <?php if($soundCard == $str4) { echo "selected"; } ?>>allo-cheapo-optical</option>
+                                                                    <option value = "usb-dac" <?php if($soundCard == $str5) { echo "selected"; } ?>>usb-dac</option>
+                                                                    <option value = "usb-dac-1.1" <?php if($soundCard == $str6) { echo "selected"; } ?>>usb-dac-1.1</option>
+                                                                    <option value = "none" <?php if($soundCard == $str7) { echo "selected"; } ?>>none</option>
                                                                 <?php } else { ?>
                                                                     <option value = "rpi-bcm2835-auto" @if($soundCard =='rpi-bcm2835-auto'){{"selected"}} @endif>rpi-bcm2835-auto</option>
-                                                                    <option value = "rpi-bcm2835-3.5mm" <?php if($soundCard == $str2) { echo "selected"; 
-                                                                                                        } ?>>rpi-bcm2835-3.5mm</option>
-                                                                    <option value = "rpi-bcm2835-hdmi" <?php if($soundCard == $str3) { echo "selected"; 
-                                                                                                       } ?>>rpi-bcm2835-hdmi</option>
-                                                                    <option value = "allo-boss-dac-pcm512x-audio" <?php if($soundCard == $str4) { echo "selected"; 
-                                                                                                                  } ?>>allo-boss-dac-pcm512x-audio</option>
-                                                                    <option value = "allo-boss2-dac-audio" <?php if($soundCard == $str11) { echo "selected"; 
-                                                                                                           } ?>>allo-boss2-dac-audio</option>
-                                                                    <option value = "allo-digione" <?php if($soundCard == $str5) { echo "selected"; 
-                                                                                                   } ?>>allo-digione</option>
-                                                                    <option value = "allo-katana-dac-audio" <?php if($soundCard == $str6) { echo "selected"; 
-                                                                                                            } ?>>allo-katana-dac-audio</option>
-                                                                    <option value = "allo-piano-dac-pcm512x-audio" <?php if($soundCard == $str7) { echo "selected"; 
-                                                                                                                   } ?>>allo-piano-dac-pcm512x-audio</option>
-                                                                    <option value = "allo-piano-dac-plus-pcm512x-audio" <?php if($soundCard == $str8) { echo "selected"; 
-                                                                                                                        } ?>>allo-piano-dac-plus-pcm512x-audio</option>
-                                                                    <option value = "usb-dac" <?php if($soundCard == $str9) { echo "selected"; 
-                                                                                              } ?>>usb-dac</option>
-                                                                    <option value = "none" <?php if($soundCard == $str10) { echo "selected"; 
-                                                                                           } ?>>none</option>
+                                                                    <option value = "rpi-bcm2835-3.5mm" <?php if($soundCard == $str2) { echo "selected"; } ?>>rpi-bcm2835-3.5mm</option>
+                                                                    <option value = "rpi-bcm2835-hdmi" <?php if($soundCard == $str3) { echo "selected"; } ?>>rpi-bcm2835-hdmi</option>
+                                                                    <option value = "allo-boss-dac-pcm512x-audio" <?php if($soundCard == $str4) { echo "selected"; } ?>>allo-boss-dac-pcm512x-audio</option>
+                                                                    <option value = "allo-boss2-dac-audio" <?php if($soundCard == $str11) { echo "selected"; } ?>>allo-boss2-dac-audio</option>
+                                                                    <option value = "allo-digione" <?php if($soundCard == $str5) { echo "selected"; } ?>>allo-digione</option>
+                                                                    <option value = "allo-katana-dac-audio" <?php if($soundCard == $str6) { echo "selected"; } ?>>allo-katana-dac-audio</option>
+                                                                    <option value = "allo-piano-dac-pcm512x-audio" <?php if($soundCard == $str7) { echo "selected"; } ?>>allo-piano-dac-pcm512x-audio</option>
+                                                                    <option value = "allo-piano-dac-plus-pcm512x-audio" <?php if($soundCard == $str8) { echo "selected"; } ?>>allo-piano-dac-plus-pcm512x-audio</option>
+                                                                    <option value = "usb-dac" <?php if($soundCard == $str9) { echo "selected"; } ?>>usb-dac</option>
+                                                                    <option value = "none" <?php if($soundCard == $str10) { echo "selected"; } ?>>none</option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
@@ -361,9 +272,7 @@
                                                             <div class="naoTooltip-wrap">
                                                                 <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                 <div class="naoTooltip nt-bottom nt-small">
-                                                                    <p>
-                                                                        This options allows you to select and configure the soundcard for your system:
-                                                                    </p>
+                                                                    <p>This options allows you to select and configure the soundcard for your system:</p>
                                                                     <hr>
                                                                     <?php if ($HW_MODEL == 70 ) { ?>
                                                                         <ul><li>snd-soc-allo-piano-dac = Allo Piano DAC 1</li></ul>
@@ -387,21 +296,19 @@
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <!-- // FOR Alsa Mixer --!>
-                                                    <div class="panel panel-default" <?php if($soundCard != 'allo-boss2-dac-audio' ) { ?> style="display: none;" <?php 
-                                                                                     } ?>>
+                                                    <!-- // FOR Alsa Mixer -->
+                                                    <div class="panel panel-default" <?php if($soundCard != 'allo-boss2-dac-audio' ) { ?> style="display: none;" <?php } ?>>
                                                         <div class="panel-heading" style="background-color: transparent;" role="tab" id="alsamixerctrl" >
                                                             <h4 class="panel-title" >
                                                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsealsamixerctrl" aria-expanded="true" aria-controls="collapsealsamixerctrl">
-                                                                ALSA MIXER CONTROLS
+                                                                    ALSA MIXER CONTROLS
                                                                 </a>
                                                             </h4>
                                                         </div>
                                                         <div id="collapsealsamixerctrl" class="panel-collapse collapse" role="tabpanel" aria-labelledby="alsamixerctrl">
                                                             <div class="panel-body">
-                                                                <!-- // Alsamixer controls --!>
-                                                                <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("Master", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                           } ?>>
+                                                                <!-- // Alsamixer controls -->
+                                                                <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("Master", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label>Master</label>
                                                                     </div>
@@ -412,26 +319,16 @@
                                                                         </div>
                                                                         <div class="col-md-2 col-sm-4 col-xs-12">
                                                                             <div class="naoTooltip-wrap">
-                                                                                <span>
-                                                                                    <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                    </i>
-                                                                                </span>
+                                                                                <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                                 <div class="naoTooltip nt-bottom nt-small">
-                                                                                    <ul>
-                                                                                        <li>
-                                                                                            Alsamixer -  Master Playback Volume :
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                    <p>
-                                                                                        Drag to change Master Control Volume
-                                                                                    </p>
+                                                                                    <ul><li>Alsamixer -  Master Playback Volume :</li></ul>
+                                                                                    <p>Drag to change Master Control Volume</p>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                       </div>
                                                                    </div>
-                                                                  <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("Digital", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                             } ?>>
+                                                                  <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("Digital", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label>Digital</label>
                                                                     </div>
@@ -442,25 +339,16 @@
                                                                         </div>
                                                                         <div class="col-md-2 col-sm-4 col-xs-12">
                                                                             <div class="naoTooltip-wrap">
-                                                                                <span>
-                                                                                    <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                    </i>
-                                                                                </span>
+                                                                                <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                                 <div class="naoTooltip nt-bottom nt-small">
-                                                                                    <ul>
-                                                                                        <li>
-                                                                                            Alsamixer -  Digital Playback Volume:
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                    <p>
-                                                                                        Drag to change Digital Control Volume                                                                                    </p>
+                                                                                    <ul><li>Alsamixer -  Digital Playback Volume:</li></ul>
+                                                                                    <p>Drag to change Digital Control Volume</p>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                       </div>
                                                                    </div>
-                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM De-emphasis Filter", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                              } ?>>
+                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM De-emphasis Filter", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label>PCM De-emphasis Filter :</label>
                                                                     </div>
@@ -480,24 +368,20 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-2 col-xs-12">
                                                                         <div class="naoTooltip-wrap">
-                                                                            <span>
-                                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                </i>
-                                                                            </span>
+                                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                                <p> Allows you to Enable or Disable the PCM De-emphasis Filter : </p>
+                                                                                <p>Allows you to Enable or Disable the PCM De-emphasis Filter :</p>
                                                                                 <hr>
-                                                                                <ul> <li> Enable : </li> </ul>
-                                                                                <p> This Control is allowed to Enable the PCM De-emphasis Filter. </p>
+                                                                                <ul><li>Enable :</li></ul>
+                                                                                <p>This Control is allowed to Enable the PCM De-emphasis Filter.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Disable : </li> </ul>
-                                                                                <p> This Control is allowed to Disable the PCM De-emphasis Filter. </p>
+                                                                                <ul><li>Disable :</li></ul>
+                                                                                <p>This Control is allowed to Disable the PCM De-emphasis Filter.</p>
                                                                             </div>
                                                                         </div>
                                                                       </div>
                                                                                </div>
-                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM Filter Speed", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                              } ?>>
+                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM Filter Speed", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label>PCM Filter Speed :</label>
                                                                     </div>
@@ -505,11 +389,11 @@
                                                                         <div class="switch">
                                                                             <label class="switch-light" onclick="">
                                                                                 <input type="hidden" class="token" name="_token" value="{{ csrf_token() }}">
-                                                                                <input type="hidden" id = "pcm_filter_speed_val" name = "pcm_filter_speed_val" value = "">
-                                                                                <input type="checkbox" id = "pcm_filter_speed" name = "pcm_filter_speed" value = "">
+                                                                                <input type="hidden" id="pcm_filter_speed_val" name="pcm_filter_speed_val" value="">
+                                                                                <input type="checkbox" id="pcm_filter_speed" name="pcm_filter_speed" value="">
                                                                                 <span>
-                                                                                    <span id = "pcm_filter_speed_enable" value ="Fast">Fast</span>
-                                                                                    <span id = "pcm_filter_speed_disable" value ="slow">Slow</span>
+                                                                                    <span id="pcm_filter_speed_enable" value="Fast">Fast</span>
+                                                                                    <span id="pcm_filter_speed_disable" value="slow">Slow</span>
                                                                                 </span>
                                                                                 <a class="btn btn-primary"></a>
                                                                             </label>
@@ -517,24 +401,20 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-2 col-xs-12">
                                                                         <div class="naoTooltip-wrap">
-                                                                            <span>
-                                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                </i>
-                                                                            </span>
+                                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                                <p> Allows you to set the PCM Filter Speed to Fast or Slow : </p>
+                                                                                <p>Allows you to set the PCM Filter Speed to Fast or Slow :</p>
                                                                                 <hr>
-                                                                                <ul> <li> Fast : </li> </ul>
-                                                                                <p> This Control is allowed to Fast the PCM Filter Speed. </p>
+                                                                                <ul><li>Fast :</li></ul>
+                                                                                <p>This Control is allowed to Fast the PCM Filter Speed.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Slow : </li> </ul>
-                                                                                <p> This Control is allowed to Slow the PCM Filter Speed.   </p>
+                                                                                <ul><li>Slow :</li></ul>
+                                                                                <p>This Control is allowed to Slow the PCM Filter Speed.</p>
                                                                             </div>
                                                                         </div>
                                                                       </div>
-                                                                               </div>
-                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM High-pass Filter", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                              } ?>>
+                                                                   </div>
+                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM High-pass Filter", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label> PCM High-pass Filter :</label>
                                                                     </div>
@@ -542,11 +422,11 @@
                                                                         <div class="switch">
                                                                             <label class="switch-light" onclick="">
                                                                                 <input type="hidden" class="token" name="_token" value="{{ csrf_token() }}">
-                                                                                <input type="hidden" id = "pcm_high_pass_filter_val" name = "pcm_high_pass_filter_val" value = "">
-                                                                                <input type="checkbox" id = "pcm_high_pass_filter" name = "pcm_high_pass_filter" value = "">
+                                                                                <input type="hidden" id="pcm_high_pass_filter_val" name="pcm_high_pass_filter_val" value="">
+                                                                                <input type="checkbox" id="pcm_high_pass_filter" name="pcm_high_pass_filter" value="">
                                                                                 <span>
-                                                                                    <span id = "pcm_high_pass_filter_enable" value ="">Enable</span>
-                                                                                    <span id = "pcm_high_pass_filter_disable" value ="">Disable</span>
+                                                                                    <span id="pcm_high_pass_filter_enable" value="">Enable</span>
+                                                                                    <span id="pcm_high_pass_filter_disable" value="">Disable</span>
                                                                                 </span>
                                                                                 <a class="btn btn-primary"></a>
                                                                             </label>
@@ -554,24 +434,20 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-2 col-xs-12">
                                                                         <div class="naoTooltip-wrap">
-                                                                            <span>
-                                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                </i>
-                                                                            </span>
+                                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                                <p> Allows you to Enable or Disable the PCM High-pass Filter : </p>
+                                                                                <p>Allows you to Enable or Disable the PCM High-pass Filter :</p>
                                                                                 <hr>
-                                                                                <ul> <li> Enable : </li> </ul>
-                                                                                <p> This Control is allowed to Enable the PCM High-Pass Filter.  </p>
+                                                                                <ul><li>Enable :</li></ul>
+                                                                                <p>This Control is allowed to Enable the PCM High-Pass Filter.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Disable : </li> </ul>
-                                                                                <p> This Control is allowed to Disable the PCM High-Pass Filter.  </p>
+                                                                                <ul><li>Disable :</li></ul>
+                                                                                <p>This Control is allowed to Disable the PCM High-Pass Filter.</p>
                                                                             </div>
                                                                         </div>
                                                                       </div>
-                                                                               </div>
-                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM Nonoversample Emulate", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                              } ?>>
+                                                                   </div>
+                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM Nonoversample Emulate", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label> PCM Nonoversample Emulate :</label>
                                                                     </div>
@@ -591,25 +467,20 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-2 col-xs-12">
                                                                         <div class="naoTooltip-wrap">
-                                                                            <span>
-                                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                </i>
-                                                                            </span>
+                                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                                <p> Allows you to Enable or Disable the PCM Nonoversample Emulate.  </p>
+                                                                                <p>Allows you to Enable or Disable the PCM Nonoversample Emulate.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Enable : </li> </ul>
-                                                                                <p> This Control is allowed to Enable the PCM Nonoversample Emulate.  </p>
-                                                                                </p>
+                                                                                <ul><li>Enable :</li></ul>
+                                                                                <p>This Control is allowed to Enable the PCM Nonoversample Emulate.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Disable : </li> </ul>
-                                                                                <p> This Control is allowed to Disable the PCM Nonoversample Emulate.  </p>
+                                                                                <ul><li>Disable :</li></ul>
+                                                                                <p>This Control is allowed to Disable the PCM Nonoversample Emulate.</p>
                                                                             </div>
                                                                         </div>
                                                                       </div>
-                                                                               </div>
-                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM Phase Compensation", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                              } ?>>
+                                                                   </div>
+                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("PCM Phase Compensation", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label> PCM Phase Compensation :</label>
                                                                     </div>
@@ -617,8 +488,8 @@
                                                                         <div class="switch">
                                                                             <label class="switch-light" onclick="">
                                                                                 <input type="hidden" class="token" name="_token" value="{{ csrf_token() }}">
-                                                                                <input type="hidden" id = "pcm_phase_compensation_val" name = "pcm_phase_compensation_val" value = "">
-                                                                                <input type="checkbox" id = "pcm_phase_compensation" name = "pcm_phase_compensation" value = "">
+                                                                                <input type="hidden" id="pcm_phase_compensation_val" name="pcm_phase_compensation_val" value="">
+                                                                                <input type="checkbox" id="pcm_phase_compensation" name="pcm_phase_compensation" value="">
                                                                                 <span>
                                                                                     <span id = "pcm_phase_compensation_enable" value ="">Enable</span>
                                                                                     <span id = "pcm_phase_compensation_disable" value ="">Disable</span>
@@ -629,25 +500,20 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-2 col-xs-12">
                                                                         <div class="naoTooltip-wrap">
-                                                                            <span>
-                                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                </i>
-                                                                            </span>
+                                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                                <p> Allows you to Enable or Disable the PCM Phase Compensation.  </p>
+                                                                                <p>Allows you to Enable or Disable the PCM Phase Compensation.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Enable : </li> </ul>
-                                                                                <p> This Control is allowed to Enable the PCM Phase Compensation.  </p>
-                                                                                </p>
+                                                                                <ul><li>Enable :</li></ul>
+                                                                                <p>This Control is allowed to Enable the PCM Phase Compensation.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Disable : </li> </ul>
-                                                                                <p> This Control is allowed to Disable the PCM Phase Compensation.  </p>
+                                                                                <ul><li>Disable :</li></ul>
+                                                                                <p>This Control is allowed to Disable the PCM Phase Compensation.</p>
                                                                             </div>
                                                                         </div>
                                                                       </div>
-                                                                               </div>
-                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("HV_Enable", $amixerCtrlList))) { ?> style="display: none;" <?php 
-                                                                                                                                              } ?>>
+                                                                   </div>
+                                                                   <div class="col-md-12 col-sm-12 col-xs-12 edit-input-row padding-all-zero" <?php if(!(in_array("HV_Enable", $amixerCtrlList))) { ?> style="display: none;" <?php } ?>>
                                                                     <div class="col-md-4 col-sm-6 col-xs-12 left-label">
                                                                         <label> HV_Enable :</label>
                                                                     </div>
@@ -655,11 +521,11 @@
                                                                         <div class="switch">
                                                                             <label class="switch-light" onclick="">
                                                                                 <input type="hidden" class="token" name="_token" value="{{ csrf_token() }}">
-                                                                                <input type="hidden" id = "hv_enable_val" name = "hv_enable_val" value = "">
-                                                                                <input type="checkbox" id = "hv_enable" name = "hv_enable" value = "">
+                                                                                <input type="hidden" id="hv_enable_val" name="hv_enable_val" value="">
+                                                                                <input type="checkbox" id="hv_enable" name="hv_enable" value="">
                                                                                 <span>
-                                                                                    <span id = "hv_enable_enable" value ="">Enable</span>
-                                                                                    <span id = "hv_enable_disable" value ="">Disable</span>
+                                                                                    <span id="hv_enable_enable" value="">Enable</span>
+                                                                                    <span id="hv_enable_disable" value="">Disable</span>
                                                                                 </span>
                                                                                 <a class="btn btn-primary"></a>
                                                                             </label>
@@ -667,37 +533,33 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-2 col-xs-12">
                                                                         <div class="naoTooltip-wrap">
-                                                                            <span>
-                                                                                <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                                </i>
-                                                                            </span>
+                                                                            <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                             <div class="naoTooltip nt-bottom nt-small">
-                                                                                <p> Allows you to Enable or Disable the HV_Enable.  </p>
+                                                                                <p>Allows you to Enable or Disable the HV_Enable.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Enable : </li> </ul>
-                                                                                <p> This Control is allowed to Enable the HV_Enable.  </p>
-                                                                                </p>
+                                                                                <ul><li>Enable :</li></ul>
+                                                                                <p>This Control is allowed to Enable the HV_Enable.</p>
                                                                                 <hr>
-                                                                                <ul> <li> Disable : </li> </ul>
-                                                                                <p> This Control is allowed to Disable the HV_Enable.  </p>
+                                                                                <ul><li>Disable :</li></ul>
+                                                                                <p>This Control is allowed to Disable the HV_Enable.</p>
                                                                             </div>
                                                                         </div>
                                                                       </div>
-                                                                               </div>
-                                                            <!-- // Alsamixer controls --!>
-                                                                <!-- // Save Alsamixer options --!>
-            <div class = "display">
-                <div class="col-md-12 col-sm-12 col-xs-12 left-label">
-                    <div class="panel-body">
-                        <label>Please click on save changes button to implement the Alsa Mixer control changes done</label>
-                    </div>
-                </div>
-            </div>
-                                                                <!-- // Save Alsamixer options --!>
+                                                                  </div>
+                                                                  <!-- // Alsamixer controls -->
+                                                                  <!-- // Save Alsamixer options -->
+                                                                  <div class = "display">
+                                                                      <div class="col-md-12 col-sm-12 col-xs-12 left-label">
+                                                                          <div class="panel-body">
+                                                                              <label>Please click on save changes button to implement the Alsa Mixer control changes done</label>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                                  <!-- // Save Alsamixer options -->
                                                             </div>
                                                         </div>
                                                     </div>
-<!-- // Alsa Mixer end --!>
+                                                 <!-- // Alsa Mixer end -->
                                             </div>
                                         </div>
                                     </div>
@@ -728,60 +590,28 @@
                                                             <select class="form-control" name = "cpuGovernor" id = "cpu">
                                                                 <!-- <option value = "">Select</option> -->
                                                                 <option value = "ondemand" @if($cpuGovernor =='ondemand'){{"selected"}} @endif>ondemand</option>
-                                                                <option value = "conservative" <?php if($cpuGovernor == $str2) { echo "selected"; 
-                                                                                               } ?>>conservative</option>
-                                                                <option value = "performance" <?php if($cpuGovernor == $str3) { echo "selected"; 
-                                                                                              } ?>>performance</option>
-                                                                <option value = "powersave" <?php if($cpuGovernor == $str4) { echo "selected"; 
-                                                                                            } ?>>powersave</option>
+                                                                <option value = "conservative" <?php if($cpuGovernor == $str2) { echo "selected"; } ?>>conservative</option>
+                                                                <option value = "performance" <?php if($cpuGovernor == $str3) { echo "selected"; } ?>>performance</option>
+                                                                <option value = "powersave" <?php if($cpuGovernor == $str4) { echo "selected"; } ?>>powersave</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-2 col-sm-4 col-xs-12">
                                                             <div class="naoTooltip-wrap">
-                                                                <span>
-                                                                    <i class="fa fa-question-circle" style="font-size:24px;color:white">
-                                                                    </i>
-                                                                </span>
+                                                                <span><i class="fa fa-question-circle" style="font-size:24px;color:white"></i></span>
                                                                 <div class="naoTooltip nt-bottom nt-small">
-                                                                    <p>
-                                                                        Changing the CPU governor will allow you to control system response, performance, heat and power consumption.
-                                                                    </p>
+                                                                    <p>Changing the CPU governor will allow you to control system response, performance, heat and power consumption.</p>
                                                                     <hr>
-                                                                    <ul>
-                                                                        <li>
-                                                                            Ondemand (Recommended)
-                                                                        </li>
-                                                                    </ul>
-                                                                    <p>
-                                                                        Dynamic CPU frequency based on usage. CPU frequency is increased when system is under load, decreased when system is idle.
-                                                                    </p>
+                                                                    <ul><li>Ondemand (Recommended)</li></ul>
+                                                                    <p>Dynamic CPU frequency based on usage. CPU frequency is increased when system is under load, decreased when system is idle.</p>
                                                                     <hr>
-                                                                    <ul>
-                                                                        <li>
-                                                                            Conservative
-                                                                        </li>
-                                                                    </ul>
-                                                                    <p>
-                                                                        Same as ondemand, with a bias towards powersaving, slower up scaling of CPU frequencies when under load.
-                                                                    </p>
+                                                                    <ul><li>Conservative</li></ul>
+                                                                    <p>Same as ondemand, with a bias towards powersaving, slower up scaling of CPU frequencies when under load.</p>
                                                                     <hr>
-                                                                    <ul>
-                                                                        <li>
-                                                                            Powersave
-                                                                        </li>
-                                                                    </ul>
-                                                                    <p>
-                                                                        Disables CPU frequency scaling. Limits the CPU to run at the minimum speed, offering reduced power consumption, heat and performance.
-                                                                    </p>
+                                                                    <ul><li>Powersave</li></ul>
+                                                                    <p>Disables CPU frequency scaling. Limits the CPU to run at the minimum speed, offering reduced power consumption, heat and performance.</p>
                                                                     <hr>
-                                                                    <ul>
-                                                                        <li>
-                                                                            Performance
-                                                                        </li>
-                                                                    </ul>
-                                                                    <p>
-                                                                        Disables CPU frequency scaling. Forces the CPU to run at the maximum speed, offering increased power consumption, heat and performance.
-                                                                    </p>
+                                                                    <ul><li>Performance</li></ul>
+                                                                    <p>Disables CPU frequency scaling. Forces the CPU to run at the maximum speed, offering increased power consumption, heat and performance.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -993,7 +823,7 @@
         if(pcm_de_emphasis_filter == 'off') {
             $('#pcm_de_emphasis').prop('checked',true);
             $('#pcm_de_emphasis_val').val('off');
-        }else{
+        } else {
             $('#pcm_de_emphasis').prop('checked',false);
             $('#pcm_de_emphasis_val').val('on');
         }
@@ -1002,7 +832,7 @@
         if(pcm_filter_speed == "'Slow'") {
             $('#pcm_filter_speed').prop('checked',true);
             $('#pcm_filter_speed_val').val('Slow');
-        }else{
+        } else {
             $('#pcm_filter_speed').prop('checked',false);
             $('#pcm_filter_speed_val').val('Fast');
         }
@@ -1011,7 +841,7 @@
         if(pcm_high_pass_filter == 'off') {
             $('#pcm_high_pass_filter').prop('checked',true);
             $('#pcm_high_pass_filter_val').val('off');
-        }else{
+        } else {
             $('#pcm_high_pass_filter').prop('checked',false);
             $('#pcm_high_pass_filter_val').val('on');
         }
@@ -1020,7 +850,7 @@
         if(pcm_nonoversample == 'off') {
             $('#pcm_nonoversample').prop('checked',true);
             $('#pcm_nonoversample_val').val('off');
-        }else{
+        } else {
             $('#pcm_nonoversample').prop('checked',false);
             $('#pcm_nonoversample_val').val('on');
         }
@@ -1029,7 +859,7 @@
         if(pcm_phase_compensation == 'off') {
             $('#pcm_phase_compensation').prop('checked',true);
             $('#pcm_phase_compensation_val').val('off');
-        }else{
+        } else {
             $('#pcm_phase_compensation').prop('checked',false);
             $('#pcm_phase_compensation_val').val('on');
         }
@@ -1038,7 +868,7 @@
         if(hv_enable == 'off') {
             $('#hv_enable').prop('checked',true);
             $('#hv_enable_val').val('off');
-        }else{
+        } else {
             $('#hv_enable').prop('checked',false);
             $('#hv_enable_val').val('on');
         }
@@ -1049,8 +879,8 @@
             limit: false,
               //   onChange:function() {
               //       $('#overlay').show();
-                // var token= $('#token').val();
-                // var val = $('.asRange-tip').text();
+              // var token= $('#token').val();
+              // var val = $('.asRange-tip').text();
               //          $.ajax({
               //              method:'Post',
               //              data:{_token:token,val:val},
@@ -1152,7 +982,6 @@
                 $("#hv_enable_val").val('on');
             }
         });
-
 
         function getVal(val){
             window.location.href="?selected="+val
@@ -1324,7 +1153,7 @@
                     //}
                 }
             });
-           });
+        });
 
         $("#reboot").click(function(event){
             //event.preventDefault();
@@ -1344,7 +1173,7 @@
                     $('#alertReboot').css('display','block');
                 }
             });
-           });
+        });
 
         $("#power").click(function(event){
             //event.preventDefault();
@@ -1362,8 +1191,7 @@
                     }
                 }
             });
+        });
     });
-    });
-
 </script>
 @endsection

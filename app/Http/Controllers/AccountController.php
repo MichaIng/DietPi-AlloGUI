@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Redirect;
 use App\Models\User;
 use Auth;
-use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
