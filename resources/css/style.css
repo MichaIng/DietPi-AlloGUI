@@ -62,10 +62,22 @@ a:hover{ outline: none;}
 /* dashbaord page css*/
 .date, .time{ display: inline-block; margin-left:30px;}
 .dashbaord{ padding:0; margin-top: 50px; }
-.panel-default {margin-bottom: 15px !important; font-family: arial}
-.panel-default>.panel-heading a:after {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; float: right; transition: transform .25s linear; }
-.panel-default>.panel-heading a[aria-expanded="true"]:after { margin-top: -15px; font-size: 22px; font-family: FontAwesome; content: "\f106"; }
-.panel-default>.panel-heading a[aria-expanded="false"]:after { margin-top: -15px; font-size: 22px; font-family: FontAwesome; content: "\f106"; transform: rotate(180deg); }
+.panel-default { margin-bottom: 15px !important; font-family: arial }
+.panel-default>.panel-heading a:after {
+    font-family: FontAwesome;
+    content: "\f106";
+    font-size: 22px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    float: right;
+    transition: transform .25s linear;
+ }
+.col-md-3 .panel-default>.panel-heading a:after {
+    margin-top: -15px;
+ }
+.panel-default>.panel-heading a[aria-expanded="false"]:after {
+    transform: rotate(180deg);
+ }
 .panel-group .panel + .panel{ margin-top: 0 }
 .panel {background-color: rgba(255, 255, 255, 0.2); border-color: transparent;}
 .panel-default > .panel-heading {background-color: rgba(255, 255, 255, 0.6);}
@@ -408,10 +420,6 @@ a.input_link:focus{
 }
 
 /********* 31 Aug **********/
-
-*, *:before, *:after {
-    box-sizing: border-box;
-}
 
 .range-slider {
     margin: 60px 0 0 0%;

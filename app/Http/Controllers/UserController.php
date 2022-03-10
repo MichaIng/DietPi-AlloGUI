@@ -7,7 +7,6 @@ use App\Models\User;
 use Auth;
 use DB;
 use Cookie;
-use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

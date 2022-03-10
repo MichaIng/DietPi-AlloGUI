@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>@yield('title')</title>
-	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset(env("LOC_PUBLIC",'').'/css/font-awesome.min.css') }}">
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery.min.js') }}"></script>
@@ -10,15 +10,15 @@
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/jquery.validate.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset(env("LOC_PUBLIC",'').'/js/naoTooltips.js') }}"></script>
-	<!-- <script>
+	<script>
         document.addEventListener("DOMContentLoaded", function(){
             var height = window.innerHeight;
-            var hheight = document.querySelector(".navbar").clientHeight;
+            var hheight = document.querySelector(".header-outr").clientHeight;
             var fheight = document.querySelector(".footer-outr").clientHeight;
             var conheight = height - hheight - fheight;
             document.querySelector(".outr-cont").style.minHeight = conheight + 'px';
         });
-        </script>-->
+        </script>
  	<style type="text/css">
 	  	#overlay{
 	  		position: fixed;
