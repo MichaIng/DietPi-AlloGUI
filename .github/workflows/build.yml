@@ -30,6 +30,8 @@ jobs:
     - name: Commit if diff
       run: |
         [ "$(git diff)" ] || exit 0
+        git config --local user.email "$(git log --format='%ae' HEAD^!)"
+        git config --local user.name "$(git log --format='%an' HEAD^!)"
         git add .
         git commit --amend --no-edit
         git push -f origin HEAD
