@@ -1,0 +1,35 @@
+name: Build
+on: [pull_request, push]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.owner.login != github.event.pull_request.base.repo.owner.login
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Validate composer.json and composer.lock
+      run: composer v --strict
+
+    - name: Clean PHP dependencies
+      run: rm -R vendor
+
+    - name: Install PHP dependencies
+      run: composer i -n --no-progress
+
+    - name: Install Node dependencies
+      run: npm i -D
+
+    - name: Run Laravel Mix
+      run: npx mix --production
+
+    - name: Commit if diff
+      run: |
+        [ "$(git diff)" ] || exit 0
+        git add .
+        git commit --amend --no-edit
+        git push -f origin HEAD
