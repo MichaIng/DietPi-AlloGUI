@@ -12,15 +12,15 @@
     <div class="col-md-12 col-sm-12 col-xs-12 dashbaord">
         <div class="">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="col-md-12 col-sm-6 col-xs-12 padding-all-zero two-boxes">
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="col-md-12 col-sm-12 col-xs-12 padding-all-zero two-boxes">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingTwo">
                             <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                             <span <?php echo ($mpd_status=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                             MPD + O!MPD :
-                            <p style="text-align:center;"><img src="img/mpg-logo.png"/></p>
+                            <p style="text-align:center"><img src="img/mpg-logo.png"/></p>
                             </a>
                           </h4>
                           </div>
@@ -36,14 +36,14 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title">
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                 <span <?php echo ($roon_status=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                                 Roon Bridge :
-                                <p style="text-align:center;"><img src="img/roon-logo.png"/></p>
+                                <p style="text-align:center"><img src="img/roon-logo.png"/></p>
                                 </a>
                               </h4>
                               </div>
@@ -59,14 +59,14 @@
                               </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingFour">
                             <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                             <span <?php echo ($daemon_status=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                             NAA Daemon :
-                            <p style="text-align:center;"><img src="img/naa-logo.png"/></p>
+                            <p style="text-align:center"><img src="img/naa-logo.png"/></p>
                             </a>
                           </h4>
                           </div>
@@ -82,7 +82,7 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                             <?php
                                 $WiFiHotSpot_Installed = file_exists("/etc/hostapd/hostapd.conf");
@@ -97,7 +97,7 @@
                                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                                 <span <?php echo ($wifiStatus=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                                 WiFi Hotspot :
-                                <p style="text-align:center;"><img src="img/wifispot.png"/></p>
+                                <p style="text-align:center"><img src="img/wifispot.png"/></p>
                                 </a>
                               </h4>
                               </div>
@@ -109,22 +109,20 @@
                                       <li><label>KEY :</label><span><?php echo $currentPasskey ; ?></span></li>
                                   </ul>
                                 </div>
-                                <div class="edit-option" <?php if (! $WiFiHotSpot_Installed) { echo 'style="display:none;"'; } ?>>
-                                    <a href="{{url('/user/wifi_settings')}}">View</a>
+                                <div class="edit-option">
+                                    <a href="{{url('/user/wifi_settings')}}"<?php if (! $WiFiHotSpot_Installed) { echo ' style="position: relative; z-index: -1"'; } ?>>View</a>
                                 </div>
                               </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12 col-sm-6 col-xs-12 padding-all-zero two-boxes">
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingSix">
                             <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseFour">
                             <span <?php echo ($shairPortStatus=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                             Shairport-Sync :
-                            <p style="text-align:center;"><img src="img/airplay-logo.png"/></p>
+                            <p style="text-align:center"><img src="img/airplay-logo.png"/></p>
                             </a>
                           </h4>
                           </div>
@@ -140,14 +138,14 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingEight">
                             <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
                             <span <?php echo ($gmrenderStatus=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                             Gmrender :
-                            <p style="text-align:center;"><img src="img/gmrender.png"/></p>
+                            <p style="text-align:center"><img src="img/gmrender.png"/></p>
                             </a>
                           </h4>
                           </div>
@@ -163,14 +161,14 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingNine">
                             <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
                             <span <?php echo ($netdataStatus=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                             NetData :
-                            <p style="text-align:center;"><img src="img/Netdata_Logo.png"/></p>
+                            <p style="text-align:center"><img src="img/Netdata_Logo.png"/></p>
                             </a>
                           </h4>
                           </div>
@@ -186,14 +184,14 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
                         <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="headingTen">
                             <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
                             <span <?php echo ($squeezeliteStatus=='active')?'class="green-text"':'class="red-text"'?>><?php echo '● '; ?></span>
                             Squeezelite :
-                            <p style="text-align:center;"><img src="img/logitech-logo.png"/></p>
+                            <p style="text-align:center"><img src="img/logitech-logo.png"/></p>
                             </a>
                           </h4>
                           </div>
