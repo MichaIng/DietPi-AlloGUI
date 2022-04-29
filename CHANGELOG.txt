@@ -1,3 +1,8 @@
+v14.2 (2022-04-29)
+- Minor frontend/GUI layout enhancements
+- Updated all Node.js and PHP dependencies
+- Removed unused Lodash from frontend JavaScript
+
 v14.1 (2022-03-07)
 - [Fix] Restored PHP7.3 compatibility
 - [Enh] Updated Laravel project files to align with Laravel framework
