@@ -11,15 +11,17 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_PAT }}
 
     - name: Validate composer.json and composer.lock
       run: composer v --strict
 
-    - name: Clean PHP dependencies
-      run: rm -R vendor
-
     - name: Install PHP dependencies
-      run: composer i -n --no-progress
+      run: |
+        composer i -n --no-progress --dry-run 2>&1 | grep -q '^Nothing to install, update or remove$' && exit 0
+        rm -R vendor
+        composer i -n --no-progress
 
     - name: Install Node dependencies
       run: npm i -D
@@ -28,10 +30,11 @@ jobs:
       run: npx mix --production
 
     - name: Commit if diff
+      if: github.actor != 'github-actions'
       run: |
-        [ "$(git diff)" ] || exit 0
-        git config --local user.email "$(git log --format='%ae' HEAD^!)"
-        git config --local user.name "$(git log --format='%an' HEAD^!)"
-        git add .
+        git diff --exit-code && exit 0
+        git config user.name 'github-actions[bot]'
+        git config user.email 'github-actions[bot]@users.noreply.github.com'
+        git add -A
         git commit -m 'Rebuilt PHP dependencies and Laravel Mix'
-        git push origin HEAD
+        git push
