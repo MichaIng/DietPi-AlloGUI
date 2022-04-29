@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.10',
-        'version' => 'dev-dependabot/composer/laravel/framework-8.83.10',
+        'pretty_version' => 'dev-dependabot/composer/laravel/tinker-2.7.2',
+        'version' => 'dev-dependabot/composer/laravel/tinker-2.7.2',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'fa2329334e797119913c5e619d6d27e49d49ecfd',
+        'reference' => '5d5e6191fbf89b3ad96cbf837207127605f633c3',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -278,12 +278,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.10',
-            'version' => 'dev-dependabot/composer/laravel/framework-8.83.10',
+            'pretty_version' => 'dev-dependabot/composer/laravel/tinker-2.7.2',
+            'version' => 'dev-dependabot/composer/laravel/tinker-2.7.2',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'fa2329334e797119913c5e619d6d27e49d49ecfd',
+            'reference' => '5d5e6191fbf89b3ad96cbf837207127605f633c3',
             'dev_requirement' => false,
         ),
         'laravel/sanctum' => array(
@@ -305,12 +305,12 @@
             'dev_requirement' => false,
         ),
         'laravel/tinker' => array(
-            'pretty_version' => 'v2.7.1',
-            'version' => '2.7.1.0',
+            'pretty_version' => 'v2.7.2',
+            'version' => '2.7.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/tinker',
             'aliases' => array(),
-            'reference' => '1e2d500585a4e546346fadd3adc6f9c1a97e15f4',
+            'reference' => 'dff39b661e827dae6e092412f976658df82dbac5',
             'dev_requirement' => false,
         ),
         'laravel/ui' => array(
