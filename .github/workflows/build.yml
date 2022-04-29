@@ -33,5 +33,5 @@ jobs:
         git config --local user.email "$(git log --format='%ae' HEAD^!)"
         git config --local user.name "$(git log --format='%an' HEAD^!)"
         git add .
-        git commit --amend --no-edit
-        git push -f origin HEAD
+        git commit -m 'Rebuilt PHP dependencies and Laravel Mix'
+        git push origin HEAD
