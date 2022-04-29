@@ -1,12 +1,13 @@
 name: Build
-on: [pull_request, push]
+on:
+  push:
+    branches-ignore: main
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.owner.login != github.event.pull_request.base.repo.owner.login
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -30,8 +31,9 @@ jobs:
       run: npx mix --production
 
     - name: Commit if diff
-      if: github.actor != 'github-actions'
+      if: github.actor != 'github-actions[bot]'
       run: |
+        echo 'github.actor="${{ github.actor }}"'
         git diff --exit-code && exit 0
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
