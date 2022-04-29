@@ -1347,6 +1347,7 @@ return array(
     'Illuminate\\View\\ViewName' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewName.php',
     'Illuminate\\View\\ViewServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+    'Laravel\\Sanctum\\Console\\Commands\\PruneExpired' => $vendorDir . '/laravel/sanctum/src/Console/Commands/PruneExpired.php',
     'Laravel\\Sanctum\\Contracts\\HasAbilities' => $vendorDir . '/laravel/sanctum/src/Contracts/HasAbilities.php',
     'Laravel\\Sanctum\\Contracts\\HasApiTokens' => $vendorDir . '/laravel/sanctum/src/Contracts/HasApiTokens.php',
     'Laravel\\Sanctum\\Events\\TokenAuthenticated' => $vendorDir . '/laravel/sanctum/src/Events/TokenAuthenticated.php',

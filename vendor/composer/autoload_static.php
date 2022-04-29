@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita4fe579efec2cfd4779af719dbdf58b1
+class ComposerStaticInit60002d5e242acc1a717a2a247a0c2df1
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1751,6 +1751,7 @@ class ComposerStaticInita4fe579efec2cfd4779af719dbdf58b1
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Laravel\\Sanctum\\Console\\Commands\\PruneExpired' => __DIR__ . '/..' . '/laravel/sanctum/src/Console/Commands/PruneExpired.php',
         'Laravel\\Sanctum\\Contracts\\HasAbilities' => __DIR__ . '/..' . '/laravel/sanctum/src/Contracts/HasAbilities.php',
         'Laravel\\Sanctum\\Contracts\\HasApiTokens' => __DIR__ . '/..' . '/laravel/sanctum/src/Contracts/HasApiTokens.php',
         'Laravel\\Sanctum\\Events\\TokenAuthenticated' => __DIR__ . '/..' . '/laravel/sanctum/src/Events/TokenAuthenticated.php',
@@ -3543,9 +3544,9 @@ class ComposerStaticInita4fe579efec2cfd4779af719dbdf58b1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita4fe579efec2cfd4779af719dbdf58b1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita4fe579efec2cfd4779af719dbdf58b1::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita4fe579efec2cfd4779af719dbdf58b1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit60002d5e242acc1a717a2a247a0c2df1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit60002d5e242acc1a717a2a247a0c2df1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit60002d5e242acc1a717a2a247a0c2df1::$classMap;
 
         }, null, ClassLoader::class);
     }
