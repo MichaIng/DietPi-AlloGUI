@@ -19,7 +19,7 @@ jobs:
 
     - name: Install PHP dependencies
       run: |
-        composer i -n --no-progress --dry-run | grep -q '^Nothing to install, update or remove$' && exit 0
+        composer i -n --no-progress --dry-run 2>&1 | grep -q '^Nothing to install, update or remove$' && exit 0
         rm -R vendor
         composer i -n --no-progress
 
