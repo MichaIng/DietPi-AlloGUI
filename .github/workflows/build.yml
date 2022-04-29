@@ -13,15 +13,17 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_PAT }}
 
     - name: Validate composer.json and composer.lock
       run: composer v --strict
 
-    - name: Clean PHP dependencies
-      run: rm -R vendor
-
     - name: Install PHP dependencies
-      run: composer i -n --no-progress
+      run: |
+        composer i -n --no-progress --dry-run | grep -q '^Nothing to install, update or remove$' && exit 0
+        rm -R vendor
+        composer i -n --no-progress
 
     - name: Install Node dependencies
       run: npm i -D
