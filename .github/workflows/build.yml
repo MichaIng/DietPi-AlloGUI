@@ -3,8 +3,6 @@ on: [pull_request, push]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-permissions:
-  contents: write
 
 jobs:
   build:
@@ -32,7 +30,7 @@ jobs:
       run: npx mix --production
 
     - name: Commit if diff
-      if: github.actor != 'github-actions[bot]'
+      if: github.actor != 'github-actions'
       run: |
         git diff --exit-code && exit 0
         git config user.name 'github-actions[bot]'
