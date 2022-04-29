@@ -13,23 +13,23 @@
         @endif
         <div class="alert alert-success" id = "alertSuccess" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <strong>Success!</strong> DietPi version successfully updated. A system reboot is required to finish the update, please reboot the system.</strong>
+            <strong>Success!</strong> DietPi version successfully updated. A system reboot is required to finish the update, please reboot the system.
         </div>
         <div class="alert alert-success" id = "alertSound" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <strong>Success!</strong> Soundcard successfully updated.</strong>
+            <strong>Success!</strong> Soundcard successfully updated.
         </div>
         <div class="alert alert-success" id = "alertFile" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <strong>Success!</strong> Swapfile size successfully updated.</strong>
+            <strong>Success!</strong> Swapfile size successfully updated.
         </div>
         <div class="alert alert-success" id = "alertReboot" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <strong>Success!</strong> System is now rebooting.</strong>
+            <strong>Success!</strong> System is now rebooting.
         </div>
         <div class="alert alert-success" id = "alertPower" style = "display:none">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-            <strong>Success!</strong> System has been successfully shut down.</strong>
+            <strong>Success!</strong> System has been successfully shut down.
         </div>
         <div class="cont systemsettnnssss">
             <div class="col-md-12 col-sm-12 col-xs-12 page-main-heading">
