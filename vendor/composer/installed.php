@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-dependabot/composer/laravel/sanctum-2.15.1',
-        'version' => 'dev-dependabot/composer/laravel/sanctum-2.15.1',
+        'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.11',
+        'version' => 'dev-dependabot/composer/laravel/framework-8.83.11',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '74cbcebb92c3c2176190c3bcf7bb8f39caf7612a',
+        'reference' => '2f8388ad70f7c9839cc66cc8ad2e5f242b333b3a',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -85,205 +85,205 @@
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/broadcasting' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/bus' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/collections' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/config' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/container' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/contracts' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/cookie' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/encryption' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/events' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/hashing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/macroable' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/mail' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/notifications' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/pagination' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/pipeline' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/queue' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/redis' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/routing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/session' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/support' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/testing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/translation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'illuminate/view' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.10',
+                0 => 'v8.83.11',
             ),
         ),
         'laravel/framework' => array(
-            'pretty_version' => 'v8.83.10',
-            'version' => '8.83.10.0',
+            'pretty_version' => 'v8.83.11',
+            'version' => '8.83.11.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/framework',
             'aliases' => array(),
-            'reference' => '148ae59b7da6c3db6736374d357c5aaef9506fb7',
+            'reference' => 'd85c34179f209977043502441f9e44ca432a14b4',
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/laravel/sanctum-2.15.1',
-            'version' => 'dev-dependabot/composer/laravel/sanctum-2.15.1',
+            'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.11',
+            'version' => 'dev-dependabot/composer/laravel/framework-8.83.11',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '74cbcebb92c3c2176190c3bcf7bb8f39caf7612a',
+            'reference' => '2f8388ad70f7c9839cc66cc8ad2e5f242b333b3a',
             'dev_requirement' => false,
         ),
         'laravel/sanctum' => array(
@@ -365,12 +365,12 @@
             ),
         ),
         'nesbot/carbon' => array(
-            'pretty_version' => '2.57.0',
-            'version' => '2.57.0.0',
+            'pretty_version' => '2.58.0',
+            'version' => '2.58.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(),
-            'reference' => '4a54375c21eea4811dbd1149fe6b246517554e78',
+            'reference' => '97a34af22bde8d0ac20ab34b29d7bfe360902055',
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
