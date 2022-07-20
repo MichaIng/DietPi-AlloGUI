@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.19',
-        'version' => 'dev-dependabot/composer/laravel/framework-8.83.19',
-        'reference' => '8978617b94ff2e80ecc2cb7a55f522c6511dd37d',
+        'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.20',
+        'version' => 'dev-dependabot/composer/laravel/framework-8.83.20',
+        'reference' => '9cce97cfc3bbcc1ff9598b166cfe491cdb218b87',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -85,202 +85,202 @@
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/broadcasting' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/bus' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/collections' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/config' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/container' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/contracts' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/cookie' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/encryption' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/events' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/hashing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/macroable' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/mail' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/notifications' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/pagination' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/pipeline' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/queue' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/redis' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/routing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/session' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/support' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/testing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/translation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'illuminate/view' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.19',
+                0 => 'v8.83.20',
             ),
         ),
         'laravel/framework' => array(
-            'pretty_version' => 'v8.83.19',
-            'version' => '8.83.19.0',
-            'reference' => '4264f2ee12330bdb1be050998f58ba7271236395',
+            'pretty_version' => 'v8.83.20',
+            'version' => '8.83.20.0',
+            'reference' => 'aa5908e83fccb18b135ca31aa0342cf4bd6909a8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/framework',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.19',
-            'version' => 'dev-dependabot/composer/laravel/framework-8.83.19',
-            'reference' => '8978617b94ff2e80ecc2cb7a55f522c6511dd37d',
+            'pretty_version' => 'dev-dependabot/composer/laravel/framework-8.83.20',
+            'version' => 'dev-dependabot/composer/laravel/framework-8.83.20',
+            'reference' => '9cce97cfc3bbcc1ff9598b166cfe491cdb218b87',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
