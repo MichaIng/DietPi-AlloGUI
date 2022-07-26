@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaf4ff21bec9268815a5a1404b47f7dec
+class ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -2075,6 +2075,7 @@ class ComposerStaticInitaf4ff21bec9268815a5a1404b47f7dec
         'Monolog\\Formatter\\FluentdFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/FluentdFormatter.php',
         'Monolog\\Formatter\\FormatterInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/FormatterInterface.php',
         'Monolog\\Formatter\\GelfMessageFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/GelfMessageFormatter.php',
+        'Monolog\\Formatter\\GoogleCloudLoggingFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/GoogleCloudLoggingFormatter.php',
         'Monolog\\Formatter\\HtmlFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/HtmlFormatter.php',
         'Monolog\\Formatter\\JsonFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/JsonFormatter.php',
         'Monolog\\Formatter\\LineFormatter' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Formatter/LineFormatter.php',
@@ -3546,9 +3547,9 @@ class ComposerStaticInitaf4ff21bec9268815a5a1404b47f7dec
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaf4ff21bec9268815a5a1404b47f7dec::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaf4ff21bec9268815a5a1404b47f7dec::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitaf4ff21bec9268815a5a1404b47f7dec::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27::$classMap;
 
         }, null, ClassLoader::class);
     }
