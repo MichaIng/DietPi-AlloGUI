@@ -1234,6 +1234,7 @@ return array(
     'Illuminate\\Support\\Testing\\Fakes\\PendingChainFake' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/PendingChainFake.php',
     'Illuminate\\Support\\Testing\\Fakes\\PendingMailFake' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/PendingMailFake.php',
     'Illuminate\\Support\\Testing\\Fakes\\QueueFake' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/QueueFake.php',
+    'Illuminate\\Support\\Timebox' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Timebox.php',
     'Illuminate\\Support\\Traits\\CapsuleManagerTrait' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Traits/CapsuleManagerTrait.php',
     'Illuminate\\Support\\Traits\\Conditionable' => $vendorDir . '/laravel/framework/src/Illuminate/Support/Traits/Conditionable.php',
     'Illuminate\\Support\\Traits\\EnumeratesValues' => $vendorDir . '/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php',
