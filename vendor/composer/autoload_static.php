@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27
+class ComposerStaticInit370b30a52f8bfa0f2ed207ca1e64c88e
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -1638,6 +1638,7 @@ class ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27
         'Illuminate\\Support\\Testing\\Fakes\\PendingChainFake' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/PendingChainFake.php',
         'Illuminate\\Support\\Testing\\Fakes\\PendingMailFake' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/PendingMailFake.php',
         'Illuminate\\Support\\Testing\\Fakes\\QueueFake' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/QueueFake.php',
+        'Illuminate\\Support\\Timebox' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Timebox.php',
         'Illuminate\\Support\\Traits\\CapsuleManagerTrait' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/CapsuleManagerTrait.php',
         'Illuminate\\Support\\Traits\\Conditionable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Traits/Conditionable.php',
         'Illuminate\\Support\\Traits\\EnumeratesValues' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php',
@@ -3547,9 +3548,9 @@ class ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit841dfc39cfcee5c53c9cfecdac33ac27::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit370b30a52f8bfa0f2ed207ca1e64c88e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit370b30a52f8bfa0f2ed207ca1e64c88e::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit370b30a52f8bfa0f2ed207ca1e64c88e::$classMap;
 
         }, null, ClassLoader::class);
     }
