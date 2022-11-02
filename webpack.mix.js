@@ -11,7 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.webpackConfig({ resolve: { fallback: { "http": require.resolve("stream-http") } } });
+mix.webpackConfig({ resolve: { fallback: {
+   "http": require.resolve("stream-http"),
+   "https": require.resolve("https-browserify"),
+   "stream": require.resolve("stream-browserify"),
+   "zlib": require.resolve("browserify-zlib")
+} } });
 mix.setResourceRoot('/allo');
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
