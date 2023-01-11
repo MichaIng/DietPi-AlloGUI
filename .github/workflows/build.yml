@@ -10,15 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
       with:
         token: ${{ secrets.GH_PAT }}
 
-    - name: Validate composer.json and composer.lock
-      run: composer v --strict
+    - run: composer v --strict
 
-    - name: Install PHP dependencies
+    - name: Update PHP dependencies
       run: |
         composer i -n --no-progress --dry-run 2>&1 | grep -q '^Nothing to install, update or remove$' && exit 0
         rm -R vendor
@@ -31,9 +29,7 @@ jobs:
       run: npx mix --production
 
     - name: Commit if diff
-      if: github.actor != 'github-actions[bot]'
       run: |
-        echo 'github.actor="${{ github.actor }}"'
         git diff --exit-code && exit 0
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
