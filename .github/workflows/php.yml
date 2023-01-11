@@ -11,8 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Validate composer.json and composer.lock
-      run: composer v --strict
+    - run: composer v --strict
 
     - name: Cache Composer packages
       id: composer-cache
@@ -23,7 +22,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
+    - name: Update PHP dependencies
       run: composer i -n --no-progress
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
