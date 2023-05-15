@@ -52,7 +52,7 @@ class UserController extends Controller
         // if disabled, status = yes ; if enabled, status = no
         if ($mpd_status === 'yes') {
 
-            exec("TERM=linux; sudo systemctl disable --now mpd; sudo systemctl mask mpd");
+            exec("TERM=linux sudo systemctl disable --now mpd");
 
         } elseif ($mpd_status === 'no') {
 
@@ -77,7 +77,7 @@ class UserController extends Controller
 
             }
 
-            exec("TERM=linux sudo systemctl unmask mpd; TERM=linux sudo systemctl restart mpd");
+            exec("TERM=linux sudo systemctl unmask mpd; TERM=linux sudo systemctl enable --now mpd");
 
         }
 
@@ -97,9 +97,9 @@ class UserController extends Controller
         $roon = $request->roon;
         // if status to be enabled ,status = no ; if status to be disabled ,status = yes
         if ($roon === 'yes') {
-            exec("TERM=linux sudo systemctl stop roonbridge; TERM=linux sudo mv /etc/systemd/system/roonbridge.service /etc/systemd/system/roonbridge.service.disable; TERM=linux sudo systemctl daemon-reload");
+            exec("TERM=linux sudo systemctl disable --now roonbridge");
         } elseif ($roon === 'no') {
-            exec("TERM=linux sudo mv /etc/systemd/system/roonbridge.service.disable /etc/systemd/system/roonbridge.service; TERM=linux sudo systemctl daemon-reload; TERM=linux sudo systemctl restart roonbridge");
+            exec("TERM=linux sudo systemctl unmask roonbridge; TERM=linux sudo systemctl enable --now roonbridge");
         }
 
         return redirect('/user/roon_settings')->with(['custom_message' => 'Successfully updated']);
@@ -108,7 +108,7 @@ class UserController extends Controller
     public function gmrenderSettings(Request $request)
     {
         $current_date = date("M d, Y");
-        $gmrenderStatus = rtrim(exec("TERM=linux systemctl is-active gmrender"));
+        $gmrenderStatus = rtrim(exec("TERM=linux systemctl is-active gmediarender"));
 
         return view('frontend.gmrender_settings')->with(['current_date' => $current_date, 'gmrenderStatus' => $gmrenderStatus]);
     }
@@ -118,9 +118,9 @@ class UserController extends Controller
         $gmrenderStatus = $request->gmrenderStatus;
         // if status to be enabled ,status = no ; if status to be disabled ,status = yes
         if ($gmrenderStatus === 'yes') {
-            exec("TERM=linux sudo systemctl disable --now gmrender; TERM=linux sudo mv /etc/systemd/system/gmrender.service /etc/systemd/system/gmrender.service.disable; TERM=linux sudo systemctl daemon-reload");
+            exec("TERM=linux sudo systemctl disable --now gmediarender");
         } elseif ($gmrenderStatus === 'no') {
-            exec("TERM=linux sudo mv /etc/systemd/system/gmrender.service.disable /etc/systemd/system/gmrender.service; TERM=linux sudo systemctl daemon-reload; TERM=linux sudo systemctl restart gmrender");
+            exec("TERM=linux sudo systemctl unmask gmediarender; TERM=linux sudo systemctl enable --now gmediarender");
         }
 
         return redirect('/user/gmrender_settings')->with(['custom_message' => 'Successfully updated']);
@@ -140,9 +140,9 @@ class UserController extends Controller
         $netdataStatus = $request->netdataStatus;
         // if status to be enabled ,status = no ; if status to be disabled ,status = yes
         if ($netdataStatus === 'yes') {
-            exec("TERM=linux sudo systemctl disable --now netdata; TERM=linux sudo mv /etc/systemd/system/netdata.service /etc/systemd/system/netdata.service.disable; TERM=linux sudo systemctl daemon-reload");
+            exec("TERM=linux sudo systemctl disable --now netdata");
         } elseif ($netdataStatus === 'no') {
-            exec("TERM=linux sudo mv /etc/systemd/system/netdata.service.disable /etc/systemd/system/netdata.service; TERM=linux sudo systemctl daemon-reload; TERM=linux sudo systemctl restart netdata");
+            exec("TERM=linux sudo systemctl unmask netdata; TERM=linux sudo systemctl enable --now netdata");
         }
 
         return redirect('/user/netdata_settings')->with(['custom_message' => 'Successfully updated']);
@@ -171,9 +171,9 @@ class UserController extends Controller
         $squeezeliteStatus = $request->squeezeliteStatus;
         // if status to be enabled ,status = no ; if status to be disabled ,status = yes
         if ($squeezeliteStatus === 'yes') {
-            exec("TERM=linux sudo systemctl disable --now squeezelite; TERM=linux sudo mv /lib/systemd/system/squeezelite.service /lib/systemd/system/squeezelite.service.disable; TERM=linux sudo systemctl daemon-reload");
+            exec("TERM=linux sudo systemctl disable --now squeezelite");
         } elseif ($squeezeliteStatus === 'no') {
-            exec("TERM=linux sudo mv /lib/systemd/system/squeezelite.service.disable /lib/systemd/system/squeezelite.service");
+            exec("TERM=linux sudo systemctl unmask squeezelite; TERM=linux sudo systemctl enable --now squeezelite");
             $bitDepth = $request->bitDepth;
             $DSD_NATIVE = $request->DSD_NATIVE;
             if ($DSD_NATIVE == 'disabled' ) {
@@ -205,9 +205,9 @@ class UserController extends Controller
         $chngOutputFrequency = exec('TERM=linux sudo sed -i "/output_rate /c\output_rate = ' . $frequency . ';" /usr/local/etc/shairport-sync.conf');
         $chngbitDepth = exec('TERM=linux sudo sed -i "/output_format /c\output_format = \"S' . $bitDepth . '\";" /usr/local/etc/shairport-sync.conf');
         if ($shairPort === 'yes') {
-            exec("TERM=linux sudo systemctl disable --now shairport-sync; TERM=linux sudo systemctl mask shairport-sync");
+            exec("TERM=linux sudo systemctl disable --now shairport-sync");
         } elseif ($shairPort === 'no') {
-            exec("TERM=linux sudo systemctl unmask shairport-sync; TERM=linux sudo systemctl restart shairport-sync");
+            exec("TERM=linux sudo systemctl unmask shairport-sync; TERM=linux sudo systemctl enable --now shairport-sync");
         }
 
         return redirect('/user/shair_port_settings')->with(['custom_message' => 'Successfully updated']);
@@ -226,9 +226,9 @@ class UserController extends Controller
         $daemon = $request->daemon;
         // if status to be enabled ,status = no ; if status to be disabled ,status = yes
         if ($daemon === 'yes') {
-            exec("TERM=linux sudo systemctl disable --now networkaudiod; TERM=linux sudo systemctl mask networkaudiod");
+            exec("TERM=linux sudo systemctl disable --now networkaudiod");
         } elseif ($daemon === 'no') {
-            exec("TERM=linux sudo systemctl unmask networkaudiod; TERM=linux sudo systemctl restart networkaudiod");
+            exec("TERM=linux sudo systemctl unmask networkaudiod; TERM=linux sudo systemctl enable --now networkaudiod");
         }
 
         return redirect('/user/daemon_settings')->with(['custom_message' => 'Successfully updated']);
@@ -256,9 +256,9 @@ class UserController extends Controller
         exec("TERM=linux sudo sed -i '/wpa_passphrase=/c\wpa_passphrase=$currentPasskey' /etc/hostapd/hostapd.conf");
         // if status to be enabled ,status = no ; if status to be disabled ,status = yes
         if ($wifiStatus === 'yes') {
-            exec("TERM=linux; sudo systemctl disable --now hostapd; sudo systemctl mask hostapd");
+            exec("TERM=linux sudo systemctl disable --now hostapd");
         } elseif ($wifiStatus === 'no') {
-            exec("TERM=linux; sudo systemctl unmask hostapd; sudo systemctl restart hostapd");
+            exec("TERM=linux sudo systemctl unmask hostapd; TERM=linux sudo systemctl enable --now hostapd");
         }
 
         return redirect('/user/wifi_settings')->with(['custom_message' => 'Successfully updated']);
@@ -479,7 +479,7 @@ class UserController extends Controller
                 exec("TERM=linux sudo alsactl store");
             }
             exec("TERM=linux sudo G_INTERACTIVE=0 /boot/dietpi/func/dietpi-set_swapfile $chag_sort");
-            exec("TERM=linux; sudo sed -i '/CONFIG_CPU_GOVERNOR=/c\CONFIG_CPU_GOVERNOR=$cpuGovernor' /boot/dietpi.txt; sudo G_INTERACTIVE=0 /boot/dietpi/func/dietpi-set_cpu");
+            exec("TERM=linux sudo sed -i '/CONFIG_CPU_GOVERNOR=/c\CONFIG_CPU_GOVERNOR=$cpuGovernor' /boot/dietpi.txt; TERM=linux sudo G_INTERACTIVE=0 /boot/dietpi/func/dietpi-set_cpu");
             if($ip=='dhcp') {
                 exec("TERM=linux sudo G_INTERACTIVE=0 /boot/dietpi/func/dietpi-set_software allo eth_dhcp");
                 exec("TERM=linux sudo systemctl daemon-reload");

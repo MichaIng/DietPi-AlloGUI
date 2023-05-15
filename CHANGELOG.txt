@@ -1,3 +1,8 @@
+v14.3 (2023-05-15)
+- Services are now regularly "enabled"/"disabled" when toggling the state, possible with the service handling rework in DietPi v8.16.
+- Toggling GMediaRender will now correctly toggle the "gmediarender.service", used since DietPi v8.10.
+	Many thanks to @c3kkos for reporting this issue: https://github.com/MichaIng/DietPi-AlloGUI/issues/48
+
 v14.2 (2022-04-29)
 - Minor frontend/GUI layout enhancements
 - Updated all Node.js and PHP dependencies
