@@ -100,7 +100,7 @@ class AccountController extends Controller
 
         $cpu_temp = exec("TERM=linux . /boot/dietpi/func/dietpi-globals; G_INTERACTIVE=0 G_OBTAIN_CPU_TEMP");
 
-        $gmrenderStatus = rtrim(exec("TERM=linux systemctl is-active gmrender"));
+        $gmrenderStatus = rtrim(exec("TERM=linux systemctl is-active gmediarender"));
 
         $netdataStatus = rtrim(exec("TERM=linux systemctl is-active netdata"));
 
