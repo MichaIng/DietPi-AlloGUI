@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-dependabot/composer/symfony/http-foundation-5.4.46',
-        'version' => 'dev-dependabot/composer/symfony/http-foundation-5.4.46',
-        'reference' => 'ae1d7cba35ef14c58237cdca7047bdaac5abff15',
+        'pretty_version' => 'dev-dependabot/composer/symfony/process-5.4.46',
+        'version' => 'dev-dependabot/composer/symfony/process-5.4.46',
+        'reference' => 'd92d1b5cd5e5a3deaac30e63a123b7d2e3a85ac2',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -287,9 +287,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/symfony/http-foundation-5.4.46',
-            'version' => 'dev-dependabot/composer/symfony/http-foundation-5.4.46',
-            'reference' => 'ae1d7cba35ef14c58237cdca7047bdaac5abff15',
+            'pretty_version' => 'dev-dependabot/composer/symfony/process-5.4.46',
+            'version' => 'dev-dependabot/composer/symfony/process-5.4.46',
+            'reference' => 'd92d1b5cd5e5a3deaac30e63a123b7d2e3a85ac2',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -705,9 +705,9 @@
             'dev_requirement' => false,
         ),
         'symfony/process' => array(
-            'pretty_version' => 'v5.4.44',
-            'version' => '5.4.44.0',
-            'reference' => '1b9fa82b5c62cd49da8c9e3952dd8531ada65096',
+            'pretty_version' => 'v5.4.46',
+            'version' => '5.4.46.0',
+            'reference' => '01906871cb9b5e3cf872863b91aba4ec9767daf4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
