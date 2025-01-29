@@ -7,23 +7,21 @@ concurrency:
 jobs:
   composer:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.owner.login != github.event.pull_request.base.repo.owner.login
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
 
     - run: composer v --strict
 
-    - name: Cache Composer packages
+    - uses: actions/cache@v4
       id: composer-cache
-      uses: actions/cache@v4
       with:
         path: vendor
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Update PHP dependencies
-      run: composer i -n --no-progress
+    - run: composer i -n --no-progress
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
