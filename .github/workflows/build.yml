@@ -8,10 +8,11 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
       with:
+        # Use PAT, otherwise pushes from this job do not trigger other workflows => dependabot-automerge.yml
         token: ${{ secrets.GH_PAT }}
 
     - run: composer v --strict
@@ -22,13 +23,11 @@ jobs:
         rm -R vendor
         composer i -n --no-progress
 
-    - name: Install Node dependencies
-      run: npm i -D
+    - run: npm i -D
 
-    - name: Run Laravel Mix
-      run: npx mix --production
+    - run: npx mix --production
 
-    - name: Commit if diff
+    - name: Commit diff
       run: |
         git diff --exit-code && exit 0
         git config user.name 'github-actions[bot]'

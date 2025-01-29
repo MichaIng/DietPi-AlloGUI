@@ -18,7 +18,7 @@ concurrency:
 jobs:
   analyze:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.owner.login != github.event.pull_request.base.repo.owner.login
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       actions: read
       contents: read
@@ -34,8 +34,7 @@ jobs:
     - uses: actions/checkout@v4
 
     # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+    - uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -54,11 +53,8 @@ jobs:
     # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
-    - name: Install Node dependencies
-      run: npm i -D
+    - run: npm i -D
 
-    - name: Run Laravel Mix
-      run: npx mix --production
+    - run: npx mix --production
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+    - uses: github/codeql-action/analyze@v3
