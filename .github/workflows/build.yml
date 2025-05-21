@@ -1,10 +1,14 @@
 name: Build
+
 on:
   push:
     branches-ignore: main
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+permissions: {}
 
 jobs:
   build:
@@ -12,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        # Use PAT, otherwise pushes from this job do not trigger other workflows => dependabot-automerge.yml
+        # Use PAT, otherwise pushes from this job do not trigger other workflows => dependabot-automerge.yml: https://github.com/peter-evans/create-pull-request/issues/48
         token: ${{ secrets.GH_PAT }}
 
     - run: composer v --strict
@@ -25,7 +29,7 @@ jobs:
 
     - run: npm i -D
 
-    - run: npx mix --production
+    - run: npx mix --production -- --stats-children
 
     - name: Commit diff
       run: |
