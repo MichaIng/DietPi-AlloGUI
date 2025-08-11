@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         # Use PAT, otherwise pushes from this job do not trigger other workflows => dependabot-automerge.yml: https://github.com/peter-evans/create-pull-request/issues/48
         token: ${{ secrets.GH_PAT }}
