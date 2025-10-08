@@ -34,7 +34,7 @@ jobs:
     - uses: actions/checkout@v5
 
     # Initializes the CodeQL tools for scanning.
-    - uses: github/codeql-action/init@v3
+    - uses: github/codeql-action/init@v4
       with:
         languages: ${{ matrix.language }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -57,4 +57,4 @@ jobs:
 
     - run: npx mix --production
 
-    - uses: github/codeql-action/analyze@v3
+    - uses: github/codeql-action/analyze@v4
