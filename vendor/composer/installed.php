@@ -1,19 +1,19 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-dependabot/composer/laravel/tinker-2.10.2',
-        'version' => 'dev-dependabot/composer/laravel/tinker-2.10.2',
-        'reference' => '1011bf516e2c8e9cbbc8f0afc317cdafbb79b5e0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '2d82d0f0c9a830773b94de942c2a364b27d853c2',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'asm89/stack-cors' => array(
-            'pretty_version' => 'v2.1.1',
-            'version' => '2.1.1.0',
-            'reference' => '73e5b88775c64ccc0b84fb60836b30dc9d92ac4a',
+            'pretty_version' => 'v2.3.0',
+            'version' => '2.3.0.0',
+            'reference' => 'acf3142e6c5eafa378dc8ef3c069ab4558993f70',
             'type' => 'library',
             'install_path' => __DIR__ . '/../asm89/stack-cors',
             'aliases' => array(),
@@ -94,202 +94,202 @@
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/broadcasting' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/bus' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/collections' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/config' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/container' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/contracts' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/cookie' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/encryption' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/events' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/hashing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/macroable' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/mail' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/notifications' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/pagination' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/pipeline' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/queue' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/redis' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/routing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/session' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/support' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/testing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/translation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'illuminate/view' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => 'v8.83.29',
+                0 => '8.x-dev',
             ),
         ),
         'laravel/framework' => array(
-            'pretty_version' => 'v8.83.29',
-            'version' => '8.83.29.0',
-            'reference' => 'd841a226a50c715431952a10260ba4fac9e91cc4',
+            'pretty_version' => '8.x-dev',
+            'version' => '8.9999999.9999999.9999999-dev',
+            'reference' => '863d9289a5150e19ee8f6a09631a6ce441f701bc',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/framework',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/laravel/tinker-2.10.2',
-            'version' => 'dev-dependabot/composer/laravel/tinker-2.10.2',
-            'reference' => '1011bf516e2c8e9cbbc8f0afc317cdafbb79b5e0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '2d82d0f0c9a830773b94de942c2a364b27d853c2',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -332,9 +332,9 @@
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
-            'pretty_version' => '1.6.7',
-            'version' => '1.6.7.0',
-            'reference' => '2b8185c13bc9578367a5bf901881d1c1b5bbd09b',
+            'pretty_version' => '1.6.x-dev',
+            'version' => '1.6.9999999.9999999-dev',
+            'reference' => 'b7a2aedcca80659fac31b92f525b7837b15d45aa',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/commonmark',
             'aliases' => array(),
