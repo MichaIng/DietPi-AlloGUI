@@ -1,3 +1,14 @@
+v14.5 (2025-11-29)
+- The whole commit history has been forged onto Laravel v8.x.
+  The project was originally created with some early Laravel v5.5 dev stage commit, and files have been updated to v8.x with the Allo GUI v14.1.
+  Such manual updates of Laravel backbone is time-consuming and difficult to review. With a shared commit history,
+  our commits and custom files can instead be rebased, which is after all a lot easier.
+  Future updates to newer Laravel major versions will be made via rebase as well,
+  with new Allo GUI major versions since they require higher PHP versions and hence won't be supported on older Debian versions anymore.
+- While understanding Laravel better, a major cleanup has been applied, removing unused .env variables, views/blades, routes, controllers,
+  PHP dependencies, and code sections.
+- All other dependencies have been updated to the latest possible version while keeping PHP 7.3 support.
+
 v14.4 (2023-05-25)
 - The overview page will now show correctly the GMediaRender service status
 
