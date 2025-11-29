@@ -43,9 +43,6 @@
                                             <label>
                                                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                             </label>
-                                            <!-- <a class="btn btn-link pull-right forgt-pass" href="{{ route('password.request') }}">
-                                                Forgot Your Password?
-                                            </a> -->
                                         </div>
                                     </div>
                                 </div>

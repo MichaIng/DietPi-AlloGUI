@@ -25,53 +25,18 @@
         <nav class="navbar navbar-default navbar-static-top header-outr text-center">
             <div class="header-inr">
                 <div class="navbar-header header-cont">
-                    <!-- Collapsed Hamburger -->
-                    <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button> -->
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                        <img src="{{ asset(env("LOC_PUBLIC",'').'/img/white-logo.png') }}" class="img-responsive">
                     </a>
                 </div>
-                <!-- <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <ul class="nav navbar-nav">&nbsp;</ul>
-                    Right Side Of Navbar -->
-                    <!-- <ul class="nav navbar-nav navbar-right">
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div> -->
             </div>
         </nav>
         @yield('content')
         <div class="footer-outr">
             <div class="footer-inr">
                 <div class="footer-cont">
-                    <p>Copyright Allo.com 2023. All rights reserved.</p>
+                    <p>Copyright Allo.com/DietPi 2025. All rights reserved.</p>
                 </div>
             </div>
         </div>

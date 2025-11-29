@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,39 +16,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth Get Routes
-// Route::group(array('prefix' => '/allo'), function()
-// {
-    Route::get('/', '\App\Http\Controllers\AccountController@Index');
-    //Route::any('/ssh-login', '\App\Http\Controllers\AccountController@ssh_login');
-    Route::any('/user/mpd_settings', '\App\Http\Controllers\UserController@mpdSettings');
-    Route::any('/user/system_settings', '\App\Http\Controllers\UserController@systemSettings');
-    Route::any('/user/changeSystemSettings', '\App\Http\Controllers\UserController@changeSystemSettings');
-    Route::any('/user/changeMpdSettings', '\App\Http\Controllers\UserController@changeMpdSettings');
-    Route::any('/user/roon_settings', '\App\Http\Controllers\UserController@roonSettings');
-    Route::any('/user/changeRoonSettings', '\App\Http\Controllers\UserController@changeRoonSettings');
-    Route::any('/user/gmrender_settings', '\App\Http\Controllers\UserController@gmrenderSettings');
-    Route::any('/user/changeGmrenderSettings', '\App\Http\Controllers\UserController@changeGmrenderSettings');
-    Route::any('/user/netdata_settings', '\App\Http\Controllers\UserController@netdataSettings');
-    Route::any('/user/changeNetdataSettings', '\App\Http\Controllers\UserController@changeNetdataSettings');
-    Route::any('/user/squeezelite_settings', '\App\Http\Controllers\UserController@squeezeliteSettings');
-    Route::any('/user/changeSqueezeliteSettings', '\App\Http\Controllers\UserController@changeSqueezeliteSettings');
-    Route::any('/user/shair_port_settings', '\App\Http\Controllers\UserController@shairPortSettings');
-    Route::any('/user/changeShairPortSettings', '\App\Http\Controllers\UserController@changeShairPortSettings');
-    Route::any('/user/daemon_settings', '\App\Http\Controllers\UserController@daemonSettings');
-    Route::any('/user/changeDaemonSettings', '\App\Http\Controllers\UserController@changeDaemonSettings');
-    Route::any('/user/wifi_settings', '\App\Http\Controllers\UserController@wifiSettings');
-    Route::any('/user/changeWifiSettings', '\App\Http\Controllers\UserController@changeWifiSettings');
-    Route::any('/user/download', '\App\Http\Controllers\UserController@download');
-    Route::any('/user/status', '\App\Http\Controllers\UserController@status');
-    Route::any('/user/reboot', '\App\Http\Controllers\UserController@reboot');
-    Route::any('/user/swapFileSize', '\App\Http\Controllers\UserController@swapFileSize');
-    Route::any('/user/power', '\App\Http\Controllers\UserController@power');
-    Route::any('/user/updateSoundCard', '\App\Http\Controllers\UserController@updateSoundCard');
-    //Route::any('/userListImport/getFile', '\App\Http\Controllers\UserListImportController@getFile');
-    Route::post('/user/updateDietPi', '\App\Http\Controllers\UserController@updateDietPi');
-//});
+# Authentication
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Auth::routes();
+# Dashboard
+Route::get('/', [AccountController::class, 'Index']);
 
-Route::get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
+# Pages and buttons
+Route::prefix('user')->group(function ()
+{
+    Route::any('system_settings', [UserController::class, 'systemSettings']);
+    Route::any('changeSystemSettings', [UserController::class, 'changeSystemSettings']);
+    Route::any('mpd_settings', [UserController::class, 'mpdSettings']);
+    Route::any('changeMpdSettings', [UserController::class, 'changeMpdSettings']);
+    Route::any('roon_settings', [UserController::class, 'roonSettings']);
+    Route::any('changeRoonSettings', [UserController::class, 'changeRoonSettings']);
+    Route::any('gmrender_settings', [UserController::class, 'gmrenderSettings']);
+    Route::any('changeGmrenderSettings', [UserController::class, 'changeGmrenderSettings']);
+    Route::any('netdata_settings', [UserController::class, 'netdataSettings']);
+    Route::any('changeNetdataSettings', [UserController::class, 'changeNetdataSettings']);
+    Route::any('squeezelite_settings', [UserController::class, 'squeezeliteSettings']);
+    Route::any('changeSqueezeliteSettings', [UserController::class, 'changeSqueezeliteSettings']);
+    Route::any('shair_port_settings', [UserController::class, 'shairPortSettings']);
+    Route::any('changeShairPortSettings', [UserController::class, 'changeShairPortSettings']);
+    Route::any('daemon_settings', [UserController::class, 'daemonSettings']);
+    Route::any('changeDaemonSettings', [UserController::class, 'changeDaemonSettings']);
+    Route::any('wifi_settings', [UserController::class, 'wifiSettings']);
+    Route::any('changeWifiSettings', [UserController::class, 'changeWifiSettings']);
+    Route::any('status', [UserController::class, 'status']);
+    Route::any('download', [UserController::class, 'download']);
+    Route::any('reboot', [UserController::class, 'reboot']);
+    Route::any('power', [UserController::class, 'power']);
+    Route::any('swapFileSize', [UserController::class, 'swapFileSize']);
+    Route::any('updateSoundCard', [UserController::class, 'updateSoundCard']);
+    Route::post('updateDietPi', [UserController::class, 'updateDietPi']);
+});
