@@ -1,3 +1,8 @@
+v15.0 (2025-11-29)
+- The minimum required PHP version has been raised to 7.4.
+- All PHP dependencies have been updated to the max possible version which still support PHP 7.4.
+- The update of league/commonmark solved some security vulnerabilities: CVE-2025-46734, GHSA-c2pc-g5qf-rfrf
+
 v14.5 (2025-11-29)
 - The whole commit history has been forged onto Laravel v8.x.
   The project was originally created with some early Laravel v5.5 dev stage commit, and files have been updated to v8.x with the Allo GUI v14.1.
