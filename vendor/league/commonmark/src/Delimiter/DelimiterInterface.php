@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the league/commonmark package.
  *
@@ -14,7 +16,7 @@
 
 namespace League\CommonMark\Delimiter;
 
-use League\CommonMark\Inline\Element\AbstractStringContainer;
+use League\CommonMark\Node\Inline\AbstractStringContainer;
 
 interface DelimiterInterface
 {
@@ -22,39 +24,27 @@ interface DelimiterInterface
 
     public function canOpen(): bool;
 
+    /**
+     * @deprecated This method is no longer used internally and will be removed in 3.0
+     */
     public function isActive(): bool;
 
     /**
-     * @param bool $active
-     *
-     * @return void
+     * @deprecated This method is no longer used internally and will be removed in 3.0
      */
-    public function setActive(bool $active);
+    public function setActive(bool $active): void;
 
-    /**
-     * @return string
-     */
     public function getChar(): string;
 
     public function getIndex(): ?int;
 
     public function getNext(): ?DelimiterInterface;
 
-    /**
-     * @param DelimiterInterface|null $next
-     *
-     * @return void
-     */
-    public function setNext(?DelimiterInterface $next);
+    public function setNext(?DelimiterInterface $next): void;
 
     public function getLength(): int;
 
-    /**
-     * @param int $length
-     *
-     * @return void
-     */
-    public function setLength(int $length);
+    public function setLength(int $length): void;
 
     public function getOriginalLength(): int;
 
@@ -62,10 +52,5 @@ interface DelimiterInterface
 
     public function getPrevious(): ?DelimiterInterface;
 
-    /**
-     * @param DelimiterInterface|null $previous
-     *
-     * @return mixed|void
-     */
-    public function setPrevious(?DelimiterInterface $previous);
+    public function setPrevious(?DelimiterInterface $previous): void;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the league/commonmark package.
  *
@@ -12,10 +14,10 @@
 namespace League\CommonMark\Extension\Strikethrough;
 
 use League\CommonMark\Delimiter\DelimiterInterface;
-use League\CommonMark\Delimiter\Processor\DelimiterProcessorInterface;
-use League\CommonMark\Inline\Element\AbstractStringContainer;
+use League\CommonMark\Delimiter\Processor\CacheableDelimiterProcessorInterface;
+use League\CommonMark\Node\Inline\AbstractStringContainer;
 
-final class StrikethroughDelimiterProcessor implements DelimiterProcessorInterface
+final class StrikethroughDelimiterProcessor implements CacheableDelimiterProcessorInterface
 {
     public function getOpeningCharacter(): string
     {
@@ -29,19 +31,26 @@ final class StrikethroughDelimiterProcessor implements DelimiterProcessorInterfa
 
     public function getMinLength(): int
     {
-        return 2;
+        return 1;
     }
 
     public function getDelimiterUse(DelimiterInterface $opener, DelimiterInterface $closer): int
     {
-        $min = \min($opener->getLength(), $closer->getLength());
+        if ($opener->getLength() > 2 && $closer->getLength() > 2) {
+            return 0;
+        }
 
-        return $min >= 2 ? $min : 0;
+        if ($opener->getLength() !== $closer->getLength()) {
+            return 0;
+        }
+
+        // $opener and $closer are the same length so we just return one of them
+        return $opener->getLength();
     }
 
-    public function process(AbstractStringContainer $opener, AbstractStringContainer $closer, int $delimiterUse)
+    public function process(AbstractStringContainer $opener, AbstractStringContainer $closer, int $delimiterUse): void
     {
-        $strikethrough = new Strikethrough();
+        $strikethrough = new Strikethrough(\str_repeat('~', $delimiterUse));
 
         $tmp = $opener->next();
         while ($tmp !== null && $tmp !== $closer) {
@@ -51,5 +60,10 @@ final class StrikethroughDelimiterProcessor implements DelimiterProcessorInterfa
         }
 
         $opener->insertAfter($strikethrough);
+    }
+
+    public function getCacheKey(DelimiterInterface $closer): string
+    {
+        return '~' . $closer->getLength();
     }
 }
