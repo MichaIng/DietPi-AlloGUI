@@ -1,24 +1,15 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '8b239ceb66a68f5d6a65fa97f471f3b79f804a98',
+        'pretty_version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
+        'version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
+        'reference' => 'cb82097723975374799ba55b161ca4a70925fe55',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'asm89/stack-cors' => array(
-            'pretty_version' => 'v2.3.0',
-            'version' => '2.3.0.0',
-            'reference' => 'acf3142e6c5eafa378dc8ef3c069ab4558993f70',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../asm89/stack-cors',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'brick/math' => array(
             'pretty_version' => '0.9.3',
             'version' => '0.9.3.0',
@@ -83,11 +74,20 @@
             'dev_requirement' => false,
         ),
         'fruitcake/laravel-cors' => array(
-            'pretty_version' => 'v2.2.0',
-            'version' => '2.2.0.0',
-            'reference' => '783a74f5e3431d7b9805be8afb60fd0a8f743534',
+            'pretty_version' => 'v3.0.0',
+            'version' => '3.0.0.0',
+            'reference' => '7c036ec08972d8d5d9db637e772af6887828faf5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fruitcake/laravel-cors',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'fruitcake/php-cors' => array(
+            'pretty_version' => 'v1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => '3d158f36e7875e2f040f37bc0573956240a5a38b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../fruitcake/php-cors',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -103,202 +103,202 @@
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/broadcasting' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/bus' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/collections' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/config' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/container' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/contracts' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/cookie' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/encryption' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/events' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/hashing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/macroable' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/mail' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/notifications' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/pagination' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/pipeline' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/queue' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/redis' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/routing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/session' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/support' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/testing' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/translation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'illuminate/view' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '8.x-dev',
+                0 => 'v8.83.29',
             ),
         ),
         'laravel/framework' => array(
-            'pretty_version' => '8.x-dev',
-            'version' => '8.9999999.9999999.9999999-dev',
-            'reference' => '863d9289a5150e19ee8f6a09631a6ce441f701bc',
+            'pretty_version' => 'v8.83.29',
+            'version' => '8.83.29.0',
+            'reference' => 'd841a226a50c715431952a10260ba4fac9e91cc4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/framework',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '8b239ceb66a68f5d6a65fa97f471f3b79f804a98',
+            'pretty_version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
+            'version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
+            'reference' => 'cb82097723975374799ba55b161ca4a70925fe55',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
