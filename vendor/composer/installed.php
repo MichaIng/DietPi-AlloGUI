@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
-        'version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
-        'reference' => 'cb82097723975374799ba55b161ca4a70925fe55',
+        'pretty_version' => 'dev-dependabot/composer/symfony/process-5.4.51',
+        'version' => 'dev-dependabot/composer/symfony/process-5.4.51',
+        'reference' => 'd172114ee2f08bfc12683c335ca4642278f03f21',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -296,9 +296,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
-            'version' => 'dev-dependabot/composer/fruitcake/laravel-cors-3.0.0',
-            'reference' => 'cb82097723975374799ba55b161ca4a70925fe55',
+            'pretty_version' => 'dev-dependabot/composer/symfony/process-5.4.51',
+            'version' => 'dev-dependabot/composer/symfony/process-5.4.51',
+            'reference' => 'd172114ee2f08bfc12683c335ca4642278f03f21',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -696,9 +696,9 @@
             'dev_requirement' => false,
         ),
         'symfony/process' => array(
-            'pretty_version' => 'v5.4.47',
-            'version' => '5.4.47.0',
-            'reference' => '5d1662fb32ebc94f17ddb8d635454a776066733d',
+            'pretty_version' => 'v5.4.51',
+            'version' => '5.4.51.0',
+            'reference' => '467bfc56f18f5ef6d5ccb09324d7e988c1c0a98f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
