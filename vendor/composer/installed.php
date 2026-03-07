@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-dependabot/composer/symfony/process-5.4.51',
-        'version' => 'dev-dependabot/composer/symfony/process-5.4.51',
-        'reference' => 'd172114ee2f08bfc12683c335ca4642278f03f21',
+        'pretty_version' => 'dev-dependabot/composer/league/commonmark-2.8.1',
+        'version' => 'dev-dependabot/composer/league/commonmark-2.8.1',
+        'reference' => '1d992c4d26af58ac4ee24e0357980a13b92ac924',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -296,9 +296,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/symfony/process-5.4.51',
-            'version' => 'dev-dependabot/composer/symfony/process-5.4.51',
-            'reference' => 'd172114ee2f08bfc12683c335ca4642278f03f21',
+            'pretty_version' => 'dev-dependabot/composer/league/commonmark-2.8.1',
+            'version' => 'dev-dependabot/composer/league/commonmark-2.8.1',
+            'reference' => '1d992c4d26af58ac4ee24e0357980a13b92ac924',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -314,9 +314,9 @@
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
-            'pretty_version' => '2.8.0',
-            'version' => '2.8.0.0',
-            'reference' => '4efa10c1e56488e658d10adf7b7b7dcd19940bfb',
+            'pretty_version' => '2.8.1',
+            'version' => '2.8.1.0',
+            'reference' => '84b1ca48347efdbe775426f108622a42735a6579',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/commonmark',
             'aliases' => array(),
