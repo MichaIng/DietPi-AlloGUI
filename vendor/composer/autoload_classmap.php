@@ -1541,6 +1541,8 @@ return array(
     'League\\CommonMark\\Extension\\Mention\\Mention' => $vendorDir . '/league/commonmark/src/Extension/Mention/Mention.php',
     'League\\CommonMark\\Extension\\Mention\\MentionExtension' => $vendorDir . '/league/commonmark/src/Extension/Mention/MentionExtension.php',
     'League\\CommonMark\\Extension\\Mention\\MentionParser' => $vendorDir . '/league/commonmark/src/Extension/Mention/MentionParser.php',
+    'League\\CommonMark\\Extension\\NormalizeHeadings\\NormalizeHeadingsExtension' => $vendorDir . '/league/commonmark/src/Extension/NormalizeHeadings/NormalizeHeadingsExtension.php',
+    'League\\CommonMark\\Extension\\NormalizeHeadings\\NormalizeHeadingsProcessor' => $vendorDir . '/league/commonmark/src/Extension/NormalizeHeadings/NormalizeHeadingsProcessor.php',
     'League\\CommonMark\\Extension\\SmartPunct\\DashParser' => $vendorDir . '/league/commonmark/src/Extension/SmartPunct/DashParser.php',
     'League\\CommonMark\\Extension\\SmartPunct\\EllipsesParser' => $vendorDir . '/league/commonmark/src/Extension/SmartPunct/EllipsesParser.php',
     'League\\CommonMark\\Extension\\SmartPunct\\Quote' => $vendorDir . '/league/commonmark/src/Extension/SmartPunct/Quote.php',
