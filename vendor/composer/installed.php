@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-dependabot/composer/league/commonmark-2.9.0',
-        'version' => 'dev-dependabot/composer/league/commonmark-2.9.0',
-        'reference' => '437e4375486cc6d92d32375e2a21fe8acdc770cf',
+        'pretty_version' => 'dev-dependabot/composer/league/commonmark-2.10.0',
+        'version' => 'dev-dependabot/composer/league/commonmark-2.10.0',
+        'reference' => '6941c2e82657ece343ec60d98c23b16ee0f20103',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -296,9 +296,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-dependabot/composer/league/commonmark-2.9.0',
-            'version' => 'dev-dependabot/composer/league/commonmark-2.9.0',
-            'reference' => '437e4375486cc6d92d32375e2a21fe8acdc770cf',
+            'pretty_version' => 'dev-dependabot/composer/league/commonmark-2.10.0',
+            'version' => 'dev-dependabot/composer/league/commonmark-2.10.0',
+            'reference' => '6941c2e82657ece343ec60d98c23b16ee0f20103',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -314,9 +314,9 @@
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
-            'pretty_version' => '2.9.0',
-            'version' => '2.9.0.0',
-            'reference' => '5703d83ba3da3b2e356a5fedc848ed6d8ffb6529',
+            'pretty_version' => '2.10.0',
+            'version' => '2.10.0.0',
+            'reference' => 'd2d1aa8b35e072966c89bc0c66cf926e56767dc4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/commonmark',
             'aliases' => array(),
